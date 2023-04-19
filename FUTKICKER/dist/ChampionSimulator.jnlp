@@ -8,9 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ChampionSimulator.jar" size="2671" download="eager" />
+    <jar href="ChampionSimulator.jar" size="2667" download="eager" />
     <jar href="lib\commons-net-3.7.2.jar" size="307003" download="eager" />
-    <jar href="lib\mysql-connector-java-5.1.39.jar" size="989495" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="ChampionSimulator" >
