@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author marti
  */
-public class FUTKICKER extends Application {
+public class ChampionSimulator extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
