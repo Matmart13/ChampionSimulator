@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package futkicker;
+package Controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,8 +23,8 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        System.out.println("Clickame!");
+        label.setText("Hola Mundo!");
     }
     
     @Override
