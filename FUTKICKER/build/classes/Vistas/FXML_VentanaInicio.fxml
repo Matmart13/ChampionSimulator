@@ -4,12 +4,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="850.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controladores.FXML_VentanaInicioController">
+<AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaInicioController">
    <children>
       <ImageView fx:id="fondoImagen" fitHeight="631.0" fitWidth="850.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="botonInicio" layoutX="270.0" layoutY="389.0" mnemonicParsing="false" onAction="#botonInicioClick" prefHeight="25.0" prefWidth="310.0" text="Inicio" />
       <Button fx:id="botonCargar" layoutX="270.0" layoutY="438.0" mnemonicParsing="false" onAction="#botonCargarClick" prefHeight="25.0" prefWidth="310.0" text="Cargar" />
       <Button fx:id="botonSalir" layoutX="270.0" layoutY="482.0" mnemonicParsing="false" onAction="#botonSalirClick" prefHeight="25.0" prefWidth="310.0" text="Salir" />
+      <ImageView fx:id="Logo" fitHeight="312.0" fitWidth="500.0" layoutX="206.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
