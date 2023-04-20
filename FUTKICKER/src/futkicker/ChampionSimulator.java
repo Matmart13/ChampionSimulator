@@ -19,7 +19,7 @@ public class ChampionSimulator extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Inicio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
         
         Scene scene = new Scene(root);
         
