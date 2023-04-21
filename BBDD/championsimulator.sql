@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-04-2023 a las 13:22:11
+-- Tiempo de generación: 21-04-2023 a las 13:36:52
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -87,8 +87,25 @@ CREATE TABLE IF NOT EXISTS `equipos` (
   `eq_derrotas` int(2) NOT NULL,
   `eq_goles` int(3) NOT NULL,
   `eq_goles_contra` int(3) NOT NULL,
-  `eq_goles_dif` int(3) NOT NULL
+  `eq_goles_dif` int(3) NOT NULL,
+  `eq_estrellas` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `equipos`
+--
+
+INSERT INTO `equipos` (`eq_id`, `eq_nombre`, `eq_victorias`, `eq_derrotas`, `eq_goles`, `eq_goles_contra`, `eq_goles_dif`, `eq_estrellas`) VALUES
+(1, 'Real Madrid', 0, 0, 0, 0, 0, 5),
+(2, 'Barcelona', 0, 0, 0, 0, 0, 4),
+(3, 'Real Betis', 0, 0, 0, 0, 0, 3),
+(4, 'Arsenal', 0, 0, 0, 0, 0, 4),
+(5, 'Lazio', 0, 0, 0, 0, 0, 4),
+(6, 'Bayern Munich', 0, 0, 0, 0, 0, 5),
+(7, 'Sporting de Gijon', 0, 0, 0, 0, 0, 3),
+(8, 'Inter de Milan', 0, 0, 0, 0, 0, 4),
+(9, 'Manchester City', 0, 0, 0, 0, 0, 5),
+(10, 'PSG', 0, 0, 0, 0, 0, 4);
 
 -- --------------------------------------------------------
 
