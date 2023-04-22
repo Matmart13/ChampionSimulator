@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 22-04-2023 a las 02:15:18
+-- Tiempo de generación: 22-04-2023 a las 05:04:44
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -69,6 +69,28 @@ CREATE TABLE IF NOT EXISTS `barcelona` (
   `bar_posicion` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `barcelona`
+--
+
+INSERT INTO `barcelona` (`bar_id`, `bar_jugador`, `bar_posicion`) VALUES
+(1, 'Ter Stegen', 'Portero'),
+(2, 'Eric Garcia', 'Defensa'),
+(3, 'Araujo', 'Defensa'),
+(4, 'Jordi Alba', 'Lateral Izquierdo'),
+(5, 'Kounde', 'Lateral Derecho'),
+(6, 'Busquets', 'Centro'),
+(7, 'Pedri', 'Centro'),
+(8, 'Gavi', 'Centro'),
+(9, 'Dembele', 'Extremo Derecho'),
+(10, 'Ansu Fati', 'Extremo Izquierdo'),
+(11, 'Lewandoski', 'Delantero'),
+(12, 'Iñaki Peña', 'Portero'),
+(13, 'Kounde', 'Defensa'),
+(14, 'Nico', 'Centro'),
+(15, 'Raphinha', 'Extremo Derecho'),
+(16, 'Balde', 'Lateral Izquierdo');
+
 -- --------------------------------------------------------
 
 --
@@ -79,8 +101,30 @@ DROP TABLE IF EXISTS `bayern`;
 CREATE TABLE IF NOT EXISTS `bayern` (
   `bay_id` int(11) NOT NULL,
   `bay_jugador` varchar(20) NOT NULL,
-  `bay_posicion` int(11) NOT NULL
+  `bay_posicion` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `bayern`
+--
+
+INSERT INTO `bayern` (`bay_id`, `bay_jugador`, `bay_posicion`) VALUES
+(1, 'Neuer', 'Portero'),
+(2, 'Sule', 'Defensa'),
+(3, 'Lucas H', 'Defensa'),
+(4, 'Emerson', 'Extremo Izquierdo'),
+(5, 'Alaba', 'Extremo Derecho'),
+(6, 'Kimmich', 'Centro'),
+(7, 'Thiago', 'Centro'),
+(8, 'Muller', 'Centro'),
+(9, 'Sane', 'Lateral Derecho'),
+(10, 'Gnabry', 'Lateral Izquierdo'),
+(11, 'Lewandowski', 'Delantero'),
+(12, 'Nubel', 'Portero'),
+(13, 'Martinez', 'Defensa'),
+(14, 'Tolisso', 'Centro'),
+(15, 'Davies', 'Extremo Derecho'),
+(16, 'Singh', 'Lateral Izquierdo');
 
 -- --------------------------------------------------------
 
@@ -94,6 +138,28 @@ CREATE TABLE IF NOT EXISTS `betis` (
   `bet:jugador` varchar(20) NOT NULL,
   `bet_posicion` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `betis`
+--
+
+INSERT INTO `betis` (`bet_id`, `bet:jugador`, `bet_posicion`) VALUES
+(1, 'Bravo', 'Portero'),
+(2, 'Bartra', 'Defensa'),
+(3, 'Mandi', 'Defensa'),
+(4, 'Alex Moreno', 'Extremo Izquierdo'),
+(5, 'Emerson', 'Extremo Derecho'),
+(6, 'Guido Rodriguez', 'Centro'),
+(7, 'Carvalho', 'Centro'),
+(8, 'Canales', 'Centro'),
+(9, 'Joaquín', 'Lateral Derecho'),
+(10, 'Fekir', 'Lateral Izquierdo'),
+(11, 'Borja Iglesias', 'Delantero'),
+(12, 'Joel Robles', 'Portero'),
+(13, 'Victor Ruiz', 'Defensa'),
+(14, 'Paul', 'Centro'),
+(15, 'Montoya', 'Extremo Derecho'),
+(16, 'Juanmmi', 'Lateral Izquierdo');
 
 -- --------------------------------------------------------
 
@@ -139,8 +205,30 @@ DROP TABLE IF EXISTS `inter`;
 CREATE TABLE IF NOT EXISTS `inter` (
   `int_id` int(11) NOT NULL,
   `int_jugador` varchar(20) NOT NULL,
-  `int_posicion` int(11) NOT NULL
+  `int_posicion` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inter`
+--
+
+INSERT INTO `inter` (`int_id`, `int_jugador`, `int_posicion`) VALUES
+(1, 'Handanovic', 'Portero'),
+(2, 'De Vrij', 'Defensa'),
+(3, 'Bastoni', 'Defensa'),
+(4, 'Skriniar', 'Lateral Izquierdo'),
+(5, 'Gosens', 'Lateral Derecho'),
+(6, 'Brozovic', 'Centro'),
+(7, 'Barella', 'Centro'),
+(8, 'Calhanoglu', 'Centro'),
+(9, 'Dumfries', 'Extremo Derecho'),
+(10, 'Lukaku', 'Extremo Izquierdo'),
+(11, 'Lautaro', 'Delantero'),
+(12, 'Radu', 'Portero'),
+(13, 'Pirola', 'Defensa'),
+(14, 'Sensi', 'Centro'),
+(15, 'Candreva', 'Extremo Derecho'),
+(16, 'Young', 'Lateral Izquierdo');
 
 -- --------------------------------------------------------
 
@@ -152,8 +240,30 @@ DROP TABLE IF EXISTS `lazio`;
 CREATE TABLE IF NOT EXISTS `lazio` (
   `laz_id` int(11) NOT NULL,
   `laz_jugador` varchar(20) NOT NULL,
-  `laz_posicion` int(11) NOT NULL
+  `laz_posicion` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `lazio`
+--
+
+INSERT INTO `lazio` (`laz_id`, `laz_jugador`, `laz_posicion`) VALUES
+(1, 'Gian Marco', 'Portero'),
+(2, 'Alex Sandro', 'Defensa'),
+(3, 'Tommaso Barberi', 'Defensa'),
+(4, 'Enzo Barrenchea', 'Lateral Izquierdo'),
+(5, 'Samuel Iling', 'Lateral Derecho'),
+(6, 'Flip Kostic', 'Centro'),
+(7, 'Leandro Paredes', 'Centro'),
+(8, 'Paul Pogba', 'Centro'),
+(9, 'Bremer', 'Extremo Derecho'),
+(10, 'Danillo', 'Extremo Izquierdo'),
+(11, 'Federico Chiesia', 'Delantero'),
+(12, 'Giovanni Garofani', 'Portero'),
+(13, 'Federico Gatti', 'Defensa'),
+(14, 'Adrien Rabiot', 'Centro'),
+(15, 'Daniele Rugani', 'Extremo Derecho'),
+(16, 'Nikola Sekulov', 'Lateral Izquierdo');
 
 -- --------------------------------------------------------
 
@@ -200,9 +310,31 @@ INSERT INTO `madrid` (`mad_id`, `mad_jugador`, `mad_posicion`) VALUES
 DROP TABLE IF EXISTS `manchestercity`;
 CREATE TABLE IF NOT EXISTS `manchestercity` (
   `manc_id` int(11) NOT NULL,
-  `manc_jugador` int(11) NOT NULL,
-  `manc_posicion` int(11) NOT NULL
+  `manc_jugador` varchar(20) NOT NULL,
+  `manc_posicion` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `manchestercity`
+--
+
+INSERT INTO `manchestercity` (`manc_id`, `manc_jugador`, `manc_posicion`) VALUES
+(1, 'Ederson', 'Portero'),
+(2, 'Dias', 'Defensa'),
+(3, 'Laporte', 'Defensa'),
+(4, 'Cancelo', 'Extremo Izquierdo'),
+(5, 'Cucurella', 'Extremo Derecho'),
+(6, 'Rodri', 'Centro'),
+(7, 'Mahrez', 'Centro'),
+(8, 'Foden', 'Centro'),
+(9, 'Silva', 'Lateral Derecho'),
+(10, 'De Bruyne', 'Lateral Izquierdo'),
+(11, 'Haaland', 'Delantero'),
+(12, 'Steffen', 'Portero'),
+(13, 'Gundogan', 'Lateral Izquierdo'),
+(14, 'Haaland', 'Delantero'),
+(15, 'Walker', 'Lateral Izquierdo'),
+(16, 'Haaland', 'Delantero');
 
 -- --------------------------------------------------------
 
