@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-04-2023 a las 13:36:52
+-- Tiempo de generación: 22-04-2023 a las 02:15:18
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -33,6 +33,28 @@ CREATE TABLE IF NOT EXISTS `arsenal` (
   `ars_jugador` varchar(20) NOT NULL,
   `ars_posicion` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `arsenal`
+--
+
+INSERT INTO `arsenal` (`ars_id`, `ars_jugador`, `ars_posicion`) VALUES
+(1, 'Aaron Ramsdale', 'Portero'),
+(2, 'Gabriel Magalhaes', 'Defensa'),
+(3, 'Ben White', 'Defensa'),
+(4, 'Thomas Partey', 'Centro'),
+(5, 'Kieran Tierney', 'Lateral Izquierdo'),
+(6, 'Takehiro Tomiyasu', 'Lateral Derecho'),
+(7, 'Granit Xhaka', 'Centro'),
+(8, 'Martin Odegaard', 'Centro'),
+(9, 'Gabriel Martinelli', 'Extremo Izquierdo'),
+(10, 'Bukayo Saka', 'Extremo Izquierdo'),
+(11, 'Gabriel Jesus', 'Delantero'),
+(12, 'Matt Turner', 'Portero'),
+(13, 'Jakub Kiwior', 'Defensa'),
+(14, 'Emilie Smith Rowe', 'Centro'),
+(15, 'Eddie Nketiah', 'Delantero'),
+(16, 'Cédric', 'Lateral Derecho');
 
 -- --------------------------------------------------------
 
@@ -146,6 +168,29 @@ CREATE TABLE IF NOT EXISTS `madrid` (
   `mad_posicion` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `madrid`
+--
+
+INSERT INTO `madrid` (`mad_id`, `mad_jugador`, `mad_posicion`) VALUES
+(1, 'Courtois', 'Portero'),
+(2, 'Rudiger', 'Defensa'),
+(3, 'Militao', 'Defensa'),
+(4, 'Alaba', 'Lateral Izquierdo'),
+(5, 'Alaba', 'Extremo Izquierdo'),
+(6, 'Carvajal', 'Extremo Derecho'),
+(7, 'Kroos', 'Centro'),
+(7, 'Modric', 'Lateral Izquierdo'),
+(8, 'Casemiro', 'Lateral Derecho'),
+(9, 'Vinicius', 'Lateral Izquierdo'),
+(10, 'Vinicius', 'Lateral Derecho'),
+(11, 'Benzema', 'Delantero'),
+(12, 'Lunin', 'Portero'),
+(13, 'Nacho', 'Defensa'),
+(14, 'Camavinga', 'Lateral Izquierdo'),
+(15, 'Valverde', 'Lateral Derecha'),
+(16, 'Mayoral', 'Delantero');
+
 -- --------------------------------------------------------
 
 --
@@ -172,6 +217,28 @@ CREATE TABLE IF NOT EXISTS `psg` (
   `psg_posición` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `psg`
+--
+
+INSERT INTO `psg` (`psg_id`, `psg_jugador`, `psg_posición`) VALUES
+(1, 'Donnaruma', 'Portero'),
+(2, 'Marquinhos', 'Defensa'),
+(3, 'Sergio Ramos', 'Lateral Derecho'),
+(4, 'Kimpembe', 'Lateral Izquierdo'),
+(5, 'Marco Verratti', 'Centro'),
+(6, 'Vitinha', 'Centro'),
+(7, 'Nuno Mendes', 'Extremo Izquierdo'),
+(8, 'Achraf Hakimi', 'Extremo Derecho'),
+(9, 'Messi', 'Centro'),
+(10, 'Neymar', 'Centro'),
+(11, 'Mbappe', 'Delantero'),
+(12, 'Keylor Navas', 'Portero'),
+(13, 'Abdou Diallo', 'Defensa'),
+(14, 'Biyshiabu', 'Lateral Izquierdo'),
+(15, 'Carlos Soler', 'Centro'),
+(16, 'Pablo Sarabia', 'Centro');
+
 -- --------------------------------------------------------
 
 --
@@ -184,6 +251,28 @@ CREATE TABLE IF NOT EXISTS `sporting` (
   `spor_jugador` varchar(20) NOT NULL,
   `spor_posicion` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `sporting`
+--
+
+INSERT INTO `sporting` (`spor_id`, `spor_jugador`, `spor_posicion`) VALUES
+(1, 'Mariño', 'Portero'),
+(2, 'Insua', 'Defensa'),
+(3, 'Izquierdoz', 'Defensa'),
+(4, 'Cote', 'Lateral Izquierdo'),
+(5, 'Guille Rodas', 'Lateral Derercho'),
+(6, 'Gragera', 'Centro'),
+(7, 'Pedro Diaz', 'Centro'),
+(8, 'Zarfino', 'Centro'),
+(9, 'Jony', 'Extremo Izquierda'),
+(10, 'Juan Otero', 'Extremo Derecha'),
+(11, 'Djuka', 'Delantero'),
+(12, 'Cuellas', 'Portero'),
+(13, 'Jordi Pola', 'Defensa'),
+(14, 'Arguelles', 'Lateral Izquierdo'),
+(15, 'Fran Villalba', 'Centro'),
+(16, 'Cristo', 'Delantero');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
