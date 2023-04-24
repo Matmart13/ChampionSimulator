@@ -5,16 +5,23 @@
  */
 package Controladores;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+//import Vistas.FXML_VentanaElegir;
 /**
  * FXML Controller class
  *
@@ -47,13 +54,23 @@ public class FXML_VentanaInicioController implements Initializable {
 
     @FXML
     private void botonInicioClick(ActionEvent event) {
-         
-          /* Pantalla p = new Pantalla();
-        p.setVisible(true);
-        dispose();
-            */
-      
-         
+       try {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaElegir.fxml"));
+       
+            Parent root = loader.load();
+            FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
          
         
@@ -61,6 +78,7 @@ public class FXML_VentanaInicioController implements Initializable {
 
     @FXML
     private void botonCargarClick(ActionEvent event) {
+        
     }
 
     @FXML

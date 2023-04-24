@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaElegirController">
-    
+<AnchorPane id="AnchorPane" prefHeight="860.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaElegirController">
+   <children>
+      <Label layoutX="281.0" layoutY="43.0" prefHeight="114.0" prefWidth="1078.0" text="¿QUE EQUIPO QUIERE ELIGIR?">
+         <font>
+            <Font size="80.0" />
+         </font>
+      </Label>
+      <Button fx:id="RealM" layoutX="225.0" layoutY="227.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="Fiorentina" layoutX="600.0" layoutY="227.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="INTER" layoutX="969.0" layoutY="219.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="BARSA" layoutX="1302.0" layoutY="219.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="ARSENAL" layoutX="225.0" layoutY="430.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="LAZIO" layoutX="561.0" layoutY="430.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="BETIS" layoutX="961.0" layoutY="437.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="PSG" layoutX="1302.0" layoutY="437.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="CITY" layoutX="561.0" layoutY="646.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Button fx:id="CITY1" layoutX="954.0" layoutY="646.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Label fx:id="Logo" layoutX="14.0" layoutY="14.0" prefHeight="176.0" prefWidth="337.0" />
+   </children>
+   <effect>
+      <ColorAdjust brightness="0.02" />
+   </effect>
 </AnchorPane>
