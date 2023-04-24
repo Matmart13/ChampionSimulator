@@ -79,6 +79,9 @@ public class FXML_VentanaInicioController implements Initializable {
     @FXML
     private void botonCargarClick(ActionEvent event) {
         
+        
+        
+        
     }
 
     @FXML
