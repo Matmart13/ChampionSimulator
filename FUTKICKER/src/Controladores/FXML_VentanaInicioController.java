@@ -47,6 +47,16 @@ public class FXML_VentanaInicioController implements Initializable {
 
     @FXML
     private void botonInicioClick(ActionEvent event) {
+         
+          /* Pantalla p = new Pantalla();
+        p.setVisible(true);
+        dispose();
+            */
+      
+         
+         
+         
+        
     }
 
     @FXML
