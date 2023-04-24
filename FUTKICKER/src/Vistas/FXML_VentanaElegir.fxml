@@ -24,6 +24,7 @@
       <Button fx:id="PSG" layoutX="1436.0" layoutY="437.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
       <Button fx:id="CITY" layoutX="675.0" layoutY="644.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
       <Button fx:id="CITY1" layoutX="1022.0" layoutY="644.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
+      <Label fx:id="Logo" layoutX="14.0" layoutY="14.0" prefHeight="176.0" prefWidth="337.0" />
    </children>
    <effect>
       <ColorAdjust brightness="0.02" />
