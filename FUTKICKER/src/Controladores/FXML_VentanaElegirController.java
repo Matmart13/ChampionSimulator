@@ -41,6 +41,8 @@ public class FXML_VentanaElegirController implements Initializable {
     private Button CITY;
     @FXML
     private Button BAYERN;
+    @FXML
+    private ImageView titulo;
 
     /**
      * Initializes the controller class.
@@ -57,7 +59,7 @@ public class FXML_VentanaElegirController implements Initializable {
              Image bayernMunichLogo= new Image("/Imagenes/Bayern Munich.png",60,60,false,true);
              Image LazioLogo= new Image("/Imagenes/lazio-logo.png",48,60,false,true);
              Image PSGLogo= new Image("/Imagenes/PSG.png",60,60,false,true);
-             
+            
              RealM.setGraphic((new ImageView(RMLogo)));
              SPORT.setGraphic((new ImageView(SportingLogo)));
              INTER.setGraphic((new ImageView(InterMilanLogo)));
@@ -68,10 +70,12 @@ public class FXML_VentanaElegirController implements Initializable {
              PSG.setGraphic((new ImageView(PSGLogo)));
              CITY.setGraphic((new ImageView(McityLogo)));
              BAYERN.setGraphic((new ImageView(bayernMunichLogo)));
-
+             
+              Image tit= new Image("/Imagenes/titulo.png");
+              titulo.setImage(tit);
 
     }    
-     Image bayernMunichLogo= new Image("/Imagenes/Bayern Munich.png");
+     
     @FXML
     private void escogerRM(ActionEvent event) {
     }
@@ -106,6 +110,10 @@ public class FXML_VentanaElegirController implements Initializable {
 
     @FXML
     private void escogerBayern(ActionEvent event) {
+    }
+
+    @FXML
+    private void escogerBETIS(ActionEvent event) {
     }
     
 }
