@@ -6,24 +6,73 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="860.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaElegirController">
+<AnchorPane id="AnchorPane" prefHeight="783.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaElegirController">
    <children>
-      <Label layoutX="281.0" layoutY="43.0" prefHeight="114.0" prefWidth="1078.0" text="¿QUE EQUIPO QUIERE ELIGIR?">
+      <Label layoutX="349.0" layoutY="14.0" prefHeight="114.0" prefWidth="632.0" text="ESCOGE TU EQUIPO">
          <font>
-            <Font size="80.0" />
+            <Font size="65.0" />
          </font>
       </Label>
-      <Button fx:id="RealM" layoutX="225.0" layoutY="227.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="Fiorentina" layoutX="600.0" layoutY="227.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="INTER" layoutX="969.0" layoutY="219.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="BARSA" layoutX="1302.0" layoutY="219.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="ARSENAL" layoutX="225.0" layoutY="430.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="LAZIO" layoutX="561.0" layoutY="430.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="BETIS" layoutX="961.0" layoutY="437.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="PSG" layoutX="1302.0" layoutY="437.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="CITY" layoutX="561.0" layoutY="646.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Button fx:id="CITY1" layoutX="954.0" layoutY="646.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="188.0" />
-      <Label fx:id="Logo" layoutX="14.0" layoutY="14.0" prefHeight="176.0" prefWidth="337.0" />
+      <Button fx:id="RealM" layoutX="257.0" layoutY="162.0" mnemonicParsing="false" onAction="#escogerRM" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="SPORT" layoutX="257.0" layoutY="519.0" mnemonicParsing="false" onAction="#escogerSport" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="INTER" layoutX="761.0" layoutY="162.0" mnemonicParsing="false" onAction="#escogerInter" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="BARSA" layoutX="257.0" layoutY="279.0" mnemonicParsing="false" onAction="#escogerBarsa" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="ARSENAL" layoutX="761.0" layoutY="279.0" mnemonicParsing="false" onAction="#escogerArsenal" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="LAZIO" layoutX="761.0" layoutY="639.0" mnemonicParsing="false" onAction="#escogerLazio" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="BETIS" layoutX="257.0" layoutY="399.0" mnemonicParsing="false" onAction="#escogerPSG" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="PSG" layoutX="761.0" layoutY="399.0" mnemonicParsing="false" onAction="#escogerPSG" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="CITY" layoutX="761.0" layoutY="519.0" mnemonicParsing="false" onAction="#escogerCity" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="BAYERN" layoutX="257.0" layoutY="639.0" mnemonicParsing="false" onAction="#escogerBayern" prefHeight="100.0" prefWidth="153.0" />
+      <Label layoutX="422.0" layoutY="193.0" prefHeight="39.0" prefWidth="145.0" style="-fx-font-weight: bold;" text="REAL MADRID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="422.0" layoutY="298.0" prefHeight="39.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="F.C BARCELONA">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="422.0" layoutY="417.0" prefHeight="39.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="REAL BETIS ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="422.0" layoutY="550.0" prefHeight="39.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="SPORTING">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="422.0" layoutY="670.0" prefHeight="39.0" prefWidth="179.0" style="-fx-font-weight: bold;" text="BAYERN MUNICH">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="929.0" layoutY="193.0" prefHeight="39.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="INTER MILAN">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="929.0" layoutY="298.0" prefHeight="39.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="ARSENAL">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="929.0" layoutY="410.0" prefHeight="39.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="PSG">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="929.0" layoutY="531.0" prefHeight="39.0" prefWidth="218.0" style="-fx-font-weight: bold;" text="MANCHESTER CITY">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="929.0" layoutY="651.0" prefHeight="39.0" prefWidth="218.0" style="-fx-font-weight: bold;" text="S.S LAZIO">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
    <effect>
       <ColorAdjust brightness="0.02" />
