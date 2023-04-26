@@ -61,11 +61,13 @@ public class FXML_VentanaInicioController implements Initializable {
             FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setTitle("ChampionSimulator");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+            
 
             
         } catch (IOException ex) {

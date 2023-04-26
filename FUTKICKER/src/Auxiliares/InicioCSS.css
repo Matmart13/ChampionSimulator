@@ -2,23 +2,21 @@
 {
   -fx-background-color: #ffff00  
     
-    
 }
 .button{
-    -fx-background-color: black;
-    -fx-cursor: pointer;
-    -fx-border: none;
-    -fx-padding: 16px 32px;
-    -fx-color: white;
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-position: relative;
-    -fx-border-radius: 12, 12;
-    -fx-z-index: 0;
-    -fx-m
-    
-}
-.button:hover::before{
+  -fx-background-color: black;
+  -fx-cursor: pointer;
+  -fx-border: none;
+  -fx-padding: 16px 32px;
+  -fx-color: white;
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-position: relative;
+  -fx-border-radius: 12, 12;
+  -fx-z-index: 0;
+  -fx-m
+  
+}.button:hover::before{
     -fx-content: "";
     -fx-position: absolute;
     -fx-top: 0;
