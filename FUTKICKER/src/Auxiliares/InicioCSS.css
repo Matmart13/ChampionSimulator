@@ -1,0 +1,62 @@
+.root
+{
+  -fx-background-color: #ffff00  
+    
+    
+}
+.button{
+    -fx-background-color: black;
+    -fx-cursor: pointer;
+    -fx-border: none;
+    -fx-padding: 16px 32px;
+    -fx-color: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-position: relative;
+    -fx-border-radius: 12, 12;
+    -fx-z-index: 0;
+    -fx-m
+    
+}
+.button:hover::before{
+    -fx-content: "";
+    -fx-position: absolute;
+    -fx-top: 0;
+    -fx-left: 0;
+    -fx-z-index: -1;
+    -fx-width: 100%;
+    -fx-height: 100%;
+    -fx-background-color: linear-gradient(
+        45deg
+        ,red,blue,deeppink,blue,red,blue,deeppink,blue);
+     -fx-background-size:800%;
+     -fx-border-radius: 10px;
+     -fx-filter: blur(8px);
+     -fx-animation-name:glowing;
+     -fx-animation-duration: 20s;
+     -fx-animation-iteration-count: infinite;
+    }
+
+
+.button:hover{
+   -fx-transform: scale(1.1);
+
+}
+
+ @keyframes glowing{
+       0%{
+         -fx-background-position:0 0;
+
+       }
+       50%{
+         -fx-background-position:400% 0;
+
+       } 
+       100%{
+         -fx-background-position:0 0;
+
+       }  
+    }
+    button:active{
+         -fx-transform: scale(1.0);
+    }
