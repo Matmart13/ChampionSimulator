@@ -3,30 +3,26 @@
   -fx-background-color: #ffff00  
     
 }
-.button:before{
-  -fx-content: "";
-  -fx-position: absolute;
-  -fx-top: 0;
-  -fx-left: 0;
-  -fx-z-index: -1;
-  -fx-width: 100%;
-  -fx-height: 100%;
-  -fx-background-color: linear-gradient(
-      45deg
-      ,red,blue,deeppink,blue,red,blue,deeppink,blue);
-   -fx-background-size:800%;
-   -fx-border-radius: 10px;
-   -fx-filter: blur(8px);
-   -fx-animation-name:glowing;
-   -fx-animation-duration: 20s;
-   -fx-animation-iteration-count: infinite;
-  }
-  .button:hover{
-    -fx-transform: scale(1.1);
- 
- }
- 
+.button{
+  -fx-text-fill: white;
+  -fx-cursor: hand;
+  -fx-background-fills: default;
+  -fx-background-color: black;
+  -fx-border-color: white;
+}
+.button:hover{
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;
+  -fx-scale-y: 1.1;
+  -fx-background-color:white;
+  -fx-text-fill: black;
+  -fx-border-color: black;
+  
+}
 
-
-
-
+.button:pressed{
+      -fx-background-color: yellow;
+      -fx-scale-x: 1.0;
+      -fx-scale-y: 1.0;
+    
+}

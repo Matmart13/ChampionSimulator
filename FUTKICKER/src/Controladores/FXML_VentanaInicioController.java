@@ -54,6 +54,8 @@ public class FXML_VentanaInicioController implements Initializable {
 
     @FXML
     private void botonInicioClick(ActionEvent event) {
+            Stage myStage = (Stage) this.botonInicio.getScene().getWindow();
+            myStage.close();
        try {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaElegir.fxml"));
        
@@ -67,12 +69,13 @@ public class FXML_VentanaInicioController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
-            
+
 
             
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
          
          
         
