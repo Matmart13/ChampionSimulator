@@ -60,7 +60,7 @@ public class Conexiones {
         Statement statement = this.conexion.createStatement();
         return statement.executeUpdate(SQL);
     }
-    /**
+        /**
      * Cierra la conexión
      * @throws SQLException 
      */
