@@ -23,7 +23,8 @@ public class ChampionSimulator extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+        Image icono= new Image("/Imagenes/LogoAPP.png",200,100,false,true);
+        stage.getIcons().add(icono);
         stage.setTitle("ChampionSimulator");
         stage.show();
         

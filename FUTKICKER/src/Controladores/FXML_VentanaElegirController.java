@@ -49,22 +49,62 @@ public class FXML_VentanaElegirController implements Initializable {
     private Button BAYERN;
     @FXML
     private ImageView titulo;
+    @FXML
+    private ImageView fondo;
+    @FXML
+    private ImageView EstrellasMadrid;
+    @FXML
+    private ImageView EstrellasBarcelona;
+    @FXML
+    private ImageView EstrellasBayern;
+    @FXML
+    private ImageView EstrellasManchester;
+    @FXML
+    private ImageView EstrellasSport;
+    @FXML
+    private ImageView EstrellasBetis;
+    @FXML
+    private ImageView EstrellasMilan;
+    @FXML
+    private ImageView EstrellasArsenal;
+    @FXML
+    private ImageView EstrellasPSG;
+    @FXML
+    private ImageView EstrellasLazio;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-             Image ArsenalLogo= new Image("/Imagenes/Arsenal_FC.png",48,60,false,true);
-             Image RMLogo= new Image("/Imagenes/real-madrid-logo-escudo.png",48,60,false,true);
-             Image BarsaLogo= new Image("/Imagenes/barsa.png",48,60,false,true);
+            Image fondoImagen= new Image("/Imagenes/campo.jpg");
+            fondo.setImage(fondoImagen);
+            
+            Image estrellas= new Image("/Imagenes/estrellas.gif",200,200,false,true);
+            Image tres= new Image("/Imagenes/tresEstrellas.png",100,30,false,true);
+            Image cuatro= new Image("/Imagenes/cuatroEstrellas.png",100,20,false,true);
+            EstrellasMadrid.setImage(estrellas);
+            EstrellasBarcelona.setImage(estrellas);
+            EstrellasBayern.setImage(estrellas);
+            EstrellasManchester.setImage(estrellas);
+            EstrellasSport.setImage(tres);
+            EstrellasBetis.setImage(tres);
+            EstrellasMilan.setImage(cuatro);
+            EstrellasArsenal.setImage(cuatro);
+            EstrellasLazio.setImage(cuatro);
+            EstrellasPSG.setImage(cuatro);
+             
+              
+             Image ArsenalLogo= new Image("/Imagenes/Arsenal_FC.png",60,80,false,true);
+             Image RMLogo= new Image("/Imagenes/Madrid.gif",80,80,false,true);
+             Image BarsaLogo= new Image("/Imagenes/Barsa.gif",80,80,false,true);
              Image BetisLogo= new Image("/Imagenes/betis.png",80,80,false,true);
-             Image SportingLogo= new Image("/Imagenes/Sporting.png",48,60,false,true);
-             Image InterMilanLogo= new Image("/Imagenes/inter-milan-logo.png",60,60,false,true);
-             Image McityLogo= new Image("/Imagenes/manchester-city-fc-logo-escudo-badge.png",60,60,false,true);
-             Image bayernMunichLogo= new Image("/Imagenes/Bayern Munich.png",60,60,false,true);
-             Image LazioLogo= new Image("/Imagenes/lazio-logo.png",48,60,false,true);
-             Image PSGLogo= new Image("/Imagenes/PSG.png",60,60,false,true);
+             Image SportingLogo= new Image("/Imagenes/Sporting.png",60,80,false,true);
+             Image InterMilanLogo= new Image("/Imagenes/inter-milan-logo.png",80,80,false,true);
+             Image McityLogo= new Image("/Imagenes/manchester.gif",80,80,false,true);
+             Image bayernMunichLogo= new Image("/Imagenes/bayern.gif",80,80,false,true);
+             Image LazioLogo= new Image("/Imagenes/lazio-logo.png",80,60,false,true);
+             Image PSGLogo= new Image("/Imagenes/PSG.png",80,80,false,true);
             
              RealM.setGraphic((new ImageView(RMLogo)));
              SPORT.setGraphic((new ImageView(SportingLogo)));
