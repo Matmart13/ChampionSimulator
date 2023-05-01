@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/futkicker/ChampionSimulator.java</file>
-            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/nbproject/jfx-impl.xml</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Imagenes/Arsenal_FC.png</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/ChampionsSimulator/ChampionSimulator.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/Conexiones.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaFinController.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/ElegirCSS.css</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaInicioController.java</file>
-            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Imagenes/Logo.png</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/InicioCSS.css</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Modelo/Equipo.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaElegirController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,11 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaElegirController">
-    
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@../Auxiliares/ElegirCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaElegirController">
+   <children>
+      <ImageView fx:id="fondo" fitHeight="800.0" fitWidth="1100.0" layoutX="-17.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="titulo" fitHeight="150.0" fitWidth="650.0" layoutX="286.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="RealM" layoutX="190.0" layoutY="157.0" mnemonicParsing="false" onAction="#escogerRM" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="SPORT" layoutX="190.0" layoutY="514.0" mnemonicParsing="false" onAction="#escogerSport" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="INTER" layoutX="694.0" layoutY="157.0" mnemonicParsing="false" onAction="#escogerInter" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="BARSA" layoutX="190.0" layoutY="274.0" mnemonicParsing="false" onAction="#escogerBarsa" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="ARSENAL" layoutX="694.0" layoutY="274.0" mnemonicParsing="false" onAction="#escogerArsenal" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="LAZIO" layoutX="694.0" layoutY="634.0" mnemonicParsing="false" onAction="#escogerLazio" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="BETIS" layoutX="190.0" layoutY="394.0" mnemonicParsing="false" onAction="#escogerBETIS" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="PSG" layoutX="694.0" layoutY="394.0" mnemonicParsing="false" onAction="#escogerPSG" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="CITY" layoutX="694.0" layoutY="514.0" mnemonicParsing="false" onAction="#escogerCity" prefHeight="100.0" prefWidth="153.0" />
+      <Button fx:id="BAYERN" layoutX="190.0" layoutY="634.0" mnemonicParsing="false" onAction="#escogerBayern" prefHeight="100.0" prefWidth="153.0" />
+      <Label layoutX="350.0" layoutY="169.0" prefHeight="39.0" prefWidth="145.0" text="REAL MADRID" textFill="#ffc300">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow level="0.88" />
+         </effect>
+      </Label>
+      <Label layoutX="355.0" layoutY="285.0" prefHeight="39.0" prefWidth="161.0" text="F.C BARCELONA" textFill="#ffc300">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="862.0" layoutY="293.0" prefHeight="39.0" prefWidth="161.0" text="ARSENAL" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="863.0" layoutY="402.0" prefHeight="39.0" prefWidth="161.0" text="PSG" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="862.0" layoutY="538.0" prefHeight="39.0" prefWidth="209.0" text="MANCHESTER CITY" textFill="#ffc300">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="862.0" layoutY="635.0" prefHeight="39.0" prefWidth="209.0" text="S.S LAZIO" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="856.0" layoutY="188.0" prefHeight="24.0" prefWidth="161.0" text="INTER MILAN" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="356.0" layoutY="406.0" prefHeight="39.0" prefWidth="161.0" text="REAL BETIS" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="356.0" layoutY="519.0" prefHeight="39.0" prefWidth="161.0" text="SPORTING" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <Label layoutX="355.0" layoutY="665.0" prefHeight="39.0" prefWidth="161.0" text="BAYERN MUNICH" textFill="#ffc300">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <ImageView fx:id="EstrellasMadrid" fitHeight="140.0" fitWidth="368.0" layoutX="342.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasBarcelona" fitHeight="140.0" fitWidth="368.0" layoutX="349.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasBayern" fitHeight="140.0" fitWidth="368.0" layoutX="349.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasManchester" fitHeight="140.0" fitWidth="209.0" layoutX="862.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasSport" fitHeight="24.0" fitWidth="249.0" layoutX="349.0" layoutY="558.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasBetis" fitHeight="24.0" fitWidth="249.0" layoutX="349.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasMilan" fitHeight="24.0" fitWidth="176.0" layoutX="854.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasArsenal" fitHeight="24.0" fitWidth="176.0" layoutX="855.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasPSG" fitHeight="24.0" fitWidth="176.0" layoutX="863.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EstrellasLazio" fitHeight="24.0" fitWidth="176.0" layoutX="856.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+   <effect>
+      <ColorAdjust brightness="0.02" />
+   </effect>
 </AnchorPane>
