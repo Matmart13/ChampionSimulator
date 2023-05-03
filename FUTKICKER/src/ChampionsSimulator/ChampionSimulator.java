@@ -5,11 +5,14 @@
  */
 package ChampionsSimulator;
 
+import Auxiliares.Sonido;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 /**
@@ -27,10 +30,7 @@ public class ChampionSimulator extends Application {
         stage.getIcons().add(icono);
         stage.setTitle("ChampionSimulator");
         stage.show();
-        
-        
-        
-        
+
         
     }
 
@@ -39,6 +39,10 @@ public class ChampionSimulator extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        Sonido musica= new Sonido();
+        musica.reproducirSonido();
+        
+       
     }
     
 }

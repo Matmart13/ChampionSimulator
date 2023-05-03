@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import Auxiliares.Sonido;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,6 +40,7 @@ public class FXML_VentanaInicioController implements Initializable {
     private Button botonSalir;
     @FXML
     private ImageView Logo;
+    
 
     /**
      * Initializes the controller class.
@@ -49,6 +51,7 @@ public class FXML_VentanaInicioController implements Initializable {
         Image logo= new Image("/Imagenes/Logo.png");
         fondoImagen.setImage(fondo);
         Logo.setImage(logo);
+
         
     }    
 
@@ -83,7 +86,9 @@ public class FXML_VentanaInicioController implements Initializable {
 
     @FXML
     private void botonCargarClick(ActionEvent event) {
-        
+
+         Sonido musica= new Sonido();
+         musica.reproducirSonido();
         
         
         
