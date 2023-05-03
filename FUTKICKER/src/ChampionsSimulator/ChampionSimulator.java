@@ -32,7 +32,7 @@ public class ChampionSimulator extends Application {
         stage.show();
         
        Sonido musica= new Sonido();
-        musica.ReproducirSonido("C:\\Users\\pablo\\OneDrive\\Documentos\\GitHub\\ChampionSimulator\\FUTKICKER\\src\\Musica\\musicaMenu.wav");
+        musica.ReproducirSonido("src\\Musica\\musicaMenu.wav");
 
         
     }
