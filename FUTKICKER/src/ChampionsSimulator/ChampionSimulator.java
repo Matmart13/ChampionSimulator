@@ -30,6 +30,9 @@ public class ChampionSimulator extends Application {
         stage.getIcons().add(icono);
         stage.setTitle("ChampionSimulator");
         stage.show();
+        
+       Sonido musica= new Sonido();
+        musica.ReproducirSonido("C:\\Users\\pablo\\OneDrive\\Documentos\\GitHub\\ChampionSimulator\\FUTKICKER\\src\\Musica\\musicaMenu.wav");
 
         
     }
@@ -39,9 +42,7 @@ public class ChampionSimulator extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        Sonido musica= new Sonido();
-        musica.Reproducir("musicaMenu.mp3");
-        
+
        
     }
     

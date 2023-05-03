@@ -7,6 +7,8 @@ package Auxiliares;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javax.sound.sampled.AudioInputStream;
@@ -20,28 +22,18 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author pablo
  */
 public class Sonido {
-        File canc= new File("musicaMenu.mp3");
-        String sfondo= "file:///"+canc.getAbsolutePath();
-        String def = sfondo.replace("\\" , "/");
-        Media cancion= new Media(def);
-        MediaPlayer reproductor= new MediaPlayer(cancion);
-        
-    
-    public void reproducirSonido(){
-        reproductor.play();
-    
-    }
-    public void pausarSonido(){
-        reproductor.pause();
-    }
-    public static void Reproducir(String nombreSonido){
+   public void ReproducirSonido(String nombreSonido){
        try {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("\\Musica\\musicaMenu.wav"));
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
         clip.start();
-       } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+       } catch(UnsupportedAudioFileException ex) {
          System.out.println("Error al reproducir el sonido.");
+       } catch (LineUnavailableException ex) {
+             System.out.println("Error al reproducir el sonido 2.");
+       } catch (IOException ex) {
+             System.out.println("Error al reproducir el sonido 3.");
        }
      }
 }
