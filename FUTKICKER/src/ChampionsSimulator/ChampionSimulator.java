@@ -40,7 +40,7 @@ public class ChampionSimulator extends Application {
     public static void main(String[] args) {
         launch(args);
         Sonido musica= new Sonido();
-        musica.reproducirSonido();
+        musica.Reproducir("musicaMenu.mp3");
         
        
     }

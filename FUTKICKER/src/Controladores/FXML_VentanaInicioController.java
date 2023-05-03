@@ -88,7 +88,8 @@ public class FXML_VentanaInicioController implements Initializable {
     private void botonCargarClick(ActionEvent event) {
 
          Sonido musica= new Sonido();
-         musica.reproducirSonido();
+         musica.Reproducir("musicaMenu.wav");
+
         
         
         
