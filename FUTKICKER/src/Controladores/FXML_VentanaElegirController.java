@@ -19,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,7 +28,7 @@ import javafx.scene.image.ImageView;
  * @author marti
  */
 public class FXML_VentanaElegirController implements Initializable {
-
+    String nombre ;
     @FXML
     private Button RealM;
     @FXML
@@ -129,6 +131,27 @@ public class FXML_VentanaElegirController implements Initializable {
      
     @FXML
     private void escogerRM(ActionEvent event) {
+         nombre = "Real Madrid";
+        Stage myStage = (Stage) this.RealM.getScene().getWindow();
+            myStage.close();
+       try {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+       
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     @FXML
