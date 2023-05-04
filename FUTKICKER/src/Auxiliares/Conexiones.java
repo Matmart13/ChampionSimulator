@@ -16,7 +16,7 @@ import java.sql.Statement;
  * @author pablo
  */
 public class Conexiones {
-        private Connection conexion;
+       private Connection conexion;
       // Adaptalos a tu conexion
         String host = "localhost";
         String baseDatos = "championsimulator";

@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -131,12 +132,11 @@ public class FXML_VentanaElegirController implements Initializable {
      
     @FXML
     private void escogerRM(ActionEvent event) {
-         nombre = "Real Madrid";
-        Stage myStage = (Stage) this.RealM.getScene().getWindow();
+        nombre = "Madrid";
+             Stage myStage = (Stage) this.RealM.getScene().getWindow();
             myStage.close();
        try {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
-       
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
             FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
             Scene scene = new Scene(root);
@@ -144,50 +144,210 @@ public class FXML_VentanaElegirController implements Initializable {
             
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setTitle("ChampionSimulator");
-            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.show();
             
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     @FXML
     private void escogerSport(ActionEvent event) {
+         nombre = "Sport";
+            Stage myStage = (Stage) this.SPORT.getScene().getWindow();
+            myStage.close(); 
+            try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void escogerInter(ActionEvent event) {
+         nombre = "Inter";
+             Stage myStage = (Stage) this.INTER.getScene().getWindow();
+            myStage.close();
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void escogerBarsa(ActionEvent event) {
+         nombre = "Barsa";
+             Stage myStage = (Stage) this.BARSA.getScene().getWindow();
+            myStage.close();
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void escogerArsenal(ActionEvent event) {
+         nombre = "Arsenal";
+             Stage myStage = (Stage) this.ARSENAL.getScene().getWindow();
+            myStage.close();
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void escogerLazio(ActionEvent event) {
+         nombre = "Lazio";
+             Stage myStage = (Stage) this.LAZIO.getScene().getWindow();
+            myStage.close();
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void escogerPSG(ActionEvent event) {
+         nombre = "PSG";
+             Stage myStage = (Stage) this.PSG.getScene().getWindow();
+            myStage.close();
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void escogerCity(ActionEvent event) {
+         nombre = "City";
+             Stage myStage = (Stage) this.CITY.getScene().getWindow();
+            myStage.close(); try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
 
     @FXML
     private void escogerBayern(ActionEvent event) {
+         nombre = "Bayern";
+             Stage myStage = (Stage) this.BAYERN.getScene().getWindow();
+            myStage.close();
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void escogerBETIS(ActionEvent event) {
+         nombre = "Betis";
+             Stage myStage = (Stage) this.BETIS.getScene().getWindow();
+            myStage.close();
+             try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            Parent root = loader.load();
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("ChampionSimulator");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+   
 }
