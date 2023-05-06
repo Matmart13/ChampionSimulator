@@ -10,6 +10,7 @@ package Modelo;
  * @author marti
  */
 public class Equipo {
+
     private int id;
     private String nombre;
     private int victorias;
@@ -18,16 +19,16 @@ public class Equipo {
     private int golesc;
     private int golesdiff;
     private int estrellas;
-                    
-    public Equipo(int _id,String _nombre, int _victorias, int _derrotas, int _goles, int _golesc, int _golesdiff, int _estrellas) {
-      this.id = _id;
-      this.nombre = _nombre;
-      this.victorias = _victorias;
-      this.derrotas = _derrotas;
-      this.goles = _goles;
-      this.golesc = _golesc;
-      this.golesdiff = _golesdiff;
-      this.estrellas = _estrellas;
+
+    public Equipo(int _id, String _nombre, int _victorias, int _derrotas, int _goles, int _golesc, int _golesdiff, int _estrellas) {
+        this.id = _id;
+        this.nombre = _nombre;
+        this.victorias = _victorias;
+        this.derrotas = _derrotas;
+        this.goles = _goles;
+        this.golesc = _golesc;
+        this.golesdiff = _golesdiff;
+        this.estrellas = _estrellas;
     }
 
     public int getId() {
@@ -57,7 +58,7 @@ public class Equipo {
     public int getGolesdiff() {
         return golesdiff;
     }
-    
+
     public int getEstrellas() {
         return estrellas;
     }
@@ -74,7 +75,6 @@ public class Equipo {
         this.victorias = victorias;
     }
 
-    
     public void setDerrotas(int derrotas) {
         this.derrotas = derrotas;
     }
@@ -94,6 +94,5 @@ public class Equipo {
     public void setEstrellas(int estrellas) {
         this.estrellas = estrellas;
     }
-    
-    
+
 }

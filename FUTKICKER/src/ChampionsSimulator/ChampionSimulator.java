@@ -20,21 +20,20 @@ import javafx.stage.Stage;
  * @author marti
  */
 public class ChampionSimulator extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        Image icono= new Image("/Imagenes/LogoAPP.png",200,100,false,true);
+        Image icono = new Image("/Imagenes/LogoAPP.png", 200, 100, false, true);
         stage.getIcons().add(icono);
         stage.setTitle("ChampionSimulator");
         stage.show();
-        
-       Sonido musica= new Sonido();
+
+        Sonido musica = new Sonido();
         musica.ReproducirSonido("src\\Musica\\musicaMenu.wav");
 
-        
     }
 
     /**
@@ -43,7 +42,6 @@ public class ChampionSimulator extends Application {
     public static void main(String[] args) {
         launch(args);
 
-       
     }
-    
+
 }

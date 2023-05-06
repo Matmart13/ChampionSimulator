@@ -16,15 +16,16 @@ import java.sql.Statement;
  * @author pablo
  */
 public class Conexiones {
-       private Connection conexion;
-      // Adaptalos a tu conexion
-        String host = "localhost";
-        String baseDatos = "championsimulator";
-        String usuario = "root";
-        String password = "";
+
+    private Connection conexion;
+    // Adaptalos a tu conexion
+    String host = "localhost";
+    String baseDatos = "championsimulator";
+    String usuario = "root";
+    String password = "";
 
     public Conexiones() throws SQLException {
-          // Adaptalos a tu conexion
+        // Adaptalos a tu conexion
         String host = "localhost";
         String baseDatos = "championsimulator";
         String usuario = "root";
@@ -38,34 +39,40 @@ public class Conexiones {
 
         // Hace commit automaticamente
         conexion.setAutoCommit(true);
-        
+
     }
+
     /**
      * Ejecuta una consulta
+     *
      * @param SQL Consulta a ejecutar
      * @return ResultSet con los datos de la consulta
-     * @throws SQLException 
+     * @throws SQLException
      */
     public ResultSet ejecutarConsulta(String SQL) throws SQLException {
         Statement statement = this.conexion.createStatement();
         return statement.executeQuery(SQL);
     }
-     /**
+
+    /**
      * Ejecuta una instrucción
+     *
      * @param SQL Instrucción a ejecutar
      * @return numero de filas afectadas
-     * @throws SQLException 
+     * @throws SQLException
      */
     public int ejecutarInstruccion(String SQL) throws SQLException {
         Statement statement = this.conexion.createStatement();
         return statement.executeUpdate(SQL);
     }
-        /**
+
+    /**
      * Cierra la conexión
-     * @throws SQLException 
+     *
+     * @throws SQLException
      */
     public void cerrarConexion() throws SQLException {
         this.conexion.close();
     }
-        
+
 }

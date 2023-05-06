@@ -25,12 +25,14 @@ import Modelo.Equipo;
 import Modelo.Jugador;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  * FXML Controller class
  *
  * @author marti
  */
 public class FXML_VistaTemporadaController implements Initializable {
+
     static String nombre;
     @FXML
     private ImageView Logo;
@@ -62,62 +64,85 @@ public class FXML_VistaTemporadaController implements Initializable {
     private TableColumn<Jugador, String> J_Posicion;
     @FXML
     private TableColumn<Jugador, Integer> J_Convocatoria;
-    
-        
-    
-    
-    
+
+    Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 60, 80, false, true);
+    Image RMLogo = new Image("/Imagenes/Madrid.gif", 80, 80, false, true);
+    Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 80, 80, false, true);
+    Image BetisLogo = new Image("/Imagenes/betis.png", 80, 80, false, true);
+    Image SportingLogo = new Image("/Imagenes/Sporting.png", 60, 80, false, true);
+    Image InterMilanLogo = new Image("/Imagenes/inter-milan-logo.png", 80, 80, false, true);
+    Image McityLogo = new Image("/Imagenes/manchester.gif", 80, 80, false, true);
+    Image bayernMunichLogo = new Image("/Imagenes/bayern.gif", 80, 80, false, true);
+    Image LazioLogo = new Image("/Imagenes/lazio-logo.png", 80, 60, false, true);
+    Image PSGLogo = new Image("/Imagenes/PSG.png", 80, 80, false, true);
+    Image logo = new Image("/Imagenes/Logo.png");
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         this.NombreE.setCellValueFactory(new PropertyValueFactory("Nombre"));
-         this.Victorias.setCellValueFactory(new PropertyValueFactory("Victorias"));
-         this.Derrotas.setCellValueFactory(new PropertyValueFactory("Derrotas"));
-         this.Goles.setCellValueFactory(new PropertyValueFactory("Goles"));
-         this.GolesContra.setCellValueFactory(new PropertyValueFactory("GolesContra"));
-         this.DiffGoles.setCellValueFactory(new PropertyValueFactory("DiffGoles"));
-         this.NombreJugador.setCellValueFactory(new PropertyValueFactory("Nombre"));
-         this.J_Posicion.setCellValueFactory(new PropertyValueFactory("Posicion"));
-         this.J_Convocatoria.setCellValueFactory(new PropertyValueFactory("Convocado"));
+        this.NombreE.setCellValueFactory(new PropertyValueFactory("Nombre"));
+        this.Victorias.setCellValueFactory(new PropertyValueFactory("Victorias"));
+        this.Derrotas.setCellValueFactory(new PropertyValueFactory("Derrotas"));
+        this.Goles.setCellValueFactory(new PropertyValueFactory("Goles"));
+        this.GolesContra.setCellValueFactory(new PropertyValueFactory("GolesContra"));
+        this.DiffGoles.setCellValueFactory(new PropertyValueFactory("DiffGoles"));
+
+        this.NombreJugador.setCellValueFactory(new PropertyValueFactory("Nombre"));
+        this.J_Posicion.setCellValueFactory(new PropertyValueFactory("Posicion"));
+        this.J_Convocatoria.setCellValueFactory(new PropertyValueFactory("Convocado"));
+
         try {
             getTodosEquipos();
+            getTodosJugadores(nombre);
+            Logo.setImage(logo);
+            if (nombre.equals("madrid")) {
+                EscudoEquipo.setImage(RMLogo);
+            } else if (nombre.equals("barcelona")) {
+                EscudoEquipo.setImage(BarsaLogo);
+            } else if (nombre.equals("bayern")) {
+                EscudoEquipo.setImage(bayernMunichLogo);
+            } else if (nombre.equals("psg")) {
+                EscudoEquipo.setImage(PSGLogo);
+            } else if (nombre.equals("lazio")) {
+                EscudoEquipo.setImage(LazioLogo);
+            } else if (nombre.equals("betis")) {
+                EscudoEquipo.setImage(BetisLogo);
+            } else if (nombre.equals("sporting")) {
+                EscudoEquipo.setImage(SportingLogo);
+            } else if (nombre.equals("arsenal")) {
+                EscudoEquipo.setImage(ArsenalLogo);
+            }else if (nombre.equals("manchestercity")) {
+               EscudoEquipo.setImage(McityLogo);
+            }else if (nombre.equals("inter")) {
+               EscudoEquipo.setImage(InterMilanLogo);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-         
-       
-       
-       
-    }    
+
+    }
 
     public FXML_VistaTemporadaController() {
-        
+
     }
-    
-    
-    public void recibirParametro(String parametro){
-           this.nombre=parametro;
-            if(nombre.equals("madrid") == true){
-             try {
-                 getTodosJugadores(nombre);
-                 
-             } catch (SQLException ex) {
-                 Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            Image Madrid = new Image("/Imagenes/Madrid.gif",80,80,false,true);
-            EscudoEquipo.setImage(Madrid);   
-        }
+
+    public void recibirParametro(String parametro) {
+        this.nombre = parametro;
+
     }
+
     /**
-     * Devuelve la tabla equipos que sera la tabla que tendra la clasificación de esta liga
-     * @throws SQLException 
+     * Devuelve la tabla equipos que sera la tabla que tendra la clasificación
+     * de esta liga
+     *
+     * @throws SQLException
      */
-    public void getTodosEquipos() throws SQLException{
-         ObservableList<Equipo> Eqlist = FXCollections.observableArrayList();
+    public void getTodosEquipos() throws SQLException {
+        ObservableList<Equipo> Eqlist = FXCollections.observableArrayList();
         Auxiliares.Conexiones conexion = new Conexiones();
         String sql = "Select * from equipos";
         ResultSet resultset = conexion.ejecutarConsulta(sql);
@@ -134,52 +159,52 @@ public class FXML_VistaTemporadaController implements Initializable {
             Eqlist.add(l);
         }
         TablaEquipos.setItems(Eqlist);
-        conexion.cerrarConexion();   
+        conexion.cerrarConexion();
     }
-    
-    /**
-     * Este metodo devuelve todos los jugadores correspondientes del equipo que ha seleccionado el jugador
-     * @param _nombre
-     * @throws SQLException 
-     */
-    public void getTodosJugadores(String _nombre) throws SQLException{
-          ObservableList<Jugador> Jlist = FXCollections.observableArrayList();
-          Auxiliares.Conexiones conexion = new Conexiones();
-          String sql = "Select * from "+_nombre;
-          //subString para sacar las tres primeras letras de cada equipo para sacar el nombre completo que hay que pasar 
-          String recoger;
-          //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
-           ResultSet resultset = conexion.ejecutarConsulta(sql);
-          if(_nombre.equals("sporting")|| _nombre.equals("mancity")){
-              recoger = _nombre.substring(0,4);
-               while (resultset.next()) {
-               int id = resultset.getInt(recoger+"_id");
-               String nombre = resultset.getString(recoger+"_jugador");
-               String posicion = resultset.getString(recoger+"_posicion");
-               int titularidad = resultset.getInt("Titular");
-               Jugador j = new Jugador(id, _nombre, posicion, titularidad);
-               Jlist.add(j);
-               this.Jugadores.setItems(Jlist);
-                conexion.cerrarConexion();
-            }
-          }else{
-              recoger = _nombre.substring(0,3);
-           while (resultset.next()) {
-               int id = resultset.getInt(recoger+"_id");
-               String nombre = resultset.getString(recoger+"_jugador");
-               String posicion = resultset.getString(recoger+"_posicion");
-               int titularidad = resultset.getInt("Titular");
-               Jugador j = new Jugador(id, _nombre, posicion, titularidad);
-               Jlist.add(j);
-               this.Jugadores.setItems(Jlist);
-               conexion.cerrarConexion();
-            }
 
-          }
-        
-           
+    /**
+     * Este metodo devuelve todos los jugadores correspondientes del equipo que
+     * ha seleccionado el jugador
+     *
+     * @param _nombre
+     * @throws SQLException
+     */
+    public void getTodosJugadores(String _nombre) throws SQLException {
+        ObservableList<Jugador> Jlist = FXCollections.observableArrayList();
+        Auxiliares.Conexiones conexion = new Conexiones();
+        String sql = "Select * from " + _nombre;
+        //subString para sacar las tres primeras letras de cada equipo para sacar el nombre completo que hay que pasar 
+        String recoger;
+        //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
+        ResultSet resultset = conexion.ejecutarConsulta(sql);
+        if (_nombre.equals("sporting") || _nombre.equals("mancity")) {
+            recoger = _nombre.substring(0, 4);
+            while (resultset.next()) {
+                int id = resultset.getInt(recoger + "_id");
+                String nombre = resultset.getString(recoger + "_jugador");
+                String posicion = resultset.getString(recoger + "_posicion");
+                int titularidad = resultset.getInt("Titular");
+                Jugador j = new Jugador(id, nombre, posicion, titularidad);
+                Jlist.add(j);
+
+            }
+            this.Jugadores.setItems(Jlist);
+            conexion.cerrarConexion();
+        } else {
+            recoger = _nombre.substring(0, 3);
+            while (resultset.next()) {
+                int id = resultset.getInt(recoger + "_id");
+                String nombre = resultset.getString(recoger + "_jugador");
+                String posicion = resultset.getString(recoger + "_posicion");
+                int titularidad = resultset.getInt("Titular");
+                Jugador j = new Jugador(id, nombre, posicion, titularidad);
+                Jlist.add(j);
+
+            }
+            Jugadores.setItems(Jlist);
+            conexion.cerrarConexion();
+        }
+
     }
-    
-    
-    
+
 }

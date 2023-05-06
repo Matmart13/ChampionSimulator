@@ -22,18 +22,19 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author pablo
  */
 public class Sonido {
-   public void ReproducirSonido(String nombreSonido){
-       try {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioInputStream);
-        clip.start();
-       } catch(UnsupportedAudioFileException ex) {
-         System.out.println("Error al reproducir el sonido.");
-       } catch (LineUnavailableException ex) {
-             System.out.println("Error al reproducir el sonido 2.");
-       } catch (IOException ex) {
-             System.out.println("Error al reproducir el sonido 3.");
-       }
-     }
+
+    public void ReproducirSonido(String nombreSonido) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException ex) {
+            System.out.println("Error al reproducir el sonido.");
+        } catch (LineUnavailableException ex) {
+            System.out.println("Error al reproducir el sonido 2.");
+        } catch (IOException ex) {
+            System.out.println("Error al reproducir el sonido 3.");
+        }
+    }
 }

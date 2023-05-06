@@ -48,7 +48,7 @@ public class FXML_VentanaInicioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Image fondo= new Image("/Imagenes/FONDO.gif");
-        Image logo= new Image("/Imagenes/Logo.png");
+        Image logo = new Image("/Imagenes/Logo.png");
         fondoImagen.setImage(fondo);
         Logo.setImage(logo);
 
