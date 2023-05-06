@@ -31,7 +31,7 @@ import java.util.logging.Logger;
  * @author marti
  */
 public class FXML_VistaTemporadaController implements Initializable {
-    String nombre;
+    static String nombre;
     @FXML
     private ImageView Logo;
     @FXML
@@ -89,15 +89,9 @@ public class FXML_VistaTemporadaController implements Initializable {
         }
          
          
-        if(nombre.equals("Madrid") == true){
-             try {
-                 getTodosJugadores(nombre);
-             } catch (SQLException ex) {
-                 Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            Image Madrid = new Image("/Imagenes/Madrid.gif",80,80,false,true);
-            EscudoEquipo.setImage(Madrid);   
-        }
+       
+       
+       
     }    
 
     public FXML_VistaTemporadaController() {
@@ -107,7 +101,16 @@ public class FXML_VistaTemporadaController implements Initializable {
     
     public void recibirParametro(String parametro){
            this.nombre=parametro;
-        
+            if(nombre.equals("madrid") == true){
+             try {
+                 getTodosJugadores(nombre);
+                 
+             } catch (SQLException ex) {
+                 Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            Image Madrid = new Image("/Imagenes/Madrid.gif",80,80,false,true);
+            EscudoEquipo.setImage(Madrid);   
+        }
     }
     /**
      * Devuelve la tabla equipos que sera la tabla que tendra la clasificación de esta liga
@@ -143,18 +146,25 @@ public class FXML_VistaTemporadaController implements Initializable {
           ObservableList<Jugador> Jlist = FXCollections.observableArrayList();
           Auxiliares.Conexiones conexion = new Conexiones();
           String sql = "Select * from "+_nombre;
-          
-          
           //subString para sacar las tres primeras letras de cada equipo para sacar el nombre completo que hay que pasar 
           String recoger;
           //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
+           ResultSet resultset = conexion.ejecutarConsulta(sql);
           if(_nombre.equals("sporting")|| _nombre.equals("mancity")){
               recoger = _nombre.substring(0,3);
+               while (resultset.next()) {
+               int id = resultset.getInt(recoger+"_id");
+               String nombre = resultset.getString(recoger+"_jugador");
+               String posicion = resultset.getString(recoger+"_posicion");
+               int titularidad = resultset.getInt("Titular");
+               Jugador j = new Jugador(id, _nombre, posicion, titularidad);
+               Jlist.add(j);
+               this.Jugadores.setItems(Jlist);
+                conexion.cerrarConexion();
+            }
           }else{
-              recoger = _nombre.substring(0,2);
-          }
+              recoger = _nombre.substring(0,3);
           
-          ResultSet resultset = conexion.ejecutarConsulta(sql);
            while (resultset.next()) {
                int id = resultset.getInt(recoger+"_id");
                String nombre = resultset.getString(recoger+"_jugador");
@@ -162,10 +172,13 @@ public class FXML_VistaTemporadaController implements Initializable {
                int titularidad = resultset.getInt("Titular");
                Jugador j = new Jugador(id, _nombre, posicion, titularidad);
                Jlist.add(j);
-               
-        }
-           Jugadores.setItems(Jlist);
-           conexion.cerrarConexion();
+               this.Jugadores.setItems(Jlist);
+               conexion.cerrarConexion();
+            }
+
+          }
+        
+           
     }
     
     

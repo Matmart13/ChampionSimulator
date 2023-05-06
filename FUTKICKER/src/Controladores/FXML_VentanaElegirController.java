@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  * @author marti
  */
 public class FXML_VentanaElegirController implements Initializable {
-    String nombre ;
+   static String nombre ;
     @FXML
     private Button RealM;
     @FXML
@@ -129,17 +129,15 @@ public class FXML_VentanaElegirController implements Initializable {
      
     @FXML
     private void escogerRM(ActionEvent event) {
-            nombre = "Madrid";
+            nombre = "madrid";
             Stage myStage = (Stage) this.RealM.getScene().getWindow();
             myStage.close();
        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/Vistas/FXML_VentanaTemporada.fxml"));
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+       
             Parent root = loader.load();
-
             FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             vtc.recibirParametro(nombre);
-            vtc.nombre = nombre;
-
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -200,8 +198,8 @@ public class FXML_VentanaElegirController implements Initializable {
              Stage myStage = (Stage) this.BARSA.getScene().getWindow();
             myStage.close();
              try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
-            Parent root = loader.load();
+           
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
