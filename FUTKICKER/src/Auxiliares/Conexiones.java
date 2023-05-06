@@ -19,17 +19,17 @@ public class Conexiones {
 
     private Connection conexion;
     // Adaptalos a tu conexion
-    String host = "localhost";
-    String baseDatos = "championsimulator";
-    String usuario = "root";
-    String password = "";
+    String host ;
+    String baseDatos;
+    String usuario ;
+    String password ;
 
     public Conexiones() throws SQLException {
         // Adaptalos a tu conexion
-        String host = "localhost";
-        String baseDatos = "championsimulator";
-        String usuario = "root";
-        String password = "";
+         host = "localhost";
+         baseDatos = "championsimulator";
+         usuario = "root";
+         password = "";
 
         // Cadena de conexion para conectarnos a la base de datos en MySQL
         String cadenaConexion = "jdbc:mysql://" + host + "/" + baseDatos;

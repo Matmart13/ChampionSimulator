@@ -19,6 +19,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import Auxiliares.Conexiones;
+import Auxiliares.Sonido;
+import Auxiliares.SonidoManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Modelo.Equipo;
@@ -123,7 +125,12 @@ public class FXML_VistaTemporadaController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        //Se para la musica
+        SonidoManager m = SonidoManager.getInstance();
+        Sonido Background = m.getSonido("Background");
+        Background.PararSonido();
+        // Aqui poner musica para Temporada
+        
     }
 
     public FXML_VistaTemporadaController() {
@@ -177,7 +184,7 @@ public class FXML_VistaTemporadaController implements Initializable {
         String recoger;
         //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
         ResultSet resultset = conexion.ejecutarConsulta(sql);
-        if (_nombre.equals("sporting") || _nombre.equals("mancity")) {
+        if (_nombre.equals("sporting") || _nombre.equals("manchestercity")) {
             recoger = _nombre.substring(0, 4);
             while (resultset.next()) {
                 int id = resultset.getInt(recoger + "_id");

@@ -23,18 +23,20 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class Sonido {
 
-    public void ReproducirSonido(String nombreSonido) {
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException ex) {
-            System.out.println("Error al reproducir el sonido.");
-        } catch (LineUnavailableException ex) {
-            System.out.println("Error al reproducir el sonido 2.");
-        } catch (IOException ex) {
-            System.out.println("Error al reproducir el sonido 3.");
-        }
+    String url;
+    Clip clip;
+
+    public Sonido(String _url) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        this.url = _url;
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+        clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+    }
+
+    public void ReproducirSonido() {
+        clip.start();
+    }
+    public void PararSonido(){
+        clip.stop();
     }
 }

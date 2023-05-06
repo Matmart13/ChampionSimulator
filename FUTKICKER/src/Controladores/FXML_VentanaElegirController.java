@@ -141,6 +141,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+            
 
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
@@ -294,8 +295,10 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("Liga con ManchesterCity");
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.show();
-
+            
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
