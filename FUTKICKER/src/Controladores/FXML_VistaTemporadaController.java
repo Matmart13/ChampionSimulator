@@ -151,7 +151,7 @@ public class FXML_VistaTemporadaController implements Initializable {
           //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
            ResultSet resultset = conexion.ejecutarConsulta(sql);
           if(_nombre.equals("sporting")|| _nombre.equals("mancity")){
-              recoger = _nombre.substring(0,3);
+              recoger = _nombre.substring(0,4);
                while (resultset.next()) {
                int id = resultset.getInt(recoger+"_id");
                String nombre = resultset.getString(recoger+"_jugador");
@@ -164,7 +164,6 @@ public class FXML_VistaTemporadaController implements Initializable {
             }
           }else{
               recoger = _nombre.substring(0,3);
-          
            while (resultset.next()) {
                int id = resultset.getInt(recoger+"_id");
                String nombre = resultset.getString(recoger+"_jugador");
