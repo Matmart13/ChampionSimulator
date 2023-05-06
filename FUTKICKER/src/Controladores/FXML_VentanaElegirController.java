@@ -132,18 +132,16 @@ public class FXML_VentanaElegirController implements Initializable {
      
     @FXML
     private void escogerRM(ActionEvent event) {
-        nombre = "Madrid";
-             Stage myStage = (Stage) this.RealM.getScene().getWindow();
+            nombre = "Madrid";
+            Stage myStage = (Stage) this.RealM.getScene().getWindow();
             myStage.close();
        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = loader.getController();
+            vtc.nombre = nombre;
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            
-            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
-            stage.setTitle("ChampionSimulator");
             stage.setScene(scene);
             stage.show();
             

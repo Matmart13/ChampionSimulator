@@ -99,6 +99,10 @@ public class FXML_VistaTemporadaController implements Initializable {
             EscudoEquipo.setImage(Madrid);   
         }
     }    
+
+    public FXML_VistaTemporadaController() {
+        
+    }
     
     public FXML_VistaTemporadaController(String _nombre) {
         this.nombre = _nombre;
@@ -120,7 +124,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             int derrotas = resultset.getInt("eq_derrotas");
             int goles = resultset.getInt("eq_goles");
             int golesc = resultset.getInt("eq_goles_contra");
-            int golesdiff = resultset.getInt("eq_goles_diff");
+            int golesdiff = resultset.getInt("eq_goles_dif");
             int estrellas = resultset.getInt("eq_estrellas");
             Equipo l = new Equipo(id, nombre, victorias, derrotas, goles, golesc, golesdiff, estrellas);
             Eqlist.add(l);
