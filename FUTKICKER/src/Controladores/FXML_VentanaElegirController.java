@@ -122,11 +122,8 @@ public class FXML_VentanaElegirController implements Initializable {
              
               Image tit= new Image("/Imagenes/titulo.png");
               titulo.setImage(tit);
-               
-        
-               
-              
-              
+
+          
 
     }    
      
@@ -138,7 +135,8 @@ public class FXML_VentanaElegirController implements Initializable {
        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
+            vtc.recibirParametro(nombre);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -160,7 +158,7 @@ public class FXML_VentanaElegirController implements Initializable {
             try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -182,7 +180,7 @@ public class FXML_VentanaElegirController implements Initializable {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -204,7 +202,7 @@ public class FXML_VentanaElegirController implements Initializable {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -226,7 +224,7 @@ public class FXML_VentanaElegirController implements Initializable {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -248,7 +246,7 @@ public class FXML_VentanaElegirController implements Initializable {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -270,7 +268,7 @@ public class FXML_VentanaElegirController implements Initializable {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -291,7 +289,7 @@ public class FXML_VentanaElegirController implements Initializable {
             myStage.close(); try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -314,7 +312,7 @@ public class FXML_VentanaElegirController implements Initializable {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             
@@ -336,7 +334,7 @@ public class FXML_VentanaElegirController implements Initializable {
              try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
             Parent root = loader.load();
-            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController(nombre);
+            FXML_VistaTemporadaController vtc = new FXML_VistaTemporadaController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             

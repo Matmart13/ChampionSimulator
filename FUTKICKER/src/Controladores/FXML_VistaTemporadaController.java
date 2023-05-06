@@ -100,10 +100,15 @@ public class FXML_VistaTemporadaController implements Initializable {
         }
     }    
     
-    public FXML_VistaTemporadaController(String _nombre) {
-        this.nombre = _nombre;
+    public FXML_VistaTemporadaController() {
+    
+        
     }
     
+    public void recibirParametro(String parametro){
+           this.nombre=parametro;
+        
+    }
     /**
      * Devuelve la tabla equipos que sera la tabla que tendra la clasificación de esta liga
      * @throws SQLException 
@@ -126,11 +131,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             Eqlist.add(l);
         }
         TablaEquipos.setItems(Eqlist);
-        conexion.cerrarConexion();
-        
-        
-        
-        
+        conexion.cerrarConexion();   
     }
     
     /**
@@ -139,7 +140,7 @@ public class FXML_VistaTemporadaController implements Initializable {
      * @throws SQLException 
      */
     public void getTodosJugadores(String _nombre) throws SQLException{
-        ObservableList<Jugador> Jlist = FXCollections.observableArrayList();
+          ObservableList<Jugador> Jlist = FXCollections.observableArrayList();
           Auxiliares.Conexiones conexion = new Conexiones();
           String sql = "Select * from "+_nombre;
           
