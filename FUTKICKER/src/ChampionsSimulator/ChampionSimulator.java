@@ -60,5 +60,4 @@ public class ChampionSimulator extends Application {
         launch(args);
 
     }
-
 }

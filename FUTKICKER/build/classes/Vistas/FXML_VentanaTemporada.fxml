@@ -19,8 +19,8 @@
         </columns>
       </TableView>
       <ImageView fx:id="Logo" fitHeight="155.0" fitWidth="247.0" layoutX="915.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="Iniciar" layoutX="421.0" layoutY="188.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="173.0" text="Iniciar" />
-      <Button fx:id="Salir" layoutX="421.0" layoutY="279.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="173.0" text="Salir" />
+      <Button fx:id="Iniciar" layoutX="421.0" layoutY="188.0" mnemonicParsing="false" onAction="#FuncionIniciar" prefHeight="48.0" prefWidth="173.0" text="Iniciar" />
+      <Button fx:id="Salir" layoutX="421.0" layoutY="279.0" mnemonicParsing="false" onAction="#FuncionSalir" prefHeight="48.0" prefWidth="173.0" text="Salir" />
       <ImageView fx:id="EscudoEquipo" fitHeight="229.0" fitWidth="385.0" layoutX="107.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" />
       <TableView fx:id="Jugadores" layoutY="428.0" prefHeight="357.0" prefWidth="262.0">
         <columns>

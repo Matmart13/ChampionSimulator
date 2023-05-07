@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2023 a las 15:08:33
+-- Tiempo de generación: 07-05-2023 a las 14:58:35
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -134,7 +134,7 @@ INSERT INTO `bayern` (`bay_id`, `bay_jugador`, `bay_posicion`, `Titular`) VALUES
 
 CREATE TABLE `betis` (
   `bet_id` int(2) NOT NULL,
-  `bet:jugador` varchar(20) NOT NULL,
+  `bet_jugador` varchar(20) NOT NULL,
   `bet_posicion` varchar(20) NOT NULL,
   `Titular` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -143,7 +143,7 @@ CREATE TABLE `betis` (
 -- Volcado de datos para la tabla `betis`
 --
 
-INSERT INTO `betis` (`bet_id`, `bet:jugador`, `bet_posicion`, `Titular`) VALUES
+INSERT INTO `betis` (`bet_id`, `bet_jugador`, `bet_posicion`, `Titular`) VALUES
 (1, 'Bravo', 'Portero', 0),
 (2, 'Bartra', 'Defensa', 0),
 (3, 'Mandi', 'Defensa', 0),
@@ -344,7 +344,7 @@ INSERT INTO `manchestercity` (`manc_id`, `manc_jugador`, `manc_posicion`, `Titul
 CREATE TABLE `psg` (
   `psg_id` int(2) NOT NULL,
   `psg_jugador` varchar(20) NOT NULL,
-  `psg_posición` varchar(20) NOT NULL,
+  `psg_posicion` varchar(20) NOT NULL,
   `Titular` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -352,7 +352,7 @@ CREATE TABLE `psg` (
 -- Volcado de datos para la tabla `psg`
 --
 
-INSERT INTO `psg` (`psg_id`, `psg_jugador`, `psg_posición`, `Titular`) VALUES
+INSERT INTO `psg` (`psg_id`, `psg_jugador`, `psg_posicion`, `Titular`) VALUES
 (1, 'Donnaruma', 'Portero', 0),
 (2, 'Marquinhos', 'Defensa', 0),
 (3, 'Sergio Ramos', 'Lateral Derecho', 0),

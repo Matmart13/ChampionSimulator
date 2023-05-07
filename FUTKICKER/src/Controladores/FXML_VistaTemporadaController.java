@@ -25,8 +25,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import Modelo.Equipo;
 import Modelo.Jugador;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -116,12 +123,12 @@ public class FXML_VistaTemporadaController implements Initializable {
                 EscudoEquipo.setImage(SportingLogo);
             } else if (nombre.equals("arsenal")) {
                 EscudoEquipo.setImage(ArsenalLogo);
-            }else if (nombre.equals("manchestercity")) {
-               EscudoEquipo.setImage(McityLogo);
-            }else if (nombre.equals("inter")) {
-               EscudoEquipo.setImage(InterMilanLogo);
+            } else if (nombre.equals("manchestercity")) {
+                EscudoEquipo.setImage(McityLogo);
+            } else if (nombre.equals("inter")) {
+                EscudoEquipo.setImage(InterMilanLogo);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -130,7 +137,7 @@ public class FXML_VistaTemporadaController implements Initializable {
         Sonido Background = m.getSonido("Background");
         Background.PararSonido();
         // Aqui poner musica para Temporada
-        
+
     }
 
     public FXML_VistaTemporadaController() {
@@ -212,6 +219,38 @@ public class FXML_VistaTemporadaController implements Initializable {
             conexion.cerrarConexion();
         }
 
+    }
+
+    @FXML
+    private void FuncionIniciar(ActionEvent event) {
+        Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
+        myStage.close();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
+
+            Parent root = loader.load();
+            FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("Partido");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @FXML
+    private void FuncionSalir(ActionEvent event) {
+        Stage myStage = (Stage) this.Salir.getScene().getWindow();
+        myStage.close();
+        
+        
+        
+        
     }
 
 }
