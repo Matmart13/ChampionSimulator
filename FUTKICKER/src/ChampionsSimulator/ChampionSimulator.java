@@ -34,6 +34,7 @@ public class ChampionSimulator extends Application {
         stage.getIcons().add(icono);
         stage.setTitle("ChampionSimulator");
         stage.show();
+        stage.setResizable(false);
         
         //Para crear todos los sonidos
         SonidoManager b = SonidoManager.getInstance();
@@ -41,7 +42,7 @@ public class ChampionSimulator extends Application {
         //Inicio la musica, se recoge el sonido que quieres poniendo la clave que pusiste 
         Sonido background = b.getSonido("Background");
         background.ReproducirSonido();
-
+        
         
     }
     /**

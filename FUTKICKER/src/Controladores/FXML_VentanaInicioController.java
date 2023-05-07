@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 //import Vistas.FXML_VentanaElegir;
+
 /**
  * FXML Controller class
  *
@@ -40,53 +41,46 @@ public class FXML_VentanaInicioController implements Initializable {
     private Button botonSalir;
     @FXML
     private ImageView Logo;
-    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image fondo= new Image("/Imagenes/FONDO.gif");
+        Image fondo = new Image("/Imagenes/FONDO.gif");
         Image logo = new Image("/Imagenes/Logo.png");
         fondoImagen.setImage(fondo);
         Logo.setImage(logo);
 
-        
-    }    
+    }
 
     @FXML
     private void botonInicioClick(ActionEvent event) {
-            Stage myStage = (Stage) this.botonInicio.getScene().getWindow();
-            myStage.close();
-       try {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaElegir.fxml"));
-       
+        Stage myStage = (Stage) this.botonInicio.getScene().getWindow();
+        myStage.close();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaElegir.fxml"));
+
             Parent root = loader.load();
             FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            
+
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setTitle("ChampionSimulator");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.showAndWait();
 
-
-            
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-         
-         
-        
+
     }
 
     @FXML
     private void botonCargarClick(ActionEvent event) {
-       
 
     }
 
@@ -94,7 +88,7 @@ public class FXML_VentanaInicioController implements Initializable {
     private void botonSalirClick(ActionEvent event) {
         Stage myStage = (Stage) this.botonSalir.getScene().getWindow();
         myStage.close();
-        
+
     }
-    
+
 }

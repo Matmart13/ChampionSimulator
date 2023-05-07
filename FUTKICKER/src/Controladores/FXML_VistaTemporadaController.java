@@ -98,7 +98,6 @@ public class FXML_VistaTemporadaController implements Initializable {
         this.Goles.setCellValueFactory(new PropertyValueFactory("Goles"));
         this.GolesContra.setCellValueFactory(new PropertyValueFactory("GolesContra"));
         this.DiffGoles.setCellValueFactory(new PropertyValueFactory("DiffGoles"));
-
         this.NombreJugador.setCellValueFactory(new PropertyValueFactory("Nombre"));
         this.J_Posicion.setCellValueFactory(new PropertyValueFactory("Posicion"));
         this.J_Convocatoria.setCellValueFactory(new PropertyValueFactory("Convocado"));
@@ -137,6 +136,7 @@ public class FXML_VistaTemporadaController implements Initializable {
         Sonido Background = m.getSonido("Background");
         Background.PararSonido();
         //Aqui poner musica para Temporada
+        
 
     }
 
@@ -237,6 +237,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+            stage.setResizable(false);
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }

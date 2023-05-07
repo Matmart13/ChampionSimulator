@@ -142,6 +142,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con MADRID");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -166,6 +168,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con SPORTING");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -190,6 +194,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con INTER");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -214,6 +220,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con BARCELONA");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -238,6 +246,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con ARSENAL");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -262,6 +272,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con LAZIO");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -286,6 +298,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con PSG");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -310,6 +324,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con ManchesterCity");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -335,6 +351,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con BAYERN");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
         } catch (IOException ex) {
@@ -359,6 +377,8 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Liga con BETIS");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.show();
 
         }catch (IOException ex) {
