@@ -361,7 +361,7 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.show();
 
-        } catch (IOException ex) {
+        }catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

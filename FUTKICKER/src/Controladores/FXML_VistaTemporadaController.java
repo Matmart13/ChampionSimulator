@@ -132,11 +132,11 @@ public class FXML_VistaTemporadaController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Se para la musica
+        //Se para la musica, se crea la instancia, luego se llama al sonido y se pone el metodo que para la musica 
         SonidoManager m = SonidoManager.getInstance();
         Sonido Background = m.getSonido("Background");
         Background.PararSonido();
-        // Aqui poner musica para Temporada
+        //Aqui poner musica para Temporada
 
     }
 
@@ -247,8 +247,6 @@ public class FXML_VistaTemporadaController implements Initializable {
     private void FuncionSalir(ActionEvent event) {
         Stage myStage = (Stage) this.Salir.getScene().getWindow();
         myStage.close();
-        
-        
         
         
     }

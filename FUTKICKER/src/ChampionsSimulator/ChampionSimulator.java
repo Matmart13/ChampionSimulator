@@ -38,13 +38,19 @@ public class ChampionSimulator extends Application {
         //Para crear todos los sonidos
         SonidoManager b = SonidoManager.getInstance();
         creacionSonidos(b);
-        //Inicio la musica  
+        //Inicio la musica, se recoge el sonido que quieres poniendo la clave que pusiste 
         Sonido background = b.getSonido("Background");
         background.ReproducirSonido();
 
         
     }
-    
+    /**
+     * Este metodo sirve para crear todos los sonidos que hay en el programa
+     * @param _m
+     * @throws UnsupportedAudioFileException
+     * @throws LineUnavailableException
+     * @throws IOException 
+     */
     void creacionSonidos(SonidoManager _m) throws UnsupportedAudioFileException, LineUnavailableException, IOException{
         _m.createSonido("Background","src\\Musica\\musicaMenu.wav");
         /*m.createSonido("Background","src\\Musica\\musicaMenu.wav");
