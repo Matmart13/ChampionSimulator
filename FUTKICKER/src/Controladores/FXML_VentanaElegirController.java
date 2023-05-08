@@ -140,7 +140,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con MADRID");
+            stage.setTitle("LIGA CON REAL MADRID");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -166,7 +166,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con SPORTING");
+            stage.setTitle("LIGA CON SPORTING");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -192,7 +192,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con INTER");
+            stage.setTitle("LIGA CON INTER DE MILAN");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -218,7 +218,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con BARCELONA");
+            stage.setTitle("LIGA CON BARCELONA");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -244,7 +244,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con ARSENAL");
+            stage.setTitle("LIGA CON ARSENAL");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -270,7 +270,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con LAZIO");
+            stage.setTitle("LIGA CON LAZIO");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -296,7 +296,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con PSG");
+            stage.setTitle("LIGA CON PSG");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -322,7 +322,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con ManchesterCity");
+            stage.setTitle("LIGA CON MANCHESTERCITY");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -349,7 +349,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con BAYERN");
+            stage.setTitle("LIGA CON BAYERN MUNICH");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -375,7 +375,7 @@ public class FXML_VentanaElegirController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Liga con BETIS");
+            stage.setTitle("LIGA CON BETIS");
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
