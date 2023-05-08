@@ -43,7 +43,6 @@ import javafx.stage.Stage;
 public class FXML_VistaTemporadaController implements Initializable {
 
     static String nombre;
-    @FXML
     private ImageView Logo;
     @FXML
     private ImageView EscudoEquipo;
@@ -85,6 +84,10 @@ public class FXML_VistaTemporadaController implements Initializable {
     Image LazioLogo = new Image("/Imagenes/lazio-logo.png", 80, 60, false, true);
     Image PSGLogo = new Image("/Imagenes/PSG.png", 80, 80, false, true);
     Image logo = new Image("/Imagenes/Logo.png");
+    Image fondo = new Image("/Imagenes/FondoTemporada.jpg");
+    @FXML
+    private ImageView fondoTemporada;
+    
 
     /**
      * Initializes the controller class.
@@ -92,6 +95,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        fondoTemporada.setImage(fondo);
         this.NombreE.setCellValueFactory(new PropertyValueFactory("Nombre"));
         this.Victorias.setCellValueFactory(new PropertyValueFactory("Victorias"));
         this.Derrotas.setCellValueFactory(new PropertyValueFactory("Derrotas"));
@@ -105,7 +109,6 @@ public class FXML_VistaTemporadaController implements Initializable {
         try {
             getTodosEquipos();
             getTodosJugadores(nombre);
-            Logo.setImage(logo);
             if (nombre.equals("madrid")) {
                 EscudoEquipo.setImage(RMLogo);
             } else if (nombre.equals("barcelona")) {
