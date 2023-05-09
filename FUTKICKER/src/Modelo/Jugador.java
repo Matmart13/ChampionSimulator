@@ -10,11 +10,13 @@ package Modelo;
  * @author martin y pablo
  */
 public class Jugador {
+
     private int id;
     private String nombre;
     private String posicion;
     private int titular;
-    public Jugador( int _id, String _nombre, String _posicion, int _titular) {
+
+    public Jugador(int _id, String _nombre, String _posicion, int _titular) {
         this.id = _id;
         this.nombre = _nombre;
         this.posicion = _posicion;
@@ -52,7 +54,5 @@ public class Jugador {
     public void setTitular(int titular) {
         this.titular = titular;
     }
-    
-    
-    
+
 }
