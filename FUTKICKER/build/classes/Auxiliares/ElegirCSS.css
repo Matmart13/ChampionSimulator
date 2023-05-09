@@ -1,0 +1,95 @@
+.root
+{
+    
+}
+
+.button{
+  -fx-text-fill: white;
+  -fx-cursor: hand;
+  -fx-background-color: black;
+  -fx-border-color: white;
+}
+.button:pressed{
+  -fx-scale-x: 0.5;
+  -fx-scale-y: 0.5;
+  -fx-background-color:white;
+  -fx-text-fill: black;
+  -fx-border-color: black;
+  
+}
+
+#BARSA:hover{
+  -fx-border-color: black;
+  -fx-background-color: purple;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;
+   
+}
+#RealM:hover{
+      -fx-border-color: black;
+   -fx-background-color: white;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+#SPORT:hover{
+      -fx-border-color: black;
+   -fx-background-color: red;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+#ARSENAL:hover{
+      -fx-border-color: black;
+   -fx-background-color: red;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+#INTER:hover{
+      -fx-border-color: black;
+   -fx-background-color: blue;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+#LAZIO:hover{
+      -fx-border-color: black;
+   -fx-background-color: #00F3FF;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+#PSG:hover{
+      -fx-border-color: black;
+   -fx-background-color: #3756FF;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+
+#CITY:hover{
+   -fx-border-color: black;
+   -fx-background-color: #7FC3FF;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+#BETIS:hover{
+      -fx-border-color: black;
+   -fx-background-color: #64FF00;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+#BAYERN:hover{
+      -fx-border-color: black;
+   -fx-background-color: #FF6856;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
