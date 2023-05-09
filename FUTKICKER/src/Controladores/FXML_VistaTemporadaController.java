@@ -100,11 +100,11 @@ public class FXML_VistaTemporadaController implements Initializable {
         this.Victorias.setCellValueFactory(new PropertyValueFactory("Victorias"));
         this.Derrotas.setCellValueFactory(new PropertyValueFactory("Derrotas"));
         this.Goles.setCellValueFactory(new PropertyValueFactory("Goles"));
-        this.GolesContra.setCellValueFactory(new PropertyValueFactory("GolesContra"));
-        this.DiffGoles.setCellValueFactory(new PropertyValueFactory("DiffGoles"));
+        this.GolesContra.setCellValueFactory(new PropertyValueFactory("golesc"));
+        this.DiffGoles.setCellValueFactory(new PropertyValueFactory("golesdiff"));
         this.NombreJugador.setCellValueFactory(new PropertyValueFactory("Nombre"));
         this.J_Posicion.setCellValueFactory(new PropertyValueFactory("Posicion"));
-        this.J_Convocatoria.setCellValueFactory(new PropertyValueFactory("Convocado"));
+        this.J_Convocatoria.setCellValueFactory(new PropertyValueFactory("Titular"));
 
         try {
             getTodosEquipos();
@@ -135,9 +135,9 @@ public class FXML_VistaTemporadaController implements Initializable {
             Logger.getLogger(FXML_VistaTemporadaController.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Se para la musica, se crea la instancia, luego se llama al sonido y se pone el metodo que para la musica 
-        SonidoManager m = SonidoManager.getInstance();
-        Sonido Background = m.getSonido("Background");
-        Background.PararSonido();
+        //  SonidoManager m = SonidoManager.getInstance();
+       // Sonido Background = m.getSonido("Background");
+       // Background.PararSonido();
         //Aqui poner musica para Temporada
         
 
@@ -213,8 +213,8 @@ public class FXML_VistaTemporadaController implements Initializable {
                 int id = resultset.getInt(recoger + "_id");
                 String nombre = resultset.getString(recoger + "_jugador");
                 String posicion = resultset.getString(recoger + "_posicion");
-                int titularidad = resultset.getInt("Titular");
-                Jugador j = new Jugador(id, nombre, posicion, titularidad);
+                int titular = resultset.getInt("Titular");
+                Jugador j = new Jugador(id, nombre, posicion, titular);
                 Jlist.add(j);
 
             }

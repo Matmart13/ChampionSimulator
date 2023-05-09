@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="ChampionSimulator.jar" size="64106192" download="eager" />
+=======
+    <jar href="ChampionSimulator.jar" size="62412582" download="eager" />
+>>>>>>> 224481caad422e9f8b009187a2f2026b32e21122
     <jar href="lib\commons-net-3.7.2.jar" size="307003" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
   </resources>
