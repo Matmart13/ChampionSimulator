@@ -5,10 +5,12 @@
  */
 package Controladores;
 
+import Utiles.HiloTiempo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -35,6 +37,8 @@ public class FXML_VentanaPartidoController implements Initializable {
     private ImageView equipo2;
     @FXML
     private Label marcadorEq1;
+    @FXML
+    private Label Temporizador;
 
     /**
      * Initializes the controller class.
@@ -49,6 +53,9 @@ public class FXML_VentanaPartidoController implements Initializable {
         
         vs.setImage(vsFoto);
         fondoPartido.setImage(fondo);
+        HiloTiempo ht = new HiloTiempo(Temporizador);
+        ht.start();
+
     }
 
 }
