@@ -24,6 +24,7 @@ import Auxiliares.SonidoManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Modelo.Equipo;
+import Modelo.Equiposvs;
 import Modelo.Jugador;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -42,8 +43,7 @@ import javafx.stage.Stage;
  */
 public class FXML_VistaTemporadaController implements Initializable {
 
-    static String nombre;
-    private ImageView Logo;
+    //Variables FXML
     @FXML
     private ImageView EscudoEquipo;
     @FXML
@@ -72,7 +72,9 @@ public class FXML_VistaTemporadaController implements Initializable {
     private TableColumn<Jugador, String> J_Posicion;
     @FXML
     private TableColumn<Jugador, Integer> J_Convocatoria;
-
+    @FXML
+    private ImageView fondoTemporada;
+    //Variables Image
     Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 60, 80, false, true);
     Image RMLogo = new Image("/Imagenes/Madrid.gif", 80, 80, false, true);
     Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 80, 80, false, true);
@@ -85,10 +87,20 @@ public class FXML_VistaTemporadaController implements Initializable {
     Image PSGLogo = new Image("/Imagenes/PSG.png", 80, 80, false, true);
     Image logo = new Image("/Imagenes/Logo.png");
     Image fondo = new Image("/Imagenes/FondoTemporada.jpg");
-    @FXML
-    private ImageView fondoTemporada;
     
-
+    //Variables de uso
+    static String nombre;
+    static int equiposvstotal;
+    static int random;
+    static int rival;
+    ObservableList<Equiposvs> ListaMadrid = FXCollections.observableArrayList();
+    ObservableList<Equiposvs> ListaBarcelona = FXCollections.observableArrayList();
+    ObservableList<Equiposvs> ListaBetis = FXCollections.observableArrayList();
+    ObservableList<Equiposvs> ListaArsenal = FXCollections.observableArrayList();
+    ObservableList<Equiposvs> ListaLazio = FXCollections.observableArrayList();
+    ObservableList<Equiposvs> ListaBayernMunich = FXCollections.observableArrayList();
+    ObservableList<Equiposvs> ListaSportingGijon = FXCollections.observableArrayList();
+    
     /**
      * Initializes the controller class.
      */
@@ -109,6 +121,8 @@ public class FXML_VistaTemporadaController implements Initializable {
         try {
             getTodosEquipos();
             getTodosJugadores(nombre);
+            getTodosEquiposvs(Eqlist);
+            
             if (nombre.equals("madrid")) {
                 EscudoEquipo.setImage(RMLogo);
             } else if (nombre.equals("barcelona")) {
@@ -136,18 +150,64 @@ public class FXML_VistaTemporadaController implements Initializable {
         }
         //Se para la musica, se crea la instancia, luego se llama al sonido y se pone el metodo que para la musica 
         //  SonidoManager m = SonidoManager.getInstance();
-       // Sonido Background = m.getSonido("Background");
-       // Background.PararSonido();
+        // Sonido Background = m.getSonido("Background");
+        // Background.PararSonido();
         //Aqui poner musica para Temporada
-        
 
     }
-
+    /**
+     * Constructor
+     */
     public FXML_VistaTemporadaController() {
 
     }
 
-    public void recibirParametro(String parametro) {
+    //Metodos FXML
+    /**
+     * Esta metodo sirve para que cuando pulses el boton iniciar inicie el partido con su vista correspondiente
+     * @param event 
+     */
+    @FXML
+    private void FuncionIniciar(ActionEvent event) {
+        Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
+        myStage.close();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
+
+            Parent root = loader.load();
+            FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("Partido");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+            stage.setResizable(false);
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    /**
+     * Este metodo sirve para que cuando pulses el boton salir, se cierre el programa 
+     * @param event 
+     */
+    @FXML
+    private void FuncionSalir(ActionEvent event) {
+        Stage myStage = (Stage) this.Salir.getScene().getWindow();
+        myStage.close();
+
+    }
+    
+    //Metodos de uso 
+    
+    
+    /**
+     * Sirve para recoger que equipo es el elegido por el usuario anteriormente y que se le ponga la ventana/escena configurada con su equipo
+     * @param parametro 
+     */
+       public void recibirParametro(String parametro) {
         this.nombre = parametro;
 
     }
@@ -224,35 +284,21 @@ public class FXML_VistaTemporadaController implements Initializable {
 
     }
 
-    @FXML
-    private void FuncionIniciar(ActionEvent event) {
-        Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
-        myStage.close();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
-
-            Parent root = loader.load();
-            FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
-            stage.setTitle("Partido");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
-            stage.setResizable(false);
-        } catch (IOException ex) {
-            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+    public void getTodosEquiposvs(ObservableList<Equiposvs> _lista) throws SQLException{
+       
+        Auxiliares.Conexiones conexion = new Conexiones();
+        String sql = "Select * from equiposrival_vista";
+        ResultSet resultset = conexion.ejecutarConsulta(sql);
+        while (resultset.next()) {
+            int id = resultset.getInt("eqvs_id");
+            String nombre = resultset.getString("eqvs_nombre");
+            int estrellas = resultset.getInt("eqvs_estrellas");
+            Equiposvs l = new Equiposvs(nombre, id, estrellas);
+            _lista.add(l);
         }
-
-    }
-
-    @FXML
-    private void FuncionSalir(ActionEvent event) {
-        Stage myStage = (Stage) this.Salir.getScene().getWindow();
-        myStage.close();
         
         
+        conexion.cerrarConexion();
     }
-
-}
+    
+ }

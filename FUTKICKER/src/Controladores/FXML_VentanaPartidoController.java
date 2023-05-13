@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import Modelo.Equipo;
 import Utiles.HiloTiempo;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,7 +40,13 @@ public class FXML_VentanaPartidoController implements Initializable {
     private Label marcadorEq1;
     @FXML
     private Label Temporizador;
-
+    
+    private String nombreEquipo1;
+    private String nombreEquipo2;
+    private int estrellasEquipo1;
+    private int estrellasEquipo2;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -55,7 +62,22 @@ public class FXML_VentanaPartidoController implements Initializable {
         fondoPartido.setImage(fondo);
         HiloTiempo ht = new HiloTiempo(Temporizador);
         ht.start();
-
+        
     }
+    
+    
+    
+    
+    public void recibirEquipos(Equipo _equipo1,Equipo _equipo2, ImageView _imagen1, ImageView _imagen2){
+        this.nombreEquipo1 = _equipo1.getNombre();
+        this.estrellasEquipo1 = _equipo1.getEstrellas();
+        
+        this.nombreEquipo2 = _equipo2.getNombre();
+        this.estrellasEquipo2  = _equipo2.getEstrellas();
+        
+        this.equipo1 = _imagen1;
+        this.equipo2 = _imagen2;
+    }
+    
 
 }
