@@ -24,9 +24,11 @@ import Auxiliares.SonidoManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Modelo.Equipo;
-import Modelo.Equiposvs;
 import Modelo.Jugador;
+import Modelo.Partidos;
+import com.sun.javafx.collections.ElementObservableListDecorator;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -93,14 +95,10 @@ public class FXML_VistaTemporadaController implements Initializable {
     static int equiposvstotal;
     static int random;
     static int rival;
-    ObservableList<Equiposvs> ListaMadrid = FXCollections.observableArrayList();
-    ObservableList<Equiposvs> ListaBarcelona = FXCollections.observableArrayList();
-    ObservableList<Equiposvs> ListaBetis = FXCollections.observableArrayList();
-    ObservableList<Equiposvs> ListaArsenal = FXCollections.observableArrayList();
-    ObservableList<Equiposvs> ListaLazio = FXCollections.observableArrayList();
-    ObservableList<Equiposvs> ListaBayernMunich = FXCollections.observableArrayList();
-    ObservableList<Equiposvs> ListaSportingGijon = FXCollections.observableArrayList();
-    
+    ObservableList<Partidos> listapartidos;
+    Equipo elegido;
+    Equipo vs;
+    ObservableList<Equipo> Eqlist;
     /**
      * Initializes the controller class.
      */
@@ -119,10 +117,13 @@ public class FXML_VistaTemporadaController implements Initializable {
         this.J_Convocatoria.setCellValueFactory(new PropertyValueFactory("Titular"));
 
         try {
-            getTodosEquipos();
+            Eqlist = FXCollections.observableArrayList();
+            getTodosEquipos(Eqlist);
+  
             getTodosJugadores(nombre);
-            getTodosEquiposvs(Eqlist);
             
+            listapartidos = FXCollections.observableArrayList();
+            getPartidos(listapartidos);
             if (nombre.equals("madrid")) {
                 EscudoEquipo.setImage(RMLogo);
             } else if (nombre.equals("barcelona")) {
@@ -173,9 +174,10 @@ public class FXML_VistaTemporadaController implements Initializable {
         myStage.close();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
-
+            
             Parent root = loader.load();
-            FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
+            FXML_VentanaPartidoController v = new FXML_VentanaPartidoController();
+           // v.recibirEquipos(elegido, vs, EscudoEquipo, EscudoEquipo,  );
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
@@ -218,8 +220,8 @@ public class FXML_VistaTemporadaController implements Initializable {
      *
      * @throws SQLException
      */
-    public void getTodosEquipos() throws SQLException {
-        ObservableList<Equipo> Eqlist = FXCollections.observableArrayList();
+    public void getTodosEquipos(ObservableList<Equipo> _Eqlist) throws SQLException {
+        
         Auxiliares.Conexiones conexion = new Conexiones();
         String sql = "Select * from equipos";
         ResultSet resultset = conexion.ejecutarConsulta(sql);
@@ -235,7 +237,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             Equipo l = new Equipo(id, nombre, victorias, derrotas, goles, golesc, golesdiff, estrellas);
             Eqlist.add(l);
         }
-        TablaEquipos.setItems(Eqlist);
+        TablaEquipos.setItems(_Eqlist);
         conexion.cerrarConexion();
     }
 
@@ -284,19 +286,18 @@ public class FXML_VistaTemporadaController implements Initializable {
 
     }
 
-    public void getTodosEquiposvs(ObservableList<Equiposvs> _lista) throws SQLException{
+ 
+     public void getPartidos(ObservableList<Partidos> _lista) throws SQLException{
        
         Auxiliares.Conexiones conexion = new Conexiones();
-        String sql = "Select * from equiposrival_vista";
+        String sql = "Select * from partidos";
         ResultSet resultset = conexion.ejecutarConsulta(sql);
         while (resultset.next()) {
-            int id = resultset.getInt("eqvs_id");
-            String nombre = resultset.getString("eqvs_nombre");
-            int estrellas = resultset.getInt("eqvs_estrellas");
-            Equiposvs l = new Equiposvs(nombre, id, estrellas);
-            _lista.add(l);
+            String nombre = resultset.getString("p_eq1");
+            String nombre2 = resultset.getString("p_eq2");
+         //   Partidos l = new Partidos(nombre,nombre2);
+          //  _lista.add(l);
         }
-        
         
         conexion.cerrarConexion();
     }

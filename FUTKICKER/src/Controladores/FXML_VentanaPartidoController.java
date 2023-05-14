@@ -45,6 +45,7 @@ public class FXML_VentanaPartidoController implements Initializable {
     private String nombreEquipo2;
     private int estrellasEquipo1;
     private int estrellasEquipo2;
+    int jornada;
     
     
     /**
@@ -68,7 +69,7 @@ public class FXML_VentanaPartidoController implements Initializable {
     
     
     
-    public void recibirEquipos(Equipo _equipo1,Equipo _equipo2, ImageView _imagen1, ImageView _imagen2){
+    public void recibirEquipos(Equipo _equipo1,Equipo _equipo2, ImageView _imagen1, ImageView _imagen2,int _jornada){
         this.nombreEquipo1 = _equipo1.getNombre();
         this.estrellasEquipo1 = _equipo1.getEstrellas();
         
@@ -77,6 +78,7 @@ public class FXML_VentanaPartidoController implements Initializable {
         
         this.equipo1 = _imagen1;
         this.equipo2 = _imagen2;
+        this.jornada = _jornada;
     }
     
 
