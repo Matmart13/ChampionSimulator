@@ -123,7 +123,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             getTodosJugadores(nombre);
             
             listapartidos = FXCollections.observableArrayList();
-            getPartidos(listapartidos);
+            //getPartidos(listapartidos);
             if (nombre.equals("madrid")) {
                 EscudoEquipo.setImage(RMLogo);
             } else if (nombre.equals("barcelona")) {
@@ -286,7 +286,7 @@ public class FXML_VistaTemporadaController implements Initializable {
 
     }
 
- 
+    /*
      public void getPartidos(ObservableList<Partidos> _lista) throws SQLException{
        
         Auxiliares.Conexiones conexion = new Conexiones();
@@ -300,6 +300,6 @@ public class FXML_VistaTemporadaController implements Initializable {
         }
         
         conexion.cerrarConexion();
-    }
+    }*/
     
  }
