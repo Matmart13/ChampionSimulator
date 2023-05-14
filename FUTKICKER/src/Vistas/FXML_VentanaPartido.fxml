@@ -12,7 +12,13 @@
       <ImageView fx:id="fondoPartido" fitHeight="800.0" fitWidth="1093.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="equipo1" fitHeight="217.0" fitWidth="280.0" layoutX="79.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
       <TextArea fx:id="textField" layoutX="219.0" layoutY="293.0" prefHeight="483.0" prefWidth="675.0" />
-      <Label fx:id="Temporizador" alignment="CENTER" layoutX="370.0" layoutY="13.0" prefHeight="40.0" prefWidth="303.0" textAlignment="RIGHT" />
+      <Label fx:id="Temporizador" alignment="CENTER" layoutX="389.0" layoutY="192.0" prefHeight="40.0" prefWidth="303.0" textAlignment="RIGHT" textFill="#fff000">
+         <font>
+            <Font name="Impact" size="36.0" />
+         </font>
+         <effect>
+            <Glow level="0.8" />
+         </effect></Label>
       <Label fx:id="marcadorEq2" alignment="CENTER" contentDisplay="TOP" layoutX="615.0" layoutY="237.0" prefHeight="56.0" prefWidth="120.0" text="0" textFill="WHITE">
          <font>
             <Font name="Impact" size="36.0" />
@@ -21,7 +27,7 @@
             <Glow level="0.8" />
          </effect></Label>
       <ImageView fx:id="equipo2" fitHeight="217.0" fitWidth="280.0" layoutX="787.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="vs" fitHeight="217.0" fitWidth="340.0" layoutX="370.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="vs" fitHeight="217.0" fitWidth="340.0" layoutX="458.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="marcadorEq1" alignment="CENTER" contentDisplay="TOP" layoutX="378.0" layoutY="237.0" prefHeight="56.0" prefWidth="120.0" text="0" textFill="WHITE">
          <font>
             <Font name="Impact" size="36.0" />
@@ -31,6 +37,14 @@
          </effect>
       </Label>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="505.0" layoutY="237.0" prefHeight="56.0" prefWidth="120.0" text="-" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="36.0" />
+         </font>
+         <effect>
+            <Glow level="0.8" />
+         </effect>
+      </Label>
+      <Label fx:id="Temporizador1" alignment="CENTER" layoutX="558.0" layoutY="192.0" prefHeight="45.0" prefWidth="71.0" text="MIN" textAlignment="RIGHT" textFill="#fff000">
          <font>
             <Font name="Impact" size="36.0" />
          </font>
