@@ -11,9 +11,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.Assert;
+
 /**
  *
  * @author marti
