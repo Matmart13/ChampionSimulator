@@ -24,7 +24,7 @@ public class HiloTiempo extends Thread {
 
     Label label;
     private int count = 0;
-    Timeline timeline;
+   static Timeline timeline;
     private int max = 45;
     private int countParte = 0;
     Image icono = new Image("/Imagenes/LogoAPP.png", 200, 100, false, true);
@@ -77,5 +77,13 @@ public class HiloTiempo extends Thread {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
+    public static Timeline getTimeline() {
+        timeline = new Timeline();
+         return timeline;
+       
+    }
+
+
 
 }

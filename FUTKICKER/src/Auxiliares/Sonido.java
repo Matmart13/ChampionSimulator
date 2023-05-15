@@ -24,7 +24,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Sonido {
 
     String url;
-    Clip clip;
+   public Clip clip;
 
     public Sonido(String _url) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.url = _url;
@@ -32,6 +32,7 @@ public class Sonido {
         clip = AudioSystem.getClip();
         clip.open(audioInputStream);
     }
+
 
     public void ReproducirSonido() {
         clip.start();
