@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2023 a las 14:58:35
+-- Tiempo de generación: 18-05-2023 a las 00:17:10
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -160,6 +160,69 @@ INSERT INTO `betis` (`bet_id`, `bet_jugador`, `bet_posicion`, `Titular`) VALUES
 (14, 'Paul', 'Centro', 0),
 (15, 'Montoya', 'Extremo Derecho', 0),
 (16, 'Juanmmi', 'Lateral Izquierdo', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `enfrentamientos`
+--
+
+CREATE TABLE `enfrentamientos` (
+  `Local` varchar(50) NOT NULL,
+  `Visitante` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `enfrentamientos`
+--
+
+INSERT INTO `enfrentamientos` (`Local`, `Visitante`) VALUES
+('madrid', 'barcelona'),
+('lazio', 'betis'),
+('bayern', 'manchestercity'),
+('sporting', 'barcelona'),
+('sporting', 'inter'),
+('psg', 'arsenal'),
+('madrid', 'betis'),
+('barcelona', 'manchestercity'),
+('lazio', 'inter'),
+('bayern', 'arsenal'),
+('sporting', 'psg'),
+('madrid', 'manchestercity'),
+('betis', 'inter'),
+('barcelona', 'arsenal'),
+('lazio', 'psg'),
+('bayern', 'sporting'),
+('madrid', 'inter'),
+('manchestercity', 'arsenal'),
+('betis', 'psg'),
+('barcelona', 'sporting'),
+('lazio', 'bayern'),
+('madrid', 'arsenal'),
+('inter', 'arsenal'),
+('manchestercity', 'sporting'),
+('betis', 'bayern'),
+('barcelona', 'lazio'),
+('madrid', 'psg'),
+('arsenal', 'sporting'),
+('inter', 'bayern'),
+('manchestercity', 'lazio'),
+('betis', 'barcelona'),
+('madrid', 'sporting'),
+('psg', 'bayern'),
+('arsenal', 'lazio'),
+('inter', 'barcelona'),
+('manchestercity', 'betis'),
+('madrid', 'bayern'),
+('sporting', 'lazio'),
+('psg', 'barcelona'),
+('arsenal', 'betis'),
+('inter', 'manchestercity'),
+('madrid', 'lazio'),
+('bayern', 'barcelona'),
+('sporting', 'betis'),
+('psg', 'manchestercity'),
+('arsenal', 'inter');
 
 -- --------------------------------------------------------
 
@@ -334,6 +397,25 @@ INSERT INTO `manchestercity` (`manc_id`, `manc_jugador`, `manc_posicion`, `Titul
 (14, 'Haaland', 'Delantero', 0),
 (15, 'Walker', 'Lateral Izquierdo', 0),
 (16, 'Haaland', 'Delantero', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `partidos`
+--
+
+CREATE TABLE `partidos` (
+  `p_eq1` varchar(100) NOT NULL,
+  `p_eq2` varchar(100) NOT NULL,
+  `p_jornada` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `partidos`
+--
+
+INSERT INTO `partidos` (`p_eq1`, `p_eq2`, `p_jornada`) VALUES
+('Real Madrid', 'Barcelona', 1);
 
 -- --------------------------------------------------------
 
