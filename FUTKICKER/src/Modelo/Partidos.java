@@ -10,28 +10,28 @@ package Modelo;
  * @author marti
  */
 public class Partidos {
-    private Equipo local;
-    private Equipo  visitante;
-    private int jornada;
-    public Partidos(Equipo _local,Equipo _visitante, int _jornada) {
+    private String local;
+    private String  visitante;
+ 
+    public Partidos(String _local,String _visitante) {
         this.local = _local;
         this.visitante = _visitante;
-        this.jornada = _jornada;
+   
     }
 
-    public Equipo getLocal() {
+    public String getLocal() {
         return local;
     }
 
-    public Equipo getVisitante() {
+    public String getVisitante() {
         return visitante;
     }
 
-    public void setLocal(Equipo local) {
+    public void setLocal(String local) {
         this.local = local;
     }
 
-    public void setVisitante(Equipo visitante) {
+    public void setVisitante(String visitante) {
         this.visitante = visitante;
     }
     

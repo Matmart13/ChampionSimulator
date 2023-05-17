@@ -98,7 +98,9 @@ public class FXML_VistaTemporadaController implements Initializable {
     ObservableList<Partidos> listapartidos;
     Equipo elegido;
     Equipo vs;
-    ObservableList<Equipo> Eqlist;
+    static ObservableList<Equipo> Eqlist;
+   
+    
     /**
      * Initializes the controller class.
      */
@@ -119,12 +121,13 @@ public class FXML_VistaTemporadaController implements Initializable {
         try {
             Eqlist = FXCollections.observableArrayList();
             getTodosEquipos(Eqlist);
-  
+            TablaEquipos.setItems(Eqlist);
             getTodosJugadores(nombre);
-            
+             
             listapartidos = FXCollections.observableArrayList();
+           
             //getPartidos(listapartidos);
-            if (nombre.equals("madrid")) {
+            if(nombre.equals("madrid")) {
                 EscudoEquipo.setImage(RMLogo);
             } else if (nombre.equals("barcelona")) {
                 EscudoEquipo.setImage(BarsaLogo);
@@ -177,7 +180,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             
             Parent root = loader.load();
             FXML_VentanaPartidoController v = new FXML_VentanaPartidoController();
-           // v.recibirEquipos(elegido, vs, EscudoEquipo, EscudoEquipo,  );
+          
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
@@ -220,8 +223,7 @@ public class FXML_VistaTemporadaController implements Initializable {
      *
      * @throws SQLException
      */
-    public void getTodosEquipos(ObservableList<Equipo> _Eqlist) throws SQLException {
-        
+    public static void getTodosEquipos(ObservableList<Equipo> _Eqlist) throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
         String sql = "Select * from equipos";
         ResultSet resultset = conexion.ejecutarConsulta(sql);
@@ -237,7 +239,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             Equipo l = new Equipo(id, nombre, victorias, derrotas, goles, golesc, golesdiff, estrellas);
             Eqlist.add(l);
         }
-        TablaEquipos.setItems(_Eqlist);
+       
         conexion.cerrarConexion();
     }
 
@@ -301,5 +303,7 @@ public class FXML_VistaTemporadaController implements Initializable {
         
         conexion.cerrarConexion();
     }*/
+    
+   
     
  }
