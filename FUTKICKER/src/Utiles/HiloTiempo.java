@@ -66,6 +66,7 @@ public class HiloTiempo extends Thread {
                     });
                 } else if (label.getText().equals(String.valueOf(max)) && countParte == 1) {
                     Platform.runLater(() -> {
+                        //Este poner la llamada a ventana fin
                         Alert b = new Alert(Alert.AlertType.CONFIRMATION);
                         b.setTitle("Fin del partido");
                         b.setHeaderText("Fin del partido");
