@@ -175,22 +175,20 @@ public class FXML_VentanaPartidoController implements Initializable {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
                 visitante = ListaTemporada.get(i).getVisitante();
-                if (visitante.equals("madrid") && !visitante.equals(nombre)) {
+                if (visitante.equals("madrid")) {
                     equipo2.setImage(RMLogo);
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
                         }
                     }
-                }
-            } else if (visitante.equals("barcelona")) {
+                }else if (visitante.equals("barcelona")) {
                 equipo2.setImage(BarsaLogo);
                 for (int v = 0; v < equiposjugar.size(); v++) {
                     if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                         estrellasEquipo2 = Eqlist.get(v).getEstrellas();
                     }
                 }
-
             } else if (visitante.equals("bayern")) {
                 equipo2.setImage(bayernMunichLogo);
                 for (int v = 0; v < equiposjugar.size(); v++) {
@@ -248,6 +246,7 @@ public class FXML_VentanaPartidoController implements Initializable {
                     }
                 }
             }
+            } 
         }
 
     }
