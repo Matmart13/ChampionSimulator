@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import Modelo.Equipo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +31,7 @@ import javafx.stage.Stage;
  */
 public class FXML_VentanaElegirController implements Initializable {
 
+    static Equipo equipo;
     static String nombre;
     @FXML
     private Button RealM;

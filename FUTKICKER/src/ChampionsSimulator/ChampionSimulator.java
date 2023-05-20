@@ -52,7 +52,7 @@ public class ChampionSimulator extends Application {
      * @throws LineUnavailableException
      * @throws IOException 
      */
-    void creacionSonidos(SonidoManager _m) throws UnsupportedAudioFileException, LineUnavailableException, IOException{
+   public void creacionSonidos(SonidoManager _m) throws UnsupportedAudioFileException, LineUnavailableException, IOException{
         _m.createSonido("Background","src\\Musica\\musicaMenu.wav");
         /*m.createSonido("Background","src\\Musica\\musicaMenu.wav");
         m.createSonido("Background","src\\Musica\\musicaMenu.wav");

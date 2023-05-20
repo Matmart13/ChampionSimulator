@@ -25,7 +25,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import Modelo.Equipo;
 import Modelo.Jugador;
+import Modelo.Partidos;
+import com.sun.javafx.collections.ElementObservableListDecorator;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -42,8 +45,7 @@ import javafx.stage.Stage;
  */
 public class FXML_VistaTemporadaController implements Initializable {
 
-    static String nombre;
-    private ImageView Logo;
+    //Variables FXML
     @FXML
     private ImageView EscudoEquipo;
     @FXML
@@ -72,7 +74,9 @@ public class FXML_VistaTemporadaController implements Initializable {
     private TableColumn<Jugador, String> J_Posicion;
     @FXML
     private TableColumn<Jugador, Integer> J_Convocatoria;
-
+    @FXML
+    private ImageView fondoTemporada;
+    //Variables Image
     Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 60, 80, false, true);
     Image RMLogo = new Image("/Imagenes/Madrid.gif", 80, 80, false, true);
     Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 80, 80, false, true);
@@ -85,10 +89,18 @@ public class FXML_VistaTemporadaController implements Initializable {
     Image PSGLogo = new Image("/Imagenes/PSG.png", 80, 80, false, true);
     Image logo = new Image("/Imagenes/Logo.png");
     Image fondo = new Image("/Imagenes/FondoTemporada.jpg");
-    @FXML
-    private ImageView fondoTemporada;
     
-
+    //Variables de uso
+    static String nombre;
+    static int equiposvstotal;
+    static int random;
+    static int rival;
+    ObservableList<Partidos> listapartidos;
+    Equipo elegido;
+    Equipo vs;
+    static ObservableList<Equipo> Eqlist;
+   
+    
     /**
      * Initializes the controller class.
      */
@@ -107,9 +119,15 @@ public class FXML_VistaTemporadaController implements Initializable {
         this.J_Convocatoria.setCellValueFactory(new PropertyValueFactory("Titular"));
 
         try {
-            getTodosEquipos();
+            Eqlist = FXCollections.observableArrayList();
+            getTodosEquipos(Eqlist);
+            TablaEquipos.setItems(Eqlist);
             getTodosJugadores(nombre);
-            if (nombre.equals("madrid")) {
+             
+            listapartidos = FXCollections.observableArrayList();
+           
+            //getPartidos(listapartidos);
+            if(nombre.equals("madrid")) {
                 EscudoEquipo.setImage(RMLogo);
             } else if (nombre.equals("barcelona")) {
                 EscudoEquipo.setImage(BarsaLogo);
@@ -136,20 +154,66 @@ public class FXML_VistaTemporadaController implements Initializable {
         }
         //Se para la musica, se crea la instancia, luego se llama al sonido y se pone el metodo que para la musica 
         //  SonidoManager m = SonidoManager.getInstance();
-       // Sonido Background = m.getSonido("Background");
-       // Background.PararSonido();
+        // Sonido Background = m.getSonido("Background");
+        // Background.PararSonido();
         //Aqui poner musica para Temporada
-        
 
     }
-
+    /**
+     * Constructor
+     */
     public FXML_VistaTemporadaController() {
 
     }
 
-    public void recibirParametro(String parametro) {
-        this.nombre = parametro;
+    //Metodos FXML
+    /**
+     * Esta metodo sirve para que cuando pulses el boton iniciar inicie el partido con su vista correspondiente
+     * @param event 
+     */
+    @FXML
+    private void FuncionIniciar(ActionEvent event) {
+        Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
+        myStage.close();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
+            
+            Parent root = loader.load();
+            FXML_VentanaPartidoController v = new FXML_VentanaPartidoController();
+          
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("Partido");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+            stage.setResizable(false);
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+    }
+    /**
+     * Este metodo sirve para que cuando pulses el boton salir, se cierre el programa 
+     * @param event 
+     */
+    @FXML
+    private void FuncionSalir(ActionEvent event) {
+        Stage myStage = (Stage) this.Salir.getScene().getWindow();
+        myStage.close();
+
+    }
+    
+    //Metodos de uso 
+    
+    
+    /**
+     * Sirve para recoger que equipo es el elegido por el usuario anteriormente y que se le ponga la ventana/escena configurada con su equipo
+     * @param parametro 
+     */
+       public void recibirParametro(String parametro) {
+        this.nombre = parametro;
     }
 
     /**
@@ -158,8 +222,7 @@ public class FXML_VistaTemporadaController implements Initializable {
      *
      * @throws SQLException
      */
-    public void getTodosEquipos() throws SQLException {
-        ObservableList<Equipo> Eqlist = FXCollections.observableArrayList();
+    public static void getTodosEquipos(ObservableList<Equipo> _Eqlist) throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
         String sql = "Select * from equipos";
         ResultSet resultset = conexion.ejecutarConsulta(sql);
@@ -175,7 +238,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             Equipo l = new Equipo(id, nombre, victorias, derrotas, goles, golesc, golesdiff, estrellas);
             Eqlist.add(l);
         }
-        TablaEquipos.setItems(Eqlist);
+       
         conexion.cerrarConexion();
     }
 
@@ -224,35 +287,22 @@ public class FXML_VistaTemporadaController implements Initializable {
 
     }
 
-    @FXML
-    private void FuncionIniciar(ActionEvent event) {
-        Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
-        myStage.close();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
-
-            Parent root = loader.load();
-            FXML_VentanaElegirController vec = new FXML_VentanaElegirController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
-            stage.setTitle("Partido");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
-            stage.setResizable(false);
-        } catch (IOException ex) {
-            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+    /*
+     public void getPartidos(ObservableList<Partidos> _lista) throws SQLException{
+       
+        Auxiliares.Conexiones conexion = new Conexiones();
+        String sql = "Select * from partidos";
+        ResultSet resultset = conexion.ejecutarConsulta(sql);
+        while (resultset.next()) {
+            String nombre = resultset.getString("p_eq1");
+            String nombre2 = resultset.getString("p_eq2");
+         //   Partidos l = new Partidos(nombre,nombre2);
+          //  _lista.add(l);
         }
-
-    }
-
-    @FXML
-    private void FuncionSalir(ActionEvent event) {
-        Stage myStage = (Stage) this.Salir.getScene().getWindow();
-        myStage.close();
         
-        
-    }
-
-}
+        conexion.cerrarConexion();
+    }*/
+    
+   
+    
+ }
