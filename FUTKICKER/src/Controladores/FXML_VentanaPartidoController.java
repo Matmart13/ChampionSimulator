@@ -6,6 +6,8 @@
 package Controladores;
 
 import Auxiliares.Conexiones;
+import Auxiliares.Sonido;
+import Auxiliares.SonidoManager;
 import static Controladores.FXML_VistaTemporadaController.Eqlist;
 import static Controladores.FXML_VistaTemporadaController.nombre;
 import Modelo.Equipo;
@@ -57,6 +59,7 @@ public class FXML_VentanaPartidoController implements Initializable {
     static int estrellasEquipo2;
     ArrayList<Equipo> equiposjugar;
     ArrayList<Partidos> ListaTemporada;
+    ArrayList<Partidos> EquiposSecun;
     @FXML
     private Label Temporizador1;
     @FXML
@@ -80,10 +83,15 @@ public class FXML_VentanaPartidoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         equiposjugar = new ArrayList<Equipo>();
         ListaTemporada = new ArrayList<Partidos>();
+        EquiposSecun = new ArrayList<Partidos>();
+        SonidoManager b = SonidoManager.getInstance();
+
+        Sonido background = b.getSonido("Background");
+        background.PararSonido();
         try {
             getEquipos(equiposjugar);
             getPartidosTemporada();
-
+            //  recogerPartidosNoPrincipal();
         } catch (SQLException ex) {
             Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -135,7 +143,6 @@ public class FXML_VentanaPartidoController implements Initializable {
         fondoPartido.setImage(fondo);
         HiloTiempo ht = new HiloTiempo(Temporizador);
         ht.start();
-
     }
 
     public void getEquipos(ArrayList<Equipo> lista) throws SQLException {
@@ -182,96 +189,120 @@ public class FXML_VentanaPartidoController implements Initializable {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
                         }
                     }
-                }else if (visitante.equals("barcelona")) {
-                equipo2.setImage(BarsaLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("barcelona")) {
+                    equipo2.setImage(BarsaLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("bayern")) {
-                equipo2.setImage(bayernMunichLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("bayern")) {
+                    equipo2.setImage(bayernMunichLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("psg")) {
-                equipo2.setImage(PSGLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("psg")) {
+                    equipo2.setImage(PSGLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("lazio")) {
-                equipo2.setImage(LazioLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("lazio")) {
+                    equipo2.setImage(LazioLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("betis")) {
-                equipo2.setImage(BetisLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("betis")) {
+                    equipo2.setImage(BetisLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("sporting")) {
-                equipo2.setImage(SportingLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("sporting")) {
+                    equipo2.setImage(SportingLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("arsenal")) {
-                equipo2.setImage(ArsenalLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("arsenal")) {
+                    equipo2.setImage(ArsenalLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("manchestercity")) {
-                equipo2.setImage(McityLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("manchestercity")) {
+                    equipo2.setImage(McityLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
-                }
-            } else if (visitante.equals("inter")) {
-                equipo2.setImage(InterMilanLogo);
-                for (int v = 0; v < equiposjugar.size(); v++) {
-                    if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                        estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                } else if (visitante.equals("inter")) {
+                    equipo2.setImage(InterMilanLogo);
+                    for (int v = 0; v < equiposjugar.size(); v++) {
+                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
+                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
+                        }
                     }
                 }
             }
-            } 
         }
 
     }
 
     public void getEstrellasEquipos() {
-        for (int i = 0; i < ListaTemporada.size(); i++) {
+        for (int i = 0; i < equiposjugar.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
                 visitante = ListaTemporada.get(i).getVisitante();
-                if (ListaTemporada.get(i).getLocal().equals(nombre)) {
-                    for (int j = 0; j < equiposjugar.size(); j++) {
-                        if (equiposjugar.get(j).getNombre().equals(nombre) == true) {
-                            estrellasEquipo1 = equiposjugar.get(j).getEstrellas();
-                            break;
-                        }
+
+                for (int j = 0; j < equiposjugar.size(); j++) {
+                    if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
+                        estrellasEquipo1 = equiposjugar.get(j).getEstrellas();
+                        break;
                     }
-                    for (int v = 0; v < equiposjugar.size(); v++) {
-                        if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
-                            estrellasEquipo2 = Eqlist.get(v).getEstrellas();
-                            break;
-                        }
-                    }
-                    break;
                 }
+                for (int v = 0; v < equiposjugar.size(); v++) {
+                    if (ListaTemporada.get(v).getVisitante().equals(visitante) == true) {
+                        estrellasEquipo2 = equiposjugar.get(v).getEstrellas();
+                        break;
+                    }
+                }
+
             }
         }
     }
 
+    public void realizarPartidos() {
+          
+    }
+    /*
+    public void recogerPartidosNoPrincipal() {
+        String local = "";
+        String visitante = "";
+        int cont = 0;
+        for (int i = 0; i < ListaTemporada.size(); i++) {
+            if (!ListaTemporada.get(i).getLocal().equals(nombre)) {
+                if (EquiposSecun.isEmpty()) {
+                    EquiposSecun.add(ListaTemporada.get(i));
+                     cont++;
+                } else {
+                    if (!EquiposSecun.get(i).getLocal().equals(local) && cont <= 4 || !EquiposSecun.get(i).getVisitante().equals(visitante) && cont < 4) {
+                        EquiposSecun.add(ListaTemporada.get(i));
+                        cont++;
+                    }
+                }
+
+            }
+        }
+
+    }
+     */
 }

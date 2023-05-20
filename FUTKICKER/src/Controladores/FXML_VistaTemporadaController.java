@@ -214,7 +214,6 @@ public class FXML_VistaTemporadaController implements Initializable {
      */
        public void recibirParametro(String parametro) {
         this.nombre = parametro;
-
     }
 
     /**

@@ -82,7 +82,6 @@ public class HiloTiempo extends Thread {
     public static Timeline getTimeline() {
         timeline = new Timeline();
          return timeline;
-       
     }
 
 
