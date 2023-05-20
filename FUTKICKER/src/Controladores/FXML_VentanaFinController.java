@@ -23,6 +23,7 @@ public class FXML_VentanaFinController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+        
     }
 
 }

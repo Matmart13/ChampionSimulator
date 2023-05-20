@@ -40,9 +40,9 @@ public class ChampionSimulator extends Application {
         SonidoManager b = SonidoManager.getInstance();
         creacionSonidos(b);
         //Inicio la musica, se recoge el sonido que quieres poniendo la clave que pusiste 
-       /* Sonido background = b.getSonido("Background");
+        Sonido background = b.getSonido("Background");
         background.ReproducirSonido();
-        */
+        
         
     }
     /**
