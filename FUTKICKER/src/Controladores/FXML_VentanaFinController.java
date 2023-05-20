@@ -7,7 +7,10 @@ package Controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -15,6 +18,9 @@ import javafx.fxml.Initializable;
  * @author marti
  */
 public class FXML_VentanaFinController implements Initializable {
+
+    @FXML
+    private Button Volver;
 
     /**
      * Initializes the controller class.
@@ -24,6 +30,10 @@ public class FXML_VentanaFinController implements Initializable {
         // TODO
         
         
+    }
+
+    @FXML
+    private void VolverTemporada(ActionEvent event) {
     }
 
 }

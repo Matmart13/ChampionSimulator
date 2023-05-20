@@ -23,6 +23,8 @@ import javafx.util.Duration;
 public class HiloTiempo extends Thread {
 
     Label label;
+    
+    private Object lock;
     private int count = 0;
    static Timeline timeline;
     private int max = 45;
@@ -30,9 +32,9 @@ public class HiloTiempo extends Thread {
     Image icono = new Image("/Imagenes/LogoAPP.png", 200, 100, false, true);
     private volatile boolean pausado = false;
 
-    public HiloTiempo(Label _label) {
-        // TODO Auto-generated constructor stub
+    public HiloTiempo(Label _label, Object _lock) {
         label = _label;
+        lock = _lock;
     }
 
     @Override
@@ -83,7 +85,9 @@ public class HiloTiempo extends Thread {
         timeline = new Timeline();
          return timeline;
     }
-
-
+    
+    public int getTiempoTranscurrido(){
+        return count;
+    }
 
 }

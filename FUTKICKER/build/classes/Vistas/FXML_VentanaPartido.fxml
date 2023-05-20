@@ -51,6 +51,6 @@
             <Glow level="0.8" />
          </effect>
       </Label>
-      <TextField fx:id="TextField" layoutX="306.0" layoutY="315.0" prefHeight="485.0" prefWidth="519.0" />
+      <TextField fx:id="TextField" alignment="TOP_LEFT" disable="true" editable="false" layoutX="306.0" layoutY="293.0" prefHeight="485.0" prefWidth="519.0" />
    </children>
 </AnchorPane>
