@@ -105,7 +105,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
         }
         Image vsFoto = new Image("/Imagenes/v1.png");
-        Image fondo = new Image("/Imagenes/FondoPartido.png");
+        Image fondo = new Image("/Imagenes/FondoPartido.png", 1100, 800, false, true);
 
         vs.setImage(vsFoto);
         fondoPartido.setImage(fondo);

@@ -24,7 +24,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author marti
  */
 public class ChampionSimulator extends Application {
-    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
@@ -36,13 +35,7 @@ public class ChampionSimulator extends Application {
         stage.show();
         stage.setResizable(false);
         
-        //Para crear todos los sonidos
-        SonidoManager b = SonidoManager.getInstance();
-        creacionSonidos(b);
-        //Inicio la musica, se recoge el sonido que quieres poniendo la clave que pusiste 
-        Sonido background = b.getSonido("Background");
-        background.ReproducirSonido();
-        
+     
         
     }
     /**
@@ -52,13 +45,7 @@ public class ChampionSimulator extends Application {
      * @throws LineUnavailableException
      * @throws IOException 
      */
-   public void creacionSonidos(SonidoManager _m) throws UnsupportedAudioFileException, LineUnavailableException, IOException{
-        _m.createSonido("Background","src\\Musica\\musicaMenu.wav");
-        /*m.createSonido("Background","src\\Musica\\musicaMenu.wav");
-        m.createSonido("Background","src\\Musica\\musicaMenu.wav");
-         m.createSonido("Background","src\\Musica\\musicaMenu.wav");*/
-      
-    }
+  
 
     /**
      * @param args the command line arguments

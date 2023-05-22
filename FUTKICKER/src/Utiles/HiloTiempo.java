@@ -5,7 +5,7 @@
  */
 package Utiles;
 
-import Controladores.FXML_VentanaFinController;
+import Controladores.FXML_VentanaGanadorController;
 import Controladores.FXML_VentanaInicioController;
 import java.io.IOException;
 import java.util.Optional;
@@ -82,10 +82,10 @@ public class HiloTiempo extends Thread {
                         Stage myStage = (Stage) label.getScene().getWindow();
                         myStage.close();
                         try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaFin.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaGanador.fxml"));
 
                             Parent root = loader.load();
-                            FXML_VentanaFinController v = new FXML_VentanaFinController();
+                            FXML_VentanaGanadorController v = new FXML_VentanaGanadorController();
 
                             Scene scene = new Scene(root);
                             Stage stage = new Stage();

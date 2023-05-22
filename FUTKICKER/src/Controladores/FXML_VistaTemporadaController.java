@@ -196,7 +196,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
-            stage.setTitle("Partido");
+            stage.setTitle("ChampionSimulator");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
@@ -348,7 +348,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
-            stage.setTitle("INICIO");
+            stage.setTitle("ChampionSimulator");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
