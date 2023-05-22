@@ -10,7 +10,7 @@ package Modelo;
  * @author marti
  */
 public class Equipo {
-
+    
     private int id;
     private String nombre;
     private int victorias;

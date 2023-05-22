@@ -5,15 +5,25 @@
  */
 package Utiles;
 
+import Controladores.FXML_VentanaFinController;
+import Controladores.FXML_VentanaInicioController;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -23,10 +33,10 @@ import javafx.util.Duration;
 public class HiloTiempo extends Thread {
 
     Label label;
-    
+
     private Object lock;
     private int count = 0;
-   static Timeline timeline;
+    static Timeline timeline;
     private int max = 45;
     private int countParte = 0;
     Image icono = new Image("/Imagenes/LogoAPP.png", 200, 100, false, true);
@@ -69,10 +79,26 @@ public class HiloTiempo extends Thread {
                 } else if (label.getText().equals(String.valueOf(max)) && countParte == 1) {
                     Platform.runLater(() -> {
                         //Este poner la llamada a ventana fin
-                        Alert b = new Alert(Alert.AlertType.CONFIRMATION);
-                        b.setTitle("Fin del partido");
-                        b.setHeaderText("Fin del partido");
-                        b.showAndWait();
+                        Stage myStage = (Stage) label.getScene().getWindow();
+                        myStage.close();
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaFin.fxml"));
+
+                            Parent root = loader.load();
+                            FXML_VentanaFinController v = new FXML_VentanaFinController();
+
+                            Scene scene = new Scene(root);
+                            Stage stage = new Stage();
+                            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+                            stage.setTitle("Final Partido");
+                            stage.setResizable(false);
+                            stage.initModality(Modality.APPLICATION_MODAL);
+                            stage.setScene(scene);
+                            stage.show();
+
+                        } catch (IOException ex) {
+                            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     });
                 }
             }
@@ -83,10 +109,10 @@ public class HiloTiempo extends Thread {
 
     public static Timeline getTimeline() {
         timeline = new Timeline();
-         return timeline;
+        return timeline;
     }
-    
-    public int getTiempoTranscurrido(){
+
+    public int getTiempoTranscurrido() {
         return count;
     }
 

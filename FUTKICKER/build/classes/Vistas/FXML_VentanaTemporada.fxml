@@ -30,7 +30,7 @@
          <effect>
             <Glow level="0.8" />
          </effect></Button>
-      <Button fx:id="Salir" layoutX="724.0" layoutY="570.0" mnemonicParsing="false" onAction="#FuncionSalir" prefHeight="70.0" prefWidth="261.0" text="Salir">
+      <Button fx:id="Salir" layoutX="724.0" layoutY="650.0" mnemonicParsing="false" onAction="#FuncionSalir" prefHeight="70.0" prefWidth="261.0" text="Salir">
          <font>
             <Font name="Impact" size="35.0" />
          </font>
@@ -62,5 +62,13 @@
             <Glow level="0.8" />
          </effect>
       </Label>
+      <Button fx:id="Menu" layoutX="724.0" layoutY="570.0" mnemonicParsing="false" onAction="#FuncionMenu" prefHeight="70.0" prefWidth="261.0" text="Menu">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.8" />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

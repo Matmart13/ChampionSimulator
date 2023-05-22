@@ -104,6 +104,8 @@ public class FXML_VistaTemporadaController implements Initializable {
     Equipo elegido;
     Equipo vs;
     static ObservableList<Equipo> Eqlist;
+    @FXML
+    private Button Menu;
 
     /**
      * Initializes the controller class.
@@ -330,6 +332,33 @@ public class FXML_VistaTemporadaController implements Initializable {
 
         // Agregar los partidos seleccionados a ListaTemporada
         ListaTemporada.addAll(partidosSeleccionados);
+    }
+
+    @FXML
+    private void FuncionMenu(ActionEvent event) {
+        
+          Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
+        myStage.close();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
+
+            Parent root = loader.load();
+            FXML_VentanaInicioController v = new FXML_VentanaInicioController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+            stage.setTitle("INICIO");
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
 }
