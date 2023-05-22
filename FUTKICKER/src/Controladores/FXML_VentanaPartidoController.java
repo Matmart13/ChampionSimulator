@@ -13,6 +13,7 @@ import static Controladores.FXML_VistaTemporadaController.ListaTemporada;
 import static Controladores.FXML_VistaTemporadaController.nombre;
 import Modelo.Equipo;
 import Modelo.Partidos;
+import Utiles.HiloPartido;
 import Utiles.HiloTiempo;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -69,7 +70,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     @FXML
     private Label Temporizador1;
     private TextField texto;
-    static String visitante;
+    String visitante;
     Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 60, 80, false, true);
     Image RMLogo = new Image("/Imagenes/Madrid.gif", 80, 80, false, true);
     Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 80, 80, false, true);
@@ -82,6 +83,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     Image PSGLogo = new Image("/Imagenes/PSG.png", 80, 80, false, true);
     @FXML
     private TextField TextField;
+    public static HiloTiempo ht;
+   public static HiloPartido hp;
 
     /**
      * Initializes the controller class.
@@ -97,6 +100,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         SonidoManager b = SonidoManager.getInstance();
         Sonido background = b.getSonido("Background");
         background.PararSonido();
+        ht = new HiloTiempo(Temporizador);
+        hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEq1, marcadorEq2, ht);
+
         try {
             getEquipos(equiposjugar);
 
@@ -115,68 +121,76 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             getEstrellasEquipos();
             cambioNombre();
             cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("barcelona")) {
             equipo1.setImage(BarsaLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
-            cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("bayern")) {
             equipo1.setImage(bayernMunichLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
             cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("psg")) {
             equipo1.setImage(PSGLogo);
             getVisitante();
             getEstrellasEquipos();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("lazio")) {
             equipo1.setImage(LazioLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
             cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("betis")) {
             equipo1.setImage(BetisLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
             cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("sporting")) {
             equipo1.setImage(SportingLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
-            cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("arsenal")) {
             equipo1.setImage(ArsenalLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
             cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("manchestercity")) {
             equipo1.setImage(McityLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
             cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("inter")) {
             equipo1.setImage(InterMilanLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
             cambioVisitante();
-            realizarPartidoPrincipal();
+            ht.start();
+            hp.start();
         }
 
     }
@@ -205,8 +219,10 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
                 visitante = ListaTemporada.get(i).getVisitante();
+
                 if (visitante.equals("madrid")) {
                     equipo2.setImage(RMLogo);
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -214,6 +230,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("barcelona")) {
                     equipo2.setImage(BarsaLogo);
+
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -221,6 +239,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("bayern")) {
                     equipo2.setImage(bayernMunichLogo);
+
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -228,6 +248,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("psg")) {
                     equipo2.setImage(PSGLogo);
+
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -235,6 +257,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("lazio")) {
                     equipo2.setImage(LazioLogo);
+
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -242,13 +266,16 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("betis")) {
                     equipo2.setImage(BetisLogo);
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
                         }
                     }
                 } else if (visitante.equals("sporting")) {
+
                     equipo2.setImage(SportingLogo);
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -256,6 +283,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("arsenal")) {
                     equipo2.setImage(ArsenalLogo);
+
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -263,6 +292,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("manchestercity")) {
                     equipo2.setImage(McityLogo);
+
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -270,6 +301,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("inter")) {
                     equipo2.setImage(InterMilanLogo);
+
+                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -303,110 +336,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         }
     }
 
-    public void realizarPartidoPrincipal() {
-        int duracionPartido = 90; // Duración del partido en minutos
-
-        // Obtener los equipos del partido principal
-        Equipo equipoLocal = null;
-        Equipo equipoVisitante = null;
-
-        for (int i = 0; i < equiposjugar.size(); i++) {
-            if (equiposjugar.get(i).getNombre().equals(nombre)) {
-                equipoLocal = equiposjugar.get(i);
-            } else if (equiposjugar.get(i).getNombre().equals(visitante)) {
-                equipoVisitante = equiposjugar.get(i);
-            }
-        }
-
-        if (equipoLocal == null || equipoVisitante == null) {
-            // No se encontraron los equipos, mostrar un mensaje de error o realizar alguna acción adecuada
-            return;
-        }
-        String nombreL = equipoLocal.getNombre();
-        final String nombreLocal = nombreL;
-        String nombreV = equipoVisitante.getNombre();
-        final String nombreVisitante = nombreV;
-        AtomicInteger golesLocal = new AtomicInteger(0);
-        AtomicInteger golesVisitante = new AtomicInteger(0);
-// Calcular las probabilidades de gol para cada equipo según las estrellas
-        int diferenciaEstrellas = equipoLocal.getEstrellas() - equipoVisitante.getEstrellas();
-        double factorProbabilidad = 0.02; // Factor de ajuste para las probabilidades de gol
-
-        final double probabilidadLocal;
-        final double probabilidadVisitante;
-
-        if (diferenciaEstrellas > 0) {
-            probabilidadLocal = 0.5 + (diferenciaEstrellas * factorProbabilidad);
-            probabilidadVisitante = 0.5 - (diferenciaEstrellas * factorProbabilidad);
-        } else if (diferenciaEstrellas < 0) {
-            probabilidadLocal = 0.5 - (Math.abs(diferenciaEstrellas) * factorProbabilidad);
-            probabilidadVisitante = 0.5 + (Math.abs(diferenciaEstrellas) * factorProbabilidad);
-        } else {
-            probabilidadLocal = 0.5;
-            probabilidadVisitante = 0.5;
-        }
-
-// Crear el objeto de bloqueo
-        Object lock = new Object(); // Objeto de bloqueo compartido entre los hilos
-
-// Hilo para el tiempo
-        HiloTiempo hiloTiempo = new HiloTiempo(Temporizador, lock);
-        hiloTiempo.start();
-        final Timeline golesTimeline = new Timeline(); // Declarar la variable final
-
-        golesTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
-            synchronized (lock) {
-                int tiempoTranscurrido = hiloTiempo.getTiempoTranscurrido(); // Obtener el tiempo transcurrido del hilo de tiempo
-
-                if (tiempoTranscurrido < duracionPartido) {
-                    // Simular el avance del partido y generación de goles (puedes adaptar esta lógica según tus necesidades)
-                    final boolean finalGolLocal;
-                    final boolean finalGolVisitante;
-
-                    if (diferenciaEstrellas > 0) {
-                        double probabilidadLocalAjustada = probabilidadLocal + (diferenciaEstrellas * factorProbabilidad);
-                        double probabilidadVisitanteAjustada = probabilidadVisitante - (diferenciaEstrellas * factorProbabilidad);
-                        finalGolLocal = Math.random() < probabilidadLocalAjustada;
-                        finalGolVisitante = Math.random() < probabilidadVisitanteAjustada;
-                    } else if (diferenciaEstrellas < 0) {
-                        double probabilidadLocalAjustada = probabilidadLocal - (Math.abs(diferenciaEstrellas) * factorProbabilidad);
-                        double probabilidadVisitanteAjustada = probabilidadVisitante + (Math.abs(diferenciaEstrellas) * factorProbabilidad);
-                        finalGolLocal = Math.random() < probabilidadLocalAjustada;
-                        finalGolVisitante = Math.random() < probabilidadVisitanteAjustada;
-                    } else {
-                        finalGolLocal = Math.random() < probabilidadLocal;
-                        finalGolVisitante = Math.random() < probabilidadVisitante;
-                    }
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (finalGolLocal) {
-                                int goleslocal = golesLocal.incrementAndGet();
-                                marcadorEq1.setText(Integer.toString(goleslocal));
-                                texto.appendText("¡Gol! " + nombreLocal + "\n");
-                            } else {
-                                texto.appendText("... " + nombreLocal + " jugada\n");
-                            }
-
-                            if (finalGolVisitante) {
-                                int golesvisitante = golesVisitante.incrementAndGet();
-                                marcadorEq2.setText(Integer.toString(golesvisitante));
-                                texto.appendText("¡Gol! " + nombreVisitante + "\n");
-                            } else {
-                                texto.appendText("... " + nombreVisitante + " jugada\n");
-                            }
-                        }
-                    });
-                } else {
-                    golesTimeline.pause(); // Pausar el timeline una vez que se haya alcanzado la duración del partido
-                }
-            }
-        }));
-
-        golesTimeline.setCycleCount(Timeline.INDEFINITE); // Repetir el timeline indefinidamente hasta que se detenga explícitamente
-
-    }
-
     public void cambioNombre() {
         switch (nombre) {
             case "madrid":
@@ -419,7 +348,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 nombre = "Manchester City";
                 break;
             case "arsenal":
-                nombre = "Manchester City";
+                nombre = "Arsenal";
                 break;
             case "bayern":
                 nombre = "Bayern Munich";
@@ -456,7 +385,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 visitante = "Manchester City";
                 break;
             case "arsenal":
-                visitante = "Manchester City";
+                visitante = "Arsenal";
                 break;
             case "bayern":
                 visitante = "Bayern Munich";

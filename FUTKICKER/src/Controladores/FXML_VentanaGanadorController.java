@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import static Controladores.FXML_VistaTemporadaController.nombre;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,7 +49,10 @@ public class FXML_VentanaGanadorController implements Initializable {
         fondo.setImage(fondoGIF);
         winnerGIF.setImage(winner);
         
-        
+        cambioNombre();
+                FXML_VentanaPartidoController.ht.interrupt();
+
+        FXML_VentanaPartidoController.hp.interrupt();
         
     }    
 
@@ -77,6 +81,43 @@ public class FXML_VentanaGanadorController implements Initializable {
 
         
         
+    }
+    
+    public void cambioNombre() {
+        switch (nombre) {
+            case "Real Madrid":
+                nombre = "madrid";
+                break;
+            case "Barcelona":
+                nombre = "barcelona";
+                break;
+            case "ManchesterCity":
+                nombre = "manchestercity";
+                break;
+            case "Arsenal":
+                nombre = "arsenal";
+                break;
+            case "Bayern Munich":
+                nombre = "bayern ";
+                break;
+            case "Real Betis":
+                nombre = "betis";
+                break;
+            case "Lazio":
+                nombre = "lazio";
+                break;
+            case "Sporting de Gijon":
+                nombre = "sporting";
+                break;
+            case "PSG":
+                nombre = "psg";
+                break;
+            case "Inter de Milan":
+                nombre = "inter de Milan";
+                break;
+            default:
+                break;
+        }
     }
     
 }

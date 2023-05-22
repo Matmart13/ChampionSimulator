@@ -7,6 +7,8 @@ package Controladores;
 
 import Auxiliares.Sonido;
 import Auxiliares.SonidoManager;
+import static ChampionsSimulator.ChampionSimulator.Musica;
+import static ChampionsSimulator.ChampionSimulator.sonido;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,9 +49,7 @@ public class FXML_VentanaInicioController implements Initializable {
     @FXML
     private Button botonSiguiente;
     
-    static String Musica = "Background";
-    static SonidoManager SM;
-    static Sonido sonido;
+   
     
     
 
@@ -63,31 +63,9 @@ public class FXML_VentanaInicioController implements Initializable {
         fondoImagen.setImage(fondo);
         Logo.setImage(logo);
         
-           //Para crear todos los sonidos
-        SM = SonidoManager.getInstance();
-        try {
-            creacionSonidos(SM);
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //Inicio la musica, se recoge el sonido que quieres poniendo la clave que pusiste 
-        sonido= SM.getSonido("Background");
-        sonido.ReproducirSonido();
-        
-        
+   
     }
-    public void creacionSonidos(SonidoManager _m) throws UnsupportedAudioFileException, LineUnavailableException, IOException{
-        _m.createSonido("Background","src\\Musica\\musicaMenu.wav");
-        _m.createSonido("Background2","src\\Musica\\Cancion1.mp3");
-        _m.createSonido("Background3","src\\Musica\\Cancion2.mp3");
-        _m.createSonido("Background4","src\\Musica\\Cancion3.mp3");
-        _m.createSonido("FondoPartido","src\\Musica\\SonidoFondoPartido.mp3");
-        _m.createSonido("Victoria","src\\Musica\\Victoria.mp3");
-    }
+ 
     
     
 
@@ -130,18 +108,28 @@ public class FXML_VentanaInicioController implements Initializable {
 
     @FXML
     private void pasarcanción(ActionEvent event) {
-       if(Musica.equals("Background")){
-        Musica= "Background2";
-      }
-       else if(Musica.equals("Background2")){
-       Musica="Background3";
-    }
-     else if(Musica.equals("Background3")){
-       Musica="Background";
-    }
-       
-       SM.getSonido(Musica);
-       sonido.ReproducirSonido();
-
+        sonido.PararSonido();
+        sonido.reset();
+        switch (Musica) {
+            case "Background":
+                Musica= "Background2";
+                break;
+            case "Background2":
+                Musica="Background3";
+                break;
+            case "Background3":
+                Musica="Background4";
+                break;
+            case "Background4":
+                Musica="Background";
+                break;
+            default:
+                break;
+        }
+     
+    
+      sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+      sonido.ReproducirSonido();
+   
     }
 }
