@@ -80,5 +80,6 @@ public class ChampionSimulator extends Application {
         _m.createSonido("Background4","src\\Musica\\Cancion3.wav");
         _m.createSonido("FondoPartido","src\\Musica\\SonidoFondoPartido.wav");
         _m.createSonido("Victoria","src\\Musica\\Victoria.wav");
+        _m.createSonido("Silbato","src\\Musica\\SILBATO.wav");
     }
 }

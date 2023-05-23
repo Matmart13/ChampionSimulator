@@ -21,6 +21,8 @@ import javafx.scene.image.ImageView;
 import Auxiliares.Conexiones;
 import Auxiliares.Sonido;
 import Auxiliares.SonidoManager;
+import static ChampionsSimulator.ChampionSimulator.Musica;
+import static ChampionsSimulator.ChampionSimulator.sonido;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Modelo.Equipo;
@@ -106,6 +108,10 @@ public class FXML_VistaTemporadaController implements Initializable {
     static ObservableList<Equipo> Eqlist;
     @FXML
     private Button Menu;
+    @FXML
+    private Button botonSiguiente;
+    @FXML
+    private Button botonMute;
 
     /**
      * Initializes the controller class.
@@ -115,6 +121,7 @@ public class FXML_VistaTemporadaController implements Initializable {
         // TODO
 
         fondoTemporada.setImage(fondo);
+        colocarImagenBotones();
         this.NombreE.setCellValueFactory(new PropertyValueFactory("Nombre"));
         this.Victorias.setCellValueFactory(new PropertyValueFactory("Victorias"));
         this.Derrotas.setCellValueFactory(new PropertyValueFactory("Derrotas"));
@@ -187,6 +194,11 @@ public class FXML_VistaTemporadaController implements Initializable {
     private void FuncionIniciar(ActionEvent event) {
         Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
         myStage.close();
+        
+        sonido.PararSonido();
+        sonido.reset();
+        
+        
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
 
@@ -361,4 +373,51 @@ public class FXML_VistaTemporadaController implements Initializable {
         
     }
 
+ 
+    @FXML
+    private void pasarcanción(ActionEvent event) {
+        sonido.PararSonido();
+        sonido.reset();
+        switch (Musica) {
+            case "Background":
+                Musica= "Background2";
+                break;
+            case "Background2":
+                Musica="Background3";
+                break;
+            case "Background3":
+                Musica="Background4";
+                break;
+            case "Background4":
+                Musica="Background";
+                break;
+            default:
+                break;
+        }
+     
+    
+      sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+      sonido.ReproducirSonido();
+   
+    }
+
+    @FXML
+    private void mute(ActionEvent event) {
+        sonido.PararSonido();
+        sonido.reset();
+        
+    }
+    
+    private void colocarImagenBotones(){
+    URL playFoto= getClass().getResource("/Imagenes/Play.png");
+    URL muteFoto= getClass().getResource("/Imagenes/Mute.png");
+    
+    Image play= new Image(playFoto.toString(),45,45,false,true);
+    Image mute= new Image(muteFoto.toString(),45,45,false,true);
+    
+    botonMute.setGraphic(new ImageView(mute));
+    botonSiguiente.setGraphic(new ImageView(play));
+            
+    }
+    
 }

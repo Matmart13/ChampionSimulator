@@ -48,6 +48,8 @@ public class FXML_VentanaInicioController implements Initializable {
     private ImageView Logo;
     @FXML
     private Button botonSiguiente;
+    @FXML
+    private Button botonMute;
     
    
     
@@ -62,6 +64,7 @@ public class FXML_VentanaInicioController implements Initializable {
         Image logo = new Image("/Imagenes/Logo.png");
         fondoImagen.setImage(fondo);
         Logo.setImage(logo);
+        colocarImagenBotones();
         
    
     }
@@ -132,4 +135,24 @@ public class FXML_VentanaInicioController implements Initializable {
       sonido.ReproducirSonido();
    
     }
+
+    @FXML
+    private void mute(ActionEvent event) {
+        sonido.PararSonido();
+        sonido.reset();
+        
+    }
+    
+    private void colocarImagenBotones(){
+    URL playFoto= getClass().getResource("/Imagenes/Play.png");
+    URL muteFoto= getClass().getResource("/Imagenes/Mute.png");
+    
+    Image play= new Image(playFoto.toString(),45,45,false,true);
+    Image mute= new Image(muteFoto.toString(),45,45,false,true);
+    
+    botonMute.setGraphic(new ImageView(mute));
+    botonSiguiente.setGraphic(new ImageView(play));
+            
+    }
+    
 }

@@ -31,7 +31,15 @@
             <Glow level="0.87" />
          </effect></Button>
       <ImageView fx:id="Logo" fitHeight="312.0" fitWidth="500.0" layoutX="202.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="botonSiguiente" layoutX="755.0" layoutY="547.0" mnemonicParsing="false" onAction="#pasarcanción" prefHeight="26.0" prefWidth="81.0">
+      <Button fx:id="botonSiguiente" layoutX="657.0" layoutY="547.0" mnemonicParsing="false" onAction="#pasarcanción" prefHeight="26.0" prefWidth="81.0">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.87" />
+         </effect>
+      </Button>
+      <Button fx:id="botonMute" layoutX="754.0" layoutY="547.0" mnemonicParsing="false" onAction="#mute" prefHeight="70.0" prefWidth="81.0">
          <font>
             <Font name="Impact" size="35.0" />
          </font>

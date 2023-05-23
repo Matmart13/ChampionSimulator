@@ -70,5 +70,21 @@
             <Glow level="0.8" />
          </effect>
       </Button>
+      <Button fx:id="botonSiguiente" layoutX="507.0" layoutY="720.0" mnemonicParsing="false" onAction="#pasarcanción" prefHeight="26.0" prefWidth="81.0">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.87" />
+         </effect>
+      </Button>
+      <Button fx:id="botonMute" layoutX="604.0" layoutY="720.0" mnemonicParsing="false" onAction="#mute" prefHeight="70.0" prefWidth="81.0">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.87" />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

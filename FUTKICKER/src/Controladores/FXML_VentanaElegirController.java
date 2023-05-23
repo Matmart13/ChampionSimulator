@@ -5,6 +5,8 @@
  */
 package Controladores;
 
+import static ChampionsSimulator.ChampionSimulator.Musica;
+import static ChampionsSimulator.ChampionSimulator.sonido;
 import Modelo.Equipo;
 import java.io.IOException;
 import java.net.URL;
@@ -77,6 +79,10 @@ public class FXML_VentanaElegirController implements Initializable {
     private ImageView EstrellasPSG;
     @FXML
     private ImageView EstrellasLazio;
+    @FXML
+    private Button botonSiguiente;
+    @FXML
+    private Button botonMute;
 
     /**
      * Initializes the controller class.
@@ -86,6 +92,7 @@ public class FXML_VentanaElegirController implements Initializable {
         Image fondoImagen = new Image("/Imagenes/campo.jpg");
         fondo.setImage(fondoImagen);
 
+        colocarImagenBotones();
         Image estrellas = new Image("/Imagenes/estrellas.gif", 200, 200, false, true);
         Image tres = new Image("/Imagenes/tresEstrellas.png", 100, 30, false, true);
         Image cuatro = new Image("/Imagenes/cuatroEstrellas.png", 100, 20, false, true);
@@ -388,4 +395,51 @@ public class FXML_VentanaElegirController implements Initializable {
         }
     }
 
+  
+    @FXML
+    private void pasarcanción(ActionEvent event) {
+        sonido.PararSonido();
+        sonido.reset();
+        switch (Musica) {
+            case "Background":
+                Musica= "Background2";
+                break;
+            case "Background2":
+                Musica="Background3";
+                break;
+            case "Background3":
+                Musica="Background4";
+                break;
+            case "Background4":
+                Musica="Background";
+                break;
+            default:
+                break;
+        }
+     
+    
+      sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+      sonido.ReproducirSonido();
+   
+    }
+
+    @FXML
+    private void mute(ActionEvent event) {
+        sonido.PararSonido();
+        sonido.reset();
+        
+    }
+    
+    private void colocarImagenBotones(){
+    URL playFoto= getClass().getResource("/Imagenes/Play.png");
+    URL muteFoto= getClass().getResource("/Imagenes/Mute.png");
+    
+    Image play= new Image(playFoto.toString(),45,45,false,true);
+    Image mute= new Image(muteFoto.toString(),45,45,false,true);
+    
+    botonMute.setGraphic(new ImageView(mute));
+    botonSiguiente.setGraphic(new ImageView(play));
+            
+    }
+    
 }

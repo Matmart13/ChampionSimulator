@@ -102,6 +102,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         background.PararSonido();
         ht = new HiloTiempo(Temporizador);
         hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEq1, marcadorEq2, ht);
+        
+ 
 
         try {
             getEquipos(equiposjugar);

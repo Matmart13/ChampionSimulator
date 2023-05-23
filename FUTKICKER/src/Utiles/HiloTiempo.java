@@ -5,6 +5,8 @@
  */
 package Utiles;
 
+import static ChampionsSimulator.ChampionSimulator.Musica;
+import static ChampionsSimulator.ChampionSimulator.sonido;
 import Controladores.FXML_VentanaGanadorController;
 import Controladores.FXML_VentanaInicioController;
 import java.io.IOException;
@@ -49,7 +51,21 @@ public class HiloTiempo extends Thread {
     @Override
     public void run() {
         // TODO Auto-generated method stub
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.15), event -> {
+        
+           Musica="Silbato";
+           sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+           sonido.ReproducirSonido();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HiloTiempo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           sonido.PararSonido();
+           sonido.reset();
+           Musica="FondoPartido";
+           sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+           sonido.ReproducirSonido();
+            timeline = new Timeline(new KeyFrame(Duration.seconds(0.15), event -> {
             count++;
             label.setText(Integer.toString(count));
 
@@ -67,12 +83,22 @@ public class HiloTiempo extends Thread {
 
                         Optional<ButtonType> result = a.showAndWait();
                         if (result.isPresent() && result.get() == botonSeguir) {
+
                             synchronized (timeline) {
+
                                 timeline.notify();
                                 timeline.play();
+                                sonido.PararSonido();
+                                Musica="Silbato";
+                                sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+                                sonido.ReproducirSonido();
+                                Musica="FondoPartido";
+                                sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+                                sonido.ReproducirSonido();
                             }
                             count = 0;
                             label.setText(Integer.toString(count));
+
                         }
                     });
                 } else if (label.getText().equals(String.valueOf(max)) && countParte == 1) {
@@ -81,6 +107,12 @@ public class HiloTiempo extends Thread {
                         Stage myStage = (Stage) label.getScene().getWindow();
                         myStage.close();
                         try {
+                            sonido.PararSonido();
+                            sonido.reset();
+                            Musica="Victoria";
+                            sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+                            sonido.ReproducirSonido();
+                    
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaGanador.fxml"));
 
                             Parent root = loader.load();
@@ -94,7 +126,12 @@ public class HiloTiempo extends Thread {
                             stage.initModality(Modality.APPLICATION_MODAL);
                             stage.setScene(scene);
                             stage.show();
-
+                            try {
+                                Thread.sleep(4000);
+                             } catch (InterruptedException ex) {
+                             Logger.getLogger(HiloTiempo.class.getName()).log(Level.SEVERE, null, ex);
+                                   }
+                              sonido.reset();
                         } catch (IOException ex) {
                             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
                         }

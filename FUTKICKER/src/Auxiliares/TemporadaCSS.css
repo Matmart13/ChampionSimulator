@@ -96,3 +96,42 @@
   -fx-text-fill: black;
   -fx-border-color: black;
 }
+
+
+#botonSiguiente{
+      -fx-background-color:white;
+    
+}
+
+#botonMute{
+      -fx-background-color:white;
+    
+}
+
+
+#botonMute:hover{
+      -fx-background-color:#F43535;
+       -fx-scale-x: 1.0;
+       -fx-scale-y: 1.0;
+}
+
+#botonSiguiente:hover{
+     -fx-background-color:#DBD0D0;
+       -fx-scale-x: 1.0;
+     -fx-scale-y: 1.0;
+    
+}
+
+#botonSiguiente:pressed{
+     -fx-background-color:#DBD0D0;
+       -fx-scale-x: 0.9;
+     -fx-scale-y: 0.9;
+    
+}
+#botonMute:pressed{
+     -fx-background-color:#F43535;
+       -fx-scale-x: 0.9;
+     -fx-scale-y: 0.9;
+    
+}
+

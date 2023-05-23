@@ -3,37 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Utiles/HiloTiempo.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Vistas/FXML_VentanaElegir.fxml</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ChamionSimulatorTest/ChampionSImulatorTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Modelo/Equipo.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/SonidoManager.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaPartidoController.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Modelo/Partidos.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Vistas/FXML_VentanaPartido.fxml</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ControladoresTest/FXML_VentanaPartidoController.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Modelo/Jugador.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ModeloTest/JugadorTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/Conexiones.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaElegirController.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Vistas/FXML_VentanaTemporada.fxml</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/UtilesTest/HiloTiempoTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/Sonido.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaInicioController.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ControladoresTest/FXML_VistaTemporadaControllerTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Vistas/FXML_VentanaInicio.fxml</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ModeloTest/EquipoTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ModeloTest/PartidoTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VistaTemporadaController.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ControladoresTest/FXML_VentanaInicioControllerTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/AuxiliaresTest/ConexionesTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/AuxiliaresTest/SonidoTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/ChampionsSimulator/ChampionSimulator.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/ControladoresTest/FXML_VentanaElegirControllerTest.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/ElegirCSS.css</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaGanadorController.java</file>
-            <file>file:/C:/Users/marti/Documents/GitHub/ChampionSimulator/FUTKICKER/test/AuxiliaresTest/SonidoManagerTest.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/TemporadaCSS.css</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/GanadorCSS.css</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/SonidoManager.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Utiles/HiloTiempo.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/ChampionsSimulator/ChampionSimulator.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaPartidoController.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/ElegirCSS.css</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaInicioController.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/InicioCSS.css</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaElegirController.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VistaTemporadaController.java</file>
         </group>
     </open-files>
 </project-private>
