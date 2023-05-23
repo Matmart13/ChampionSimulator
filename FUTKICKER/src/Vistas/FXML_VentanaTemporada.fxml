@@ -30,14 +30,14 @@
          <effect>
             <Glow level="0.8" />
          </effect></Button>
-      <Button fx:id="Salir" layoutX="724.0" layoutY="570.0" mnemonicParsing="false" onAction="#FuncionSalir" prefHeight="70.0" prefWidth="261.0" text="Salir">
+      <Button fx:id="Salir" layoutX="724.0" layoutY="650.0" mnemonicParsing="false" onAction="#FuncionSalir" prefHeight="70.0" prefWidth="261.0" text="Salir">
          <font>
             <Font name="Impact" size="35.0" />
          </font>
          <effect>
             <Glow level="0.8" />
          </effect></Button>
-      <ImageView fx:id="EscudoEquipo" fitHeight="229.0" fitWidth="297.0" layoutX="121.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EscudoEquipo" fitHeight="229.0" fitWidth="297.0" layoutX="141.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
       <TableView fx:id="Jugadores" layoutX="79.0" layoutY="265.0" prefHeight="516.0" prefWidth="368.0">
         <columns>
           <TableColumn fx:id="NombreJugador" prefWidth="117.0" text="Nombre" />
@@ -62,5 +62,29 @@
             <Glow level="0.8" />
          </effect>
       </Label>
+      <Button fx:id="Menu" layoutX="724.0" layoutY="570.0" mnemonicParsing="false" onAction="#FuncionMenu" prefHeight="70.0" prefWidth="261.0" text="Menu">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.8" />
+         </effect>
+      </Button>
+      <Button fx:id="botonSiguiente" layoutX="507.0" layoutY="720.0" mnemonicParsing="false" onAction="#pasarcanción" prefHeight="26.0" prefWidth="81.0">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.87" />
+         </effect>
+      </Button>
+      <Button fx:id="botonMute" layoutX="604.0" layoutY="720.0" mnemonicParsing="false" onAction="#mute" prefHeight="70.0" prefWidth="81.0">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.87" />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

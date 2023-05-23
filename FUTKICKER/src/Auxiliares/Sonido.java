@@ -40,4 +40,7 @@ public class Sonido {
     public void PararSonido(){
         clip.stop();
     }
+    public void reset(){
+        clip.setMicrosecondPosition(0);
+    }
 }

@@ -116,6 +116,22 @@
       <ImageView fx:id="EstrellasArsenal" fitHeight="24.0" fitWidth="176.0" layoutX="855.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="EstrellasPSG" fitHeight="24.0" fitWidth="176.0" layoutX="863.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="EstrellasLazio" fitHeight="24.0" fitWidth="176.0" layoutX="856.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="botonSiguiente" layoutX="891.0" layoutY="734.0" mnemonicParsing="false" onAction="#pasarcanción" prefHeight="26.0" prefWidth="81.0">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.87" />
+         </effect>
+      </Button>
+      <Button fx:id="botonMute" layoutX="988.0" layoutY="734.0" mnemonicParsing="false" onAction="#mute" prefHeight="70.0" prefWidth="81.0">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.87" />
+         </effect>
+      </Button>
    </children>
    <effect>
       <ColorAdjust brightness="0.02" />
