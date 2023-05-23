@@ -5,11 +5,13 @@
  */
 package Controladores;
 
+import Auxiliares.Conexiones;
 import static ChampionsSimulator.ChampionSimulator.Musica;
 import static ChampionsSimulator.ChampionSimulator.sonido;
 import static Controladores.FXML_VistaTemporadaController.nombre;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,21 +52,18 @@ public class FXML_VentanaGanadorController implements Initializable {
         Image fondoGIF = new Image("Imagenes/Fondo ganador.gif");
         fondo.setImage(fondoGIF);
         winnerGIF.setImage(winner);
-        
-        cambioNombre();
-                FXML_VentanaPartidoController.ht.interrupt();
 
-        FXML_VentanaPartidoController.hp.interrupt();
-        
-    }    
+    }
 
     @FXML
     private void regresoTemporada(ActionEvent event) {
+            cambioNombre();
         Stage myStage = (Stage) this.botonRegreso.getScene().getWindow();
         myStage.close();
-        Musica= "Background";
-      sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
-      sonido.ReproducirSonido();
+        Musica = "Background";
+        sonido = ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+        sonido.ReproducirSonido();
+     
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
 
@@ -78,16 +77,15 @@ public class FXML_VentanaGanadorController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.setResizable(false);
-            stage.showAndWait();
+           
+            stage.show();
 
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaGanadorController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
-        
     }
-    
+
     public void cambioNombre() {
         switch (nombre) {
             case "Real Madrid":
@@ -118,11 +116,21 @@ public class FXML_VentanaGanadorController implements Initializable {
                 nombre = "psg";
                 break;
             case "Inter de Milan":
-                nombre = "inter de Milan";
+                nombre = "inter";
                 break;
             default:
                 break;
         }
     }
-    
+
+    public void actualizarTabla() throws SQLException {
+         Auxiliares.Conexiones conexion = new Conexiones();
+        for (int i = 0; FXML_VistaTemporadaController.Eqlist.size() < 10; i++) {
+            
+        }
+        
+        
+        
+
+    }
 }

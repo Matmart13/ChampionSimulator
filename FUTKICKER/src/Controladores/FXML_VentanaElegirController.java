@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author marti
+ * @author martin
  */
 public class FXML_VentanaElegirController implements Initializable {
 
@@ -346,6 +346,7 @@ public class FXML_VentanaElegirController implements Initializable {
     @FXML
     private void escogerBayern(ActionEvent event) {
         nombre = "bayern";
+        
         Stage myStage = (Stage) this.BAYERN.getScene().getWindow();
         myStage.close();
         try {
