@@ -391,6 +391,8 @@ public class FXML_VistaTemporadaController implements Initializable {
             case "Background4":
                 Musica="Background";
                 break;
+            case "Victoria":
+                Musica="Background";
             default:
                 break;
         }

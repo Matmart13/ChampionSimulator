@@ -37,7 +37,7 @@
          <effect>
             <Glow level="0.8" />
          </effect></Button>
-      <ImageView fx:id="EscudoEquipo" fitHeight="229.0" fitWidth="297.0" layoutX="121.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EscudoEquipo" fitHeight="229.0" fitWidth="297.0" layoutX="141.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
       <TableView fx:id="Jugadores" layoutX="79.0" layoutY="265.0" prefHeight="516.0" prefWidth="368.0">
         <columns>
           <TableColumn fx:id="NombreJugador" prefWidth="117.0" text="Nombre" />

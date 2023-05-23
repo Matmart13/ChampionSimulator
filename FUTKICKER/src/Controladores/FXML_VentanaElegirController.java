@@ -413,6 +413,8 @@ public class FXML_VentanaElegirController implements Initializable {
             case "Background4":
                 Musica="Background";
                 break;
+            case "Victoria":
+                Musica="Background";
             default:
                 break;
         }

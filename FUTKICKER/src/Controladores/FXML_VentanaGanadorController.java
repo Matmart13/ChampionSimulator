@@ -5,6 +5,8 @@
  */
 package Controladores;
 
+import static ChampionsSimulator.ChampionSimulator.Musica;
+import static ChampionsSimulator.ChampionSimulator.sonido;
 import static Controladores.FXML_VistaTemporadaController.nombre;
 import java.io.IOException;
 import java.net.URL;
@@ -60,6 +62,9 @@ public class FXML_VentanaGanadorController implements Initializable {
     private void regresoTemporada(ActionEvent event) {
         Stage myStage = (Stage) this.botonRegreso.getScene().getWindow();
         myStage.close();
+        Musica= "Background";
+      sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+      sonido.ReproducirSonido();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaTemporada.fxml"));
 

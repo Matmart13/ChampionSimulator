@@ -126,12 +126,8 @@ public class HiloTiempo extends Thread {
                             stage.initModality(Modality.APPLICATION_MODAL);
                             stage.setScene(scene);
                             stage.show();
-                            try {
-                                Thread.sleep(4000);
-                             } catch (InterruptedException ex) {
-                             Logger.getLogger(HiloTiempo.class.getName()).log(Level.SEVERE, null, ex);
-                                   }
-                              sonido.reset();
+                           
+                         
                         } catch (IOException ex) {
                             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -141,6 +137,7 @@ public class HiloTiempo extends Thread {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+        sonido.reset();
     }
 
     public static Timeline getTimeline() {
@@ -151,5 +148,5 @@ public class HiloTiempo extends Thread {
     public int getTiempoTranscurrido() {
         return count;
     }
-
+  
 }
