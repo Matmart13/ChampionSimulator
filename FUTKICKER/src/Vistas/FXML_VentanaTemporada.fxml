@@ -86,5 +86,10 @@
             <Glow level="0.87" />
          </effect>
       </Button>
+      <Button fx:id="BottonConvocar" layoutX="464.0" layoutY="620.0" mnemonicParsing="false" onAction="#Convocar" prefHeight="37.0" prefWidth="123.0" text="CONVOCAR">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

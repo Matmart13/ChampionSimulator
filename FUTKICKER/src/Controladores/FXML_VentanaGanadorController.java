@@ -77,7 +77,7 @@ public class FXML_VentanaGanadorController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.setResizable(false);
-           
+            
             stage.show();
 
         } catch (IOException ex) {

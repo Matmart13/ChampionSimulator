@@ -31,8 +31,10 @@ import Modelo.Partidos;
 import com.sun.javafx.collections.ElementObservableListDecorator;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -112,6 +114,8 @@ public class FXML_VistaTemporadaController implements Initializable {
     private Button botonSiguiente;
     @FXML
     private Button botonMute;
+    @FXML
+    private Button BottonConvocar;
 
     /**
      * Initializes the controller class.
@@ -194,11 +198,10 @@ public class FXML_VistaTemporadaController implements Initializable {
     private void FuncionIniciar(ActionEvent event) {
         Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
         myStage.close();
-        
+
         sonido.PararSonido();
         sonido.reset();
-        
-        
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
 
@@ -212,7 +215,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
-            stage.show();
+            stage.showAndWait();
 
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
@@ -315,7 +318,6 @@ public class FXML_VistaTemporadaController implements Initializable {
 
     }
 
-    
     public void getPartidosTemporada() throws SQLException {
         if (partidosTotales.isEmpty()) {
             // Recoger los partidos totales solo si la lista está vacía
@@ -333,13 +335,29 @@ public class FXML_VistaTemporadaController implements Initializable {
             conexion.cerrarConexion();
         }
 
-        // Seleccionar los partidos para esta instancia de la ventana
-        while (partidosSeleccionados.size() <= 5 && !partidosTotales.isEmpty()) {
+        Set<String> equiposSeleccionados = new HashSet<>();
+
+        while (partidosSeleccionados.size() <= 4 && !partidosTotales.isEmpty()) {
             // Obtener un partido aleatorio de la lista de partidos totales
             Random random = new Random();
             int index = random.nextInt(partidosTotales.size());
-            Partidos partidoSeleccionado = partidosTotales.remove(index);
-            partidosSeleccionados.add(partidoSeleccionado);
+            Partidos partidoSeleccionado = partidosTotales.get(index);
+
+            // Verificar si el equipo local y el equipo visitante ya están seleccionados
+            boolean localRepetido = equiposSeleccionados.contains(partidoSeleccionado.getLocal());
+            boolean visitanteRepetido = equiposSeleccionados.contains(partidoSeleccionado.getVisitante());
+
+            if (!localRepetido && !visitanteRepetido) {
+                // Ni el equipo local ni el equipo visitante están repetidos, agregar el partido a partidosSeleccionados
+                partidosSeleccionados.add(partidoSeleccionado);
+
+                // Agregar los equipos a la lista de equipos seleccionados
+                equiposSeleccionados.add(partidoSeleccionado.getLocal());
+                equiposSeleccionados.add(partidoSeleccionado.getVisitante());
+            }
+
+            // Eliminar el partido seleccionado de partidosTotales sin importar si se agrega o no
+            partidosTotales.remove(index);
         }
 
         // Agregar los partidos seleccionados a ListaTemporada
@@ -348,8 +366,8 @@ public class FXML_VistaTemporadaController implements Initializable {
 
     @FXML
     private void FuncionMenu(ActionEvent event) {
-        
-          Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
+
+        Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
         myStage.close();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
@@ -369,57 +387,88 @@ public class FXML_VistaTemporadaController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
 
- 
     @FXML
     private void pasarcanción(ActionEvent event) {
         sonido.PararSonido();
         sonido.reset();
         switch (Musica) {
             case "Background":
-                Musica= "Background2";
+                Musica = "Background2";
                 break;
             case "Background2":
-                Musica="Background3";
+                Musica = "Background3";
                 break;
             case "Background3":
-                Musica="Background4";
+                Musica = "Background4";
                 break;
             case "Background4":
-                Musica="Background";
+                Musica = "Background";
                 break;
             case "Victoria":
-                Musica="Background";
+                Musica = "Background";
             default:
                 break;
         }
-     
-    
-      sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
-      sonido.ReproducirSonido();
-   
+
+        sonido = ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+        sonido.ReproducirSonido();
+
     }
 
     @FXML
     private void mute(ActionEvent event) {
         sonido.PararSonido();
         sonido.reset();
+
+    }
+
+    private void colocarImagenBotones() {
+        URL playFoto = getClass().getResource("/Imagenes/Play.png");
+        URL muteFoto = getClass().getResource("/Imagenes/Mute.png");
+
+        Image play = new Image(playFoto.toString(), 45, 45, false, true);
+        Image mute = new Image(muteFoto.toString(), 45, 45, false, true);
+
+        botonMute.setGraphic(new ImageView(mute));
+        botonSiguiente.setGraphic(new ImageView(play));
+
+    }
+
+    @FXML
+    private void Convocar(ActionEvent event) throws SQLException {
+        String recoger;
+        Conexiones co = new Conexiones();
+        TableView.TableViewSelectionModel<Jugador> selectionModel = Jugadores.getSelectionModel();
+        Jugador objetoSeleccionado = selectionModel.getSelectedItem();
+
+        if(objetoSeleccionado.equals("1")){
+        //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
+        if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
+            recoger = nombre.substring(0, 4);
+                  co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 0 where " + recoger+"_id");
+                getTodosJugadores(nombre);
+        }else{
+             recoger = nombre.substring(0, 3);
+                  co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 0 where " + recoger+"_id");
+                getTodosJugadores(nombre);
+        }     
+              
+        }else{
+         if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
+            recoger = nombre.substring(0, 4);
+              co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 1 where " + recoger+"_id");
+              getTodosJugadores(nombre);
+        }else{
+             recoger = nombre.substring(0, 3);
+                  co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 1 where " + recoger+"_id");
+                getTodosJugadores(nombre);
+        }  
+        }
+      
         
     }
-    
-    private void colocarImagenBotones(){
-    URL playFoto= getClass().getResource("/Imagenes/Play.png");
-    URL muteFoto= getClass().getResource("/Imagenes/Mute.png");
-    
-    Image play= new Image(playFoto.toString(),45,45,false,true);
-    Image mute= new Image(muteFoto.toString(),45,45,false,true);
-    
-    botonMute.setGraphic(new ImageView(mute));
-    botonSiguiente.setGraphic(new ImageView(play));
-            
-    }
-    
+
 }
