@@ -440,35 +440,40 @@ public class FXML_VistaTemporadaController implements Initializable {
     @FXML
     private void Convocar(ActionEvent event) throws SQLException {
         String recoger;
+        String ejecucion;
         Conexiones co = new Conexiones();
         TableView.TableViewSelectionModel<Jugador> selectionModel = Jugadores.getSelectionModel();
         Jugador objetoSeleccionado = selectionModel.getSelectedItem();
 
-        if(objetoSeleccionado.equals("1")){
-        //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
-        if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
-            recoger = nombre.substring(0, 4);
-                  co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 0 where " + recoger+"_id");
+        if (objetoSeleccionado.getTitular()==1) {
+            //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
+            if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
+                recoger = nombre.substring(0, 4);
+                ejecucion = "UPDATE " + nombre + " SET Titular = " + 0 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
+                co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
-        }else{
-             recoger = nombre.substring(0, 3);
-                  co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 0 where " + recoger+"_id");
+            } else {
+                recoger = nombre.substring(0, 3);
+                ejecucion = "UPDATE " + nombre + " SET Titular = " + 0 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
+                co.ejecutarInstruccion(ejecucion);
+                System.out.println(ejecucion);
                 getTodosJugadores(nombre);
-        }     
-              
-        }else{
-         if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
-            recoger = nombre.substring(0, 4);
-              co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 1 where " + recoger+"_id");
-              getTodosJugadores(nombre);
-        }else{
-             recoger = nombre.substring(0, 3);
-                  co.ejecutarInstruccion("UPDATE "+nombre+" SET Titular= 1 where " + recoger+"_id");
+            }
+
+        } else {
+            if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
+                recoger = nombre.substring(0, 4);
+               ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
+                     co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
-        }  
+            } else {
+                recoger = nombre.substring(0, 3);
+                ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
+                co.ejecutarInstruccion(ejecucion);
+                getTodosJugadores(nombre);
+            }
         }
-      
-        
+
     }
 
 }
