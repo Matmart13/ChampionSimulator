@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.logging.Level;
@@ -41,6 +42,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -101,6 +104,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     static int equiposvstotal;
     static int random;
     static int rival;
+    int convocados=0;
     public static List<Partidos> partidosTotales;
     public static List<Partidos> partidosSeleccionados;
     public static List<Partidos> ListaTemporada;
@@ -196,12 +200,23 @@ public class FXML_VistaTemporadaController implements Initializable {
      */
     @FXML
     private void FuncionIniciar(ActionEvent event) {
+
+
+        if(convocados<11|| convocados>11){
+              Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+
+                        a.setTitle("Error");
+                        a.setHeaderText("Error, solo puede jugar con 11 jugadores convocados");
+                        ButtonType botonSeguir = new ButtonType("SEGUIR");
+                        a.getButtonTypes().setAll(botonSeguir);
+                        Optional<ButtonType> result = a.showAndWait();
+                      
+        }else{
         Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
         myStage.close();
 
         sonido.PararSonido();
         sonido.reset();
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
 
@@ -220,7 +235,7 @@ public class FXML_VistaTemporadaController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        }
     }
 
     /**
@@ -452,12 +467,16 @@ public class FXML_VistaTemporadaController implements Initializable {
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 0 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
+                convocados--;
+                  System.out.println(convocados);
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 0 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
                 co.ejecutarInstruccion(ejecucion);
                 System.out.println(ejecucion);
                 getTodosJugadores(nombre);
+                convocados--;
+                System.out.println(convocados);
             }
 
         } else {
@@ -466,11 +485,15 @@ public class FXML_VistaTemporadaController implements Initializable {
                ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
                      co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
+                convocados++;
+                  System.out.println(convocados);
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
+                convocados++;
+                  System.out.println(convocados);
             }
         }
 
