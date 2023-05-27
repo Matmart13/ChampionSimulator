@@ -5,14 +5,17 @@
         <group>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/TemporadaCSS.css</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/GanadorCSS.css</file>
-            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/SonidoManager.java</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Utiles/HiloTiempo.java</file>
-            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/ChampionsSimulator/ChampionSimulator.java</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaPartidoController.java</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/ElegirCSS.css</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaGanadorController.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/SonidoManager.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/ChampionsSimulator/ChampionSimulator.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Utiles/HiloPartido.java</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/Conexiones.java</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaInicioController.java</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Auxiliares/InicioCSS.css</file>
+            <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Modelo/Equipo.java</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VentanaElegirController.java</file>
             <file>file:/C:/Users/pablo/OneDrive/Documentos/GitHub/ChampionSimulator/FUTKICKER/src/Controladores/FXML_VistaTemporadaController.java</file>
         </group>

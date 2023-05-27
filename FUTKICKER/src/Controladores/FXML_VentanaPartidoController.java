@@ -41,7 +41,7 @@ import javafx.util.Duration;
 /**
  * FXML Controller class
  *
- * @author marti
+ * @author martín y pablo
  */
 public class FXML_VentanaPartidoController extends Thread implements Initializable {
 
@@ -53,23 +53,19 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     private ImageView equipo1;
 
     @FXML
-    private Label marcadorEq2;
-    @FXML
     private ImageView equipo2;
-    @FXML
-    private Label marcadorEq1;
     @FXML
     private Label Temporizador;
 
     String nombreEquipo1;
-    static int estrellasEquipo1;
-    static int estrellasEquipo2;
+    int estrellasEquipo1;
+    int estrellasEquipo2;
     ArrayList<Equipo> equiposjugar;
 
     ArrayList<Partidos> EquiposSecun;
     @FXML
     private Label Temporizador1;
-    private TextField texto;
+
     String visitante;
     Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 60, 80, false, true);
     Image RMLogo = new Image("/Imagenes/Madrid.gif", 80, 80, false, true);
@@ -81,40 +77,42 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     Image bayernMunichLogo = new Image("/Imagenes/bayern.gif", 80, 80, false, true);
     Image LazioLogo = new Image("/Imagenes/lazio-logo.png", 80, 60, false, true);
     Image PSGLogo = new Image("/Imagenes/PSG.png", 80, 80, false, true);
+    public HiloTiempo ht;
+    public HiloPartido hp;
     @FXML
-    private TextField TextField;
-    public static HiloTiempo ht;
-   public static HiloPartido hp;
+    private TextArea Texto;
 
+    @FXML
+    private Label marcadorEquipo2;
+    @FXML
+    private Label marcadorEquipo1;
+
+    /**
+     * Sirve para sincronizar los hilos de esta ventana
+     */
+    @Override
+    public synchronized void start() {
+        super.start(); //To change body of generated methods, choose Tools | Templates.
+
+    }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         equiposjugar = new ArrayList<Equipo>();
         EquiposSecun = new ArrayList<Partidos>();
-        marcadorEq1 = new Label();
-        marcadorEq2 = new Label();
-        texto = new TextField();
         SonidoManager b = SonidoManager.getInstance();
         Sonido background = b.getSonido("Background");
         background.PararSonido();
-        ht = new HiloTiempo(Temporizador);
-        hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEq1, marcadorEq2, ht);
-        
- 
 
         try {
             getEquipos(equiposjugar);
-
-            //  recogerPartidosNoPrincipal();
         } catch (SQLException ex) {
             Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
         }
         Image vsFoto = new Image("/Imagenes/v1.png");
         Image fondo = new Image("/Imagenes/FondoPartido.png", 1100, 800, false, true);
-
         vs.setImage(vsFoto);
         fondoPartido.setImage(fondo);
         if (FXML_VistaTemporadaController.nombre.equals("madrid")) {
@@ -122,7 +120,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
-            cambioVisitante();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("barcelona")) {
@@ -130,36 +129,42 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+
         } else if (FXML_VistaTemporadaController.nombre.equals("bayern")) {
             equipo1.setImage(bayernMunichLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
-            cambioVisitante();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("psg")) {
             equipo1.setImage(PSGLogo);
             getVisitante();
             getEstrellasEquipos();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("lazio")) {
             equipo1.setImage(LazioLogo);
             getVisitante();
             getEstrellasEquipos();
-            cambioNombre();
-            cambioVisitante();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("betis")) {
             equipo1.setImage(BetisLogo);
             getVisitante();
             getEstrellasEquipos();
-            cambioNombre();
-            cambioVisitante();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("sporting")) {
@@ -167,6 +172,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("arsenal")) {
@@ -174,7 +181,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
-            cambioVisitante();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("manchestercity")) {
@@ -182,21 +190,29 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
-            cambioVisitante();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            
         } else if (FXML_VistaTemporadaController.nombre.equals("inter")) {
             equipo1.setImage(InterMilanLogo);
             getVisitante();
             getEstrellasEquipos();
             cambioNombre();
-            cambioVisitante();
+            ht = new HiloTiempo(Temporizador);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            
         }
-
     }
-
+    /**
+     * Este metodo realiza una consulta a la tabla equipos para recoger toda la informacion de todos los campos que contiene
+     * esta tabla y agregarlos a un Arraylist que se le pasa por parametro
+     * @param lista
+     * @throws SQLException 
+     */
     public void getEquipos(ArrayList<Equipo> lista) throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
         String sql = "Select * from equipos";
@@ -216,7 +232,10 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
 
         conexion.cerrarConexion();
     }
-
+    /**
+     * Este metodo sirve para recibir el visitante aleatorio que tiene que jugar contra nuestro equipo recoger sus estrellas y mostrar 
+     * su escudo en la pantalla.
+     */
     public void getVisitante() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
@@ -232,8 +251,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("barcelona")) {
                     equipo2.setImage(BarsaLogo);
-
                     cambioVisitante();
+
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -241,7 +260,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("bayern")) {
                     equipo2.setImage(bayernMunichLogo);
-
                     cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
@@ -294,8 +312,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("manchestercity")) {
                     equipo2.setImage(McityLogo);
-
-                    cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -315,29 +331,44 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         }
 
     }
-
+    /**
+     * Este metodo sirve para recoger las estrellas de los equipos tanto local como visitante.
+     */
     public void getEstrellasEquipos() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
                 visitante = ListaTemporada.get(i).getVisitante();
 
-                for (int j = 0; j < equiposjugar.size(); j++) {
+                for (int j = 0; j < ListaTemporada.size(); j++) {
                     if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
-                        estrellasEquipo1 = equiposjugar.get(j).getEstrellas();
-                        break;
+                        for (int k = 0; k < equiposjugar.size(); k++) {
+                            cambioNombre();
+                            if (equiposjugar.get(k).getNombre().equals(nombre) == true) {
+                                estrellasEquipo1 = equiposjugar.get(k).getEstrellas();
+                                break;
+                            }
+                        }
+
                     }
                 }
                 for (int v = 0; v < ListaTemporada.size(); v++) {
                     if (ListaTemporada.get(v).getVisitante().equals(visitante) == true) {
-                        estrellasEquipo2 = equiposjugar.get(v).getEstrellas();
-                        break;
+                        for (int k = 0; k < equiposjugar.size(); k++) {
+                            cambioVisitante();
+                            if (equiposjugar.get(k).getNombre().equals(visitante) == true) {
+                                estrellasEquipo2 = equiposjugar.get(k).getEstrellas();
+                                break;
+                            }
+                        }
                     }
-                }
 
+                }
             }
         }
     }
-
+    /**
+     * Sirve para cambiar el valor de la variable nombre
+     */
     public void cambioNombre() {
         switch (nombre) {
             case "madrid":
@@ -374,7 +405,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 break;
         }
     }
-
+    /**
+     * Sirve para cambiar el valor de la variable visitante
+     */
     public void cambioVisitante() {
         switch (visitante) {
             case "madrid":
@@ -410,6 +443,41 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             default:
                 System.out.println("No existe el equipo");
                 break;
+        }
+    }
+    /**
+     * Sirve para ir cambiando los goles segun van marcando goles.
+     */
+    public void setGOLESPARTIDO(){
+         for (int i = 0; i < ListaTemporada.size(); i++) {
+            if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
+                visitante = ListaTemporada.get(i).getVisitante();
+
+                for (int j = 0; j < ListaTemporada.size(); j++) {
+                    if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
+                        for (int k = 0; k < equiposjugar.size(); k++) {
+                            cambioNombre();
+                            if (equiposjugar.get(k).getNombre().equals(nombre) == true) {
+                              equiposjugar.get(k).setGoles(Integer.valueOf(marcadorEquipo1.getText()));
+                                break;
+                            }
+                        }
+
+                    }
+                }
+                for (int v = 0; v < ListaTemporada.size(); v++) {
+                    if (ListaTemporada.get(v).getVisitante().equals(visitante) == true) {
+                        for (int k = 0; k < equiposjugar.size(); k++) {
+                            cambioVisitante();
+                            if (equiposjugar.get(k).getNombre().equals(visitante) == true) {
+                                  equiposjugar.get(k).setGoles(Integer.valueOf(marcadorEquipo1.getText()));
+                                break;
+                            }
+                        }
+                    }
+
+                }
+            }
         }
     }
 }
