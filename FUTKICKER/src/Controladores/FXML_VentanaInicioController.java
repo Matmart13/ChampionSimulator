@@ -32,7 +32,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * FXML Controller class
  *
- * @author pablo
+ * @author martín y pablo
  */
 public class FXML_VentanaInicioController implements Initializable {
 
@@ -69,7 +69,10 @@ public class FXML_VentanaInicioController implements Initializable {
  
     
     
-
+    /**
+     * Este metodo sirve para que al pulsar el boton Inicio te lleve a la siguiente ventana que sera para elegir a tu equipo
+     * @param event 
+     */
     @FXML
     private void botonInicioClick(ActionEvent event) {
         Stage myStage = (Stage) this.botonInicio.getScene().getWindow();
@@ -95,14 +98,20 @@ public class FXML_VentanaInicioController implements Initializable {
 
     }
 
-
+    /**
+     * Este metodo sirve para cerrar la aplicación
+     * @param event 
+     */
     @FXML
     private void botonSalirClick(ActionEvent event) {
         Stage myStage = (Stage) this.botonSalir.getScene().getWindow();
         myStage.close();
 
     }
-
+    /**
+     * Este metodo sirve para pasar cancion al pulsar el boton play
+     * @param event 
+     */
     @FXML
     private void pasarcanción(ActionEvent event) {
         sonido.PararSonido();
@@ -132,14 +141,19 @@ public class FXML_VentanaInicioController implements Initializable {
       sonido.ReproducirSonido();
    
     }
-
+    /**
+     * Este metodo sirve para mutear la musica al tocar el boton correspondiente
+     * @param event 
+     */
     @FXML
     private void mute(ActionEvent event) {
         sonido.PararSonido();
         sonido.reset();
         
     }
-    
+     /**
+     * Este metodo sirve para colocar las imagenes de los botones de play y mute
+     */
     private void colocarImagenBotones(){
     URL playFoto= getClass().getResource("/Imagenes/Play.png");
     URL muteFoto= getClass().getResource("/Imagenes/Mute.png");

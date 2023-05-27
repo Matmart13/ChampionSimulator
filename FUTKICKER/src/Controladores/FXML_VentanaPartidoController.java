@@ -41,7 +41,7 @@ import javafx.util.Duration;
 /**
  * FXML Controller class
  *
- * @author marti
+ * @author martín y pablo
  */
 public class FXML_VentanaPartidoController extends Thread implements Initializable {
 
@@ -88,14 +88,16 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     private Label marcadorEquipo1;
 
     /**
-     * Initializes the controller class.
+     * Sirve para sincronizar los hilos de esta ventana
      */
     @Override
     public synchronized void start() {
         super.start(); //To change body of generated methods, choose Tools | Templates.
 
     }
-
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         equiposjugar = new ArrayList<Equipo>();
@@ -205,7 +207,12 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             
         }
     }
-
+    /**
+     * Este metodo realiza una consulta a la tabla equipos para recoger toda la informacion de todos los campos que contiene
+     * esta tabla y agregarlos a un Arraylist que se le pasa por parametro
+     * @param lista
+     * @throws SQLException 
+     */
     public void getEquipos(ArrayList<Equipo> lista) throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
         String sql = "Select * from equipos";
@@ -225,7 +232,10 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
 
         conexion.cerrarConexion();
     }
-
+    /**
+     * Este metodo sirve para recibir el visitante aleatorio que tiene que jugar contra nuestro equipo recoger sus estrellas y mostrar 
+     * su escudo en la pantalla.
+     */
     public void getVisitante() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
@@ -321,7 +331,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         }
 
     }
-
+    /**
+     * Este metodo sirve para recoger las estrellas de los equipos tanto local como visitante.
+     */
     public void getEstrellasEquipos() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
@@ -354,7 +366,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             }
         }
     }
-
+    /**
+     * Sirve para cambiar el valor de la variable nombre
+     */
     public void cambioNombre() {
         switch (nombre) {
             case "madrid":
@@ -391,7 +405,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 break;
         }
     }
-
+    /**
+     * Sirve para cambiar el valor de la variable visitante
+     */
     public void cambioVisitante() {
         switch (visitante) {
             case "madrid":
@@ -429,6 +445,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 break;
         }
     }
+    /**
+     * Sirve para ir cambiando los goles segun van marcando goles.
+     */
     public void setGOLESPARTIDO(){
          for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {

@@ -19,13 +19,19 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
- * @author pablo
+ * @author martín y pablo
  */
 public class Sonido {
 
     String url;
    public Clip clip;
-
+   /**
+    * Este metodo es el metodo constructor de esta clase que necesita una url por parametro. 
+    * @param _url
+    * @throws UnsupportedAudioFileException
+    * @throws LineUnavailableException
+    * @throws IOException 
+    */
     public Sonido(String _url) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.url = _url;
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
@@ -33,13 +39,21 @@ public class Sonido {
         clip.open(audioInputStream);
     }
 
-
+    /**
+     * Este metodo sirve para reproducir el sonido
+     */
     public void ReproducirSonido() {
         clip.start();
     }
+    /**
+     * Este metodo sirve para parar el sonido
+     */
     public void PararSonido(){
         clip.stop();
     }
+    /**
+     * Este metodo sirve para reiniciar el sonido
+     */
     public void reset(){
         clip.setMicrosecondPosition(0);
     }

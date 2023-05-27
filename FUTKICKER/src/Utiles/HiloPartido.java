@@ -23,7 +23,7 @@ import javafx.util.Duration;
 
 /**
  *
- * @author marti
+ * @author martín y pablo
  */
 public class HiloPartido extends Thread {
 
@@ -39,7 +39,15 @@ public class HiloPartido extends Thread {
     static int  cont1 = 0;
     static int cont2 = 0;
     private float porcentajegol = 1;
-
+    /**
+     * COnstructor de la Clase HiloPartido
+     * @param estrellasEquipoLocal
+     * @param estrellasEquipoVisitante
+     * @param lblGolesLocal
+     * @param lblGolesVisitante
+     * @param ht
+     * @param texto 
+     */
     public HiloPartido(int estrellasEquipoLocal, int estrellasEquipoVisitante, Label lblGolesLocal, Label lblGolesVisitante, HiloTiempo ht, TextArea texto) {
         this.estrellasEquipoLocal = estrellasEquipoLocal;
         this.estrellasEquipoVisitante = estrellasEquipoVisitante;
@@ -52,9 +60,13 @@ public class HiloPartido extends Thread {
     }
 
     int golVisitante = (int) (Math.random() * (estrellasEquipoVisitante + 1));
-
+     /**
+      * Este metodo run sirve para inicializar el timeline del partido
+      * que settea un textarea y dos label segun los goles que marca 
+      * un equipo y otro segun la posibilidades que tengan para marcar gol 
+      * segun sun condiciones.
+      */
     @Override
-
     public void run() {
         float posiblidadEq1 = porcentajegol * estrellasEquipoLocal;
         float posibilidadEq2 = porcentajegol * estrellasEquipoVisitante;
@@ -80,19 +92,31 @@ public class HiloPartido extends Thread {
         timelinepartido.play();
 
     }
-
+    /**
+     * Este metodo sirve para devolver el valor de cont1
+     * @return 
+     */
     public  int getCont1() {
         return cont1;
     }
-
+    /**
+     * Este metodo sirve para devolver el valor de cont2
+     * @return 
+     */
     public int getCont2() {
         return cont2;
     }
-
+    /**
+     * Este metodo sirve para cambiar el valor de la varibale con1
+     * @param cont1 
+     */
     public void setCont1(int cont1) {
         this.cont1 = cont1;
     }
-
+    /**
+     * Este metodo sirve para cambiar el valor de la varibale con2
+     * @param cont2 
+     */
     public void setCont2(int cont2) {
         this.cont2 = cont2;
     }

@@ -32,7 +32,7 @@ import Utiles.HiloPartido;
 
 /**
  *
- * @author marti
+ * @author martín y pablo
  */
 public class HiloTiempo extends Thread {
 
@@ -44,12 +44,18 @@ public class HiloTiempo extends Thread {
     private int countParte = 0;
     Image icono = new Image("/Imagenes/LogoAPP.png", 200, 100, false, true);
     private volatile boolean pausado = false;
-
+    /**
+     * Es el constructor de la Clase HiloTiempo
+     * @param _label 
+     */
     public HiloTiempo(Label _label) {
         label = _label;
 
     }
-
+    /**
+     * Este metodo run sirve para llevar el tiempo del partido y pararlo cuando llegue el minuto 45 y reiniciarlo cuando en la 
+     * alert le den a continuar. Cuando llega al final de la segunda parte inicializa la ventana Ganador 
+     */
     @Override
     public void run() {
         // TODO Auto-generated method stub
@@ -127,6 +133,7 @@ public class HiloTiempo extends Thread {
                             stage.setResizable(false);
                             stage.initModality(Modality.APPLICATION_MODAL);
                             stage.setScene(scene);
+                            
                             stage.show();
                             timeline.stop();
                             timelinepartido.stop();
@@ -145,12 +152,18 @@ public class HiloTiempo extends Thread {
         timeline.play();
         sonido.reset();
     }
-
+    /**
+     * Sirve para devolver el valor del Timeline
+     * @return 
+     */
     public static Timeline getTimeline() {
         timeline = new Timeline();
         return timeline;
     }
-
+    /**
+     * Sirve para devolver el valor de la variable count
+     * @return 
+     */
     public int getTiempoTranscurrido() {
         return count;
     }

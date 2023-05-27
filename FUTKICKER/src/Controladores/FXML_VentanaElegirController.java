@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author martin
+ * @author martín y pablo
  */
 public class FXML_VentanaElegirController implements Initializable {
 
@@ -85,6 +85,7 @@ public class FXML_VentanaElegirController implements Initializable {
     private Button botonMute;
 
     /**
+     * Este metodo sirve para inicializar la ventana ElegirController
      * Initializes the controller class.
      */
     @Override
@@ -134,6 +135,12 @@ public class FXML_VentanaElegirController implements Initializable {
 
     }
 
+    /**
+     * Este metodo sirve para que al tocar el boton del real madrid se te
+     * configure la temporada para que tu equipo sea el real madrid
+     *
+     * @param event
+     */
     @FXML
     private void escogerRM(ActionEvent event) {
         nombre = "madrid";
@@ -160,6 +167,12 @@ public class FXML_VentanaElegirController implements Initializable {
         }
     }
 
+    /**
+     * Este metodo sirve para que al tocar el boton del Sporting de Gijon se te
+     * configure la temporada para que tu equipo sea el Sporting de Gijon
+     *
+     * @param event
+     */
     @FXML
     private void escogerSport(ActionEvent event) {
         nombre = "sporting";
@@ -186,6 +199,12 @@ public class FXML_VentanaElegirController implements Initializable {
         }
     }
 
+    /**
+     * Este metodo sirve para que a la imagen del Inter de Milan se te configure
+     * la temporada para que tu equipo sea el Inter de Milan
+     *
+     * @param event
+     */
     @FXML
     private void escogerInter(ActionEvent event) {
         nombre = "inter";
@@ -212,6 +231,12 @@ public class FXML_VentanaElegirController implements Initializable {
         }
     }
 
+    /**
+     * Este metodo sirve para que al tocar el boton del Barcelona se te
+     * configure la temporada para que tu equipo sea el Barcelona
+     *
+     * @param event
+     */
     @FXML
     private void escogerBarsa(ActionEvent event) {
         nombre = "barcelona";
@@ -238,6 +263,12 @@ public class FXML_VentanaElegirController implements Initializable {
         }
     }
 
+    /**
+     * Este metodo sirve para que al tocar el boton del Arsenal se te configure
+     * la temporada para que tu equipo sea el Arsenal
+     *
+     * @param event
+     */
     @FXML
     private void escogerArsenal(ActionEvent event) {
         nombre = "arsenal";
@@ -264,6 +295,12 @@ public class FXML_VentanaElegirController implements Initializable {
         }
     }
 
+    /**
+     * Este metodo sirve para que al tocar el boton del Lazio se te configure la
+     * temporada para que tu equipo sea el Lazio
+     *
+     * @param event
+     */
     @FXML
     private void escogerLazio(ActionEvent event) {
         nombre = "lazio";
@@ -289,7 +326,10 @@ public class FXML_VentanaElegirController implements Initializable {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Este metodo sirve para que al tocar el boton del PSG se te configure la temporada para que tu equipo sea el PSG
+     * @param event 
+     */
     @FXML
     private void escogerPSG(ActionEvent event) {
         nombre = "psg";
@@ -315,7 +355,10 @@ public class FXML_VentanaElegirController implements Initializable {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Este metodo sirve para que al tocar el boton del Manchester City se te configure la temporada para que tu equipo sea el Manchester City
+     * @param event 
+     */
     @FXML
     private void escogerCity(ActionEvent event) {
         nombre = "manchestercity";
@@ -342,11 +385,14 @@ public class FXML_VentanaElegirController implements Initializable {
         }
 
     }
-
+    /**
+     * Este metodo sirve para que al tocar el boton del Bayern Munich se te configure la temporada para que tu equipo sea el Bayern Munich
+     * @param event 
+     */
     @FXML
     private void escogerBayern(ActionEvent event) {
         nombre = "bayern";
-        
+
         Stage myStage = (Stage) this.BAYERN.getScene().getWindow();
         myStage.close();
         try {
@@ -369,7 +415,10 @@ public class FXML_VentanaElegirController implements Initializable {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Este metodo sirve para que al tocar el boton del Betis se te configure la temporada para que tu equipo sea el Betis
+     * @param event 
+     */
     @FXML
     private void escogerBETIS(ActionEvent event) {
         nombre = "betis";
@@ -391,58 +440,64 @@ public class FXML_VentanaElegirController implements Initializable {
             stage.setResizable(false);
             stage.show();
 
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-  
+    /**
+     * Este metodo sirve para pasar de cacion al pulsar el boton indicando para ello
+     * @param event 
+     */
     @FXML
     private void pasarcanción(ActionEvent event) {
         sonido.PararSonido();
         sonido.reset();
         switch (Musica) {
             case "Background":
-                Musica= "Background2";
+                Musica = "Background2";
                 break;
             case "Background2":
-                Musica="Background3";
+                Musica = "Background3";
                 break;
             case "Background3":
-                Musica="Background4";
+                Musica = "Background4";
                 break;
             case "Background4":
-                Musica="Background";
+                Musica = "Background";
                 break;
             case "Victoria":
-                Musica="Background";
+                Musica = "Background";
             default:
                 break;
         }
-     
-    
-      sonido =  ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
-      sonido.ReproducirSonido();
-   
-    }
 
+        sonido = ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+        sonido.ReproducirSonido();
+
+    }
+    /**
+     * Este metodo sirve para mutear la musica al tocar el boton correspondiente
+     * @param event 
+     */
     @FXML
     private void mute(ActionEvent event) {
         sonido.PararSonido();
         sonido.reset();
-        
+
     }
-    
-    private void colocarImagenBotones(){
-    URL playFoto= getClass().getResource("/Imagenes/Play.png");
-    URL muteFoto= getClass().getResource("/Imagenes/Mute.png");
-    
-    Image play= new Image(playFoto.toString(),45,45,false,true);
-    Image mute= new Image(muteFoto.toString(),45,45,false,true);
-    
-    botonMute.setGraphic(new ImageView(mute));
-    botonSiguiente.setGraphic(new ImageView(play));
-            
+    /**
+     * Este metodo sirve para colocar las imagenes de los botones de play y mute
+     */
+    private void colocarImagenBotones() {
+        URL playFoto = getClass().getResource("/Imagenes/Play.png");
+        URL muteFoto = getClass().getResource("/Imagenes/Mute.png");
+
+        Image play = new Image(playFoto.toString(), 45, 45, false, true);
+        Image mute = new Image(muteFoto.toString(), 45, 45, false, true);
+
+        botonMute.setGraphic(new ImageView(mute));
+        botonSiguiente.setGraphic(new ImageView(play));
+
     }
-    
+
 }

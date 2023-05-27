@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author pablo
+ * @author martín y pablo
  */
 public class Conexiones {
 
@@ -23,7 +23,10 @@ public class Conexiones {
     String baseDatos;
     String usuario ;
     String password ;
-
+    /**
+     * Es el constructor de la clase Conexiones
+     * @throws SQLException 
+     */
     public Conexiones() throws SQLException {
         // Adaptalos a tu conexion
          host = "localhost";
@@ -43,7 +46,7 @@ public class Conexiones {
     }
 
     /**
-     * Ejecuta una consulta
+     * Este metodo sirve para la ejecucion de una consulta a la base de datos
      *
      * @param SQL Consulta a ejecutar
      * @return ResultSet con los datos de la consulta
@@ -55,7 +58,7 @@ public class Conexiones {
     }
 
     /**
-     * Ejecuta una instrucción
+     * Este metodo sirve para la ejecucion de una funcionalidad sin ser una consulta a la base de datos
      *
      * @param SQL Instrucción a ejecutar
      * @return numero de filas afectadas
@@ -67,7 +70,7 @@ public class Conexiones {
     }
 
     /**
-     * Cierra la conexión
+     * Este metodo sirve para cerrar la conexion a la base de datos
      *
      * @throws SQLException
      */

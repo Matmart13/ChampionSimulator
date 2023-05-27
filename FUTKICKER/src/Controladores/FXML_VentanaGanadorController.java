@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author pablo
+ *@author martín y pablo
  */
 public class FXML_VentanaGanadorController implements Initializable {
 
@@ -54,7 +54,10 @@ public class FXML_VentanaGanadorController implements Initializable {
         winnerGIF.setImage(winner);
 
     }
-
+    /**
+     * Este metodo sirve que para volver a la ventana temporada al pulsar el boton correspondiente
+     * @param event 
+     */
     @FXML
     private void regresoTemporada(ActionEvent event) {
             cambioNombre();
@@ -85,7 +88,9 @@ public class FXML_VentanaGanadorController implements Initializable {
         }
 
     }
-
+    /**
+     * Este metodo sirve para cambiar la variable nombre 
+     */
     public void cambioNombre() {
         switch (nombre) {
             case "Real Madrid":
