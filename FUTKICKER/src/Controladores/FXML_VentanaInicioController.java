@@ -41,8 +41,6 @@ public class FXML_VentanaInicioController implements Initializable {
     @FXML
     private Button botonInicio;
     @FXML
-    private Button botonCargar;
-    @FXML
     private Button botonSalir;
     @FXML
     private ImageView Logo;
@@ -97,10 +95,6 @@ public class FXML_VentanaInicioController implements Initializable {
 
     }
 
-    @FXML
-    private void botonCargarClick(ActionEvent event) {
-
-    }
 
     @FXML
     private void botonSalirClick(ActionEvent event) {

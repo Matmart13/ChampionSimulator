@@ -9,21 +9,14 @@
 <AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="850.0" stylesheets="@../Auxiliares/InicioCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.FXML_VentanaInicioController">
    <children>
       <ImageView fx:id="fondoImagen" fitHeight="631.0" fitWidth="850.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="botonInicio" layoutX="262.0" layoutY="354.0" mnemonicParsing="false" onAction="#botonInicioClick" prefHeight="71.0" prefWidth="315.0" text="Inicio" textAlignment="JUSTIFY">
+      <Button fx:id="botonInicio" layoutX="262.0" layoutY="378.0" mnemonicParsing="false" onAction="#botonInicioClick" prefHeight="71.0" prefWidth="315.0" text="Inicio" textAlignment="JUSTIFY">
          <font>
             <Font name="Impact" size="35.0" />
          </font>
          <effect>
             <Glow level="0.89" />
          </effect></Button>
-      <Button fx:id="botonCargar" layoutX="258.0" layoutY="436.0" mnemonicParsing="false" onAction="#botonCargarClick" prefHeight="71.0" prefWidth="322.0" text="Cargar">
-         <font>
-            <Font name="Impact" size="35.0" />
-         </font>
-         <effect>
-            <Glow level="0.88" />
-         </effect></Button>
-      <Button fx:id="botonSalir" layoutX="258.0" layoutY="518.0" mnemonicParsing="false" onAction="#botonSalirClick" prefHeight="71.0" prefWidth="322.0" text="Salir">
+      <Button fx:id="botonSalir" layoutX="258.0" layoutY="459.0" mnemonicParsing="false" onAction="#botonSalirClick" prefHeight="71.0" prefWidth="322.0" text="Salir">
          <font>
             <Font name="Impact" size="35.0" />
          </font>
