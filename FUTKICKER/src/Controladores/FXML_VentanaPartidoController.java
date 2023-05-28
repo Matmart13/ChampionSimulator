@@ -295,7 +295,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     public void getVisitante() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
-                visitante = ListaTemporada.get(numvisitante).getVisitante();
+                visitante = ListaTemporada.get(i).getVisitante();
                 if (visitante.equals("madrid")) {
                     equipo2.setImage(RMLogo);
                     cambioVisitante();
@@ -373,7 +373,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("inter")) {
                     equipo2.setImage(InterMilanLogo);
-
                     cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
@@ -383,7 +382,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 }
             }
         }
-        numvisitante++;
     }
 
     /**
@@ -392,8 +390,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
      */
     public void getEstrellasEquipos() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
-            if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
-                visitante = ListaTemporada.get(numvisitante).getVisitante();
+            if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {            
 
                 for (int j = 0; j < ListaTemporada.size(); j++) {
                     if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
@@ -407,18 +404,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
 
                     }
                 }
-                for (int v = 0; v < ListaTemporada.size(); v++) {
-                    if (ListaTemporada.get(v).getVisitante().equals(visitante) == true) {
-                        for (int k = 0; k < equiposjugar.size(); k++) {
-                            cambioVisitante();
-                            if (equiposjugar.get(k).getNombre().equals(visitante) == true) {
-                                estrellasEquipo2 = equiposjugar.get(k).getEstrellas();
-                                break;
-                            }
-                        }
-                    }
-
-                }
+               
             }
         }
     }
@@ -499,7 +485,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 visitante = "Inter de Milan";
                 break;
             default:
-                System.out.println("No existe el equipo");
+             
                 break;
         }
     }
@@ -642,7 +628,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 if (randomLocal > randomVisitante) {
                     consulta = "Select eq_victorias from equipos where eq_nombre like '" + local1 + "'";
                     resultset = co.ejecutarConsulta(consulta);
-
                     if (resultset.next()) {
                         anterior = resultset.getInt("eq_victorias");
                         nvalor = anterior + 1;
@@ -679,6 +664,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                         nvalor = 0;
 
                     }
+                    
                     consulta = "Select eq_derrotas from equipos where eq_nombre like '" + local1 + "'";
                     resultset = co.ejecutarConsulta(consulta);
 
@@ -689,7 +675,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                         co.ejecutarInstruccion(ejecucion);
                         anterior = 0;
                         nvalor = 0;
-
                     }
                 }
             }

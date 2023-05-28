@@ -59,7 +59,7 @@ public class FXML_VentanaGanadorController implements Initializable {
     Image logo = new Image("/Imagenes/Logo.png");
     
     String ganador;
-    int contador = 0;
+    static int contador = 0;
     @FXML
     private Label empateLabel;
     /**
@@ -72,38 +72,49 @@ public class FXML_VentanaGanadorController implements Initializable {
          Image fondoempate = new Image("Imagenes/fondoEmpate.gif",800,800,false,false);
           Image fondofin = new Image("Imagenes/gameover.gif",800,800,false,false);
         fondo.setImage(fondoGIF);
-        winnerGIF.setImage(winner);
+       // winnerGIF.setImage(winner);
         ganador = HiloTiempo.getGanador();
         cambioGanador();
          if (ganador.equals("madrid")) {
                 logoGanador.setImage(RMLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("barcelona")) {
                 logoGanador.setImage(BarsaLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("bayern")) {
                 logoGanador.setImage(bayernMunichLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("psg")) {
                 logoGanador.setImage(PSGLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("lazio")) {
                 logoGanador.setImage(LazioLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("betis")) {
                 logoGanador.setImage(BetisLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("sporting")) {
                 logoGanador.setImage(SportingLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("arsenal")) {
                 logoGanador.setImage(ArsenalLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("manchestercity")) {
                 logoGanador.setImage(McityLogo);
+                 winnerGIF.setImage(winner);
             } else if (ganador.equals("inter")) {
                 logoGanador.setImage(InterMilanLogo);
+                winnerGIF.setImage(winner);
             }else{
                 fondo.setImage(fondoempate);
                 logoGanador.setImage(logo);
                 empateLabel.setText("EMPATE");
                 //winnerGIF.setImage(winner);
             }
-         if(contador == 3){
+         if(contador == 0){
              fondo.setImage(fondofin);
-             
+              botonRegreso.setText("FINAL DEL JUEGO");
+            
          }
     }
     /**
@@ -112,12 +123,11 @@ public class FXML_VentanaGanadorController implements Initializable {
      */
     @FXML
     private void regresoTemporada(ActionEvent event) {
-        if(contador == 3){
-            botonRegreso.setText("FINAL DEL JUEGO");
+        if(contador == 0){
              Stage myStage = (Stage) this.botonRegreso.getScene().getWindow();
              myStage.close();
-        }
-        cambioNombre();
+        }else{
+             cambioNombre();
         cambioVisitante();
         Stage myStage = (Stage) this.botonRegreso.getScene().getWindow();
         myStage.close();
@@ -145,7 +155,7 @@ public class FXML_VentanaGanadorController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXML_VentanaGanadorController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        }
     }
     /**
      * Este metodo sirve para cambiar la variable nombre 
