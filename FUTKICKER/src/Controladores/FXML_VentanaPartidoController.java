@@ -446,7 +446,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         }
     }
     /**
-     * Sirve para ir cambiando los goles segun van marcando goles.
+     * Sirve para ir cambiando los label de valor  segun van marcando goles los equipos.
      */
     public void setGOLESPARTIDO(){
          for (int i = 0; i < ListaTemporada.size(); i++) {
@@ -480,4 +480,20 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             }
         }
     }
+    
+        
+    public void actualizarTabla() throws SQLException {
+         Auxiliares.Conexiones conexion = new Conexiones();
+        for (int i = 0; FXML_VistaTemporadaController.Eqlist.size() < 10; i++) {
+            
+        }
+        
+        
+        
+
+    }
+    
+    
+    
+    
 }

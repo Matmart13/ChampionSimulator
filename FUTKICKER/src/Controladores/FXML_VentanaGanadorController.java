@@ -44,7 +44,7 @@ public class FXML_VentanaGanadorController implements Initializable {
     private ImageView fondo;
 
     /**
-     * Initializes the controller class.
+     * Inicializa el controlador de la ventana FXML_VentanaGanadorController
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -127,7 +127,7 @@ public class FXML_VentanaGanadorController implements Initializable {
                 break;
         }
     }
-
+    
     public void actualizarTabla() throws SQLException {
          Auxiliares.Conexiones conexion = new Conexiones();
         for (int i = 0; FXML_VistaTemporadaController.Eqlist.size() < 10; i++) {

@@ -62,7 +62,7 @@ public class Equipo {
         return victorias;
     }
    /**
-    * Este metodo sirve para recoger el Nombre del equipo
+    * Este metodo sirve para recoger el Derrotas del equipo
     * @return 
     */
     public int getDerrotas() {

@@ -5,10 +5,13 @@
  */
 package Utiles;
 
+import Auxiliares.Conexiones;
 import static ChampionsSimulator.ChampionSimulator.Musica;
 import static ChampionsSimulator.ChampionSimulator.sonido;
 import Controladores.FXML_VentanaGanadorController;
 import Controladores.FXML_VentanaInicioController;
+import Controladores.FXML_VistaTemporadaController;
+import static Controladores.FXML_VistaTemporadaController.nombre;
 import static Utiles.HiloPartido.timelinepartido;
 import java.io.IOException;
 import java.util.Optional;
@@ -29,6 +32,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import Utiles.HiloPartido;
+import java.sql.SQLException;
 
 /**
  *
@@ -140,6 +144,7 @@ public class HiloTiempo extends Thread {
                             countParte = 0;
                             HiloPartido.cont1 = 0;
                             HiloPartido.cont2 = 0;
+                            
                         } catch (IOException ex) {
                             Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -167,5 +172,65 @@ public class HiloTiempo extends Thread {
     public int getTiempoTranscurrido() {
         return count;
     }
+    public void actualizarTabla() throws SQLException {
+         Auxiliares.Conexiones conexion = new Conexiones();
+         String ejecucion;
+         cambioNombre();
+        if(Integer.valueOf(HiloPartido.lblGolesLocal.getText()) > Integer.valueOf(HiloPartido.lblGolesVisitante.getText())){
+            for (int i = 0; i < Controladores.FXML_VistaTemporadaController.ListaTemporada.size(); i++) {
+                if(FXML_VistaTemporadaController.ListaTemporada.get(i).getLocal().equals(Controladores.FXML_VistaTemporadaController.nombre)){
+                    ejecucion = "UPDATE"+ Controladores.FXML_VistaTemporadaController.nombre +" SET  = " + 0;
+                }                   
+            }
+                 
+            
+        }else if (Integer.valueOf(HiloPartido.lblGolesLocal.getText()) < Integer.valueOf(HiloPartido.lblGolesVisitante.getText())){
+              for (int i = 0; i < Controladores.FXML_VistaTemporadaController.ListaTemporada.size(); i++) {
+                if(FXML_VistaTemporadaController.ListaTemporada.get(i).getVisitante().equals(Controladores.FXML_VistaTemporadaController.nombre)){
+                    ejecucion = "UPDATE"+ Controladores.FXML_VistaTemporadaController.nombre +" SET  = " + 0;
+                }                   
+            }
+        }
+        
+        
+        
+        
 
+    }
+     public void cambioNombre() {
+        switch (nombre) {
+            case "madrid":
+                nombre = "Real Madrid";
+                break;
+            case "barcelona":
+                nombre = "Barcelona";
+                break;
+            case "manchestercity":
+                nombre = "Manchester City";
+                break;
+            case "arsenal":
+                nombre = "Arsenal";
+                break;
+            case "bayern":
+                nombre = "Bayern Munich";
+                break;
+            case "betis":
+                nombre = "Real Betis";
+                break;
+            case "lazio":
+                nombre = "Lazio";
+                break;
+            case "sporting":
+                nombre = "Sporting de Gijon";
+                break;
+            case "psg":
+                nombre = "PSG";
+                break;
+            case "inter":
+                nombre = "Inter de Milan";
+                break;
+            default:
+                break;
+        }
+    }
 }

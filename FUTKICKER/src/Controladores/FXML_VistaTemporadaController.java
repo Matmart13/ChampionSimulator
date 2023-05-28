@@ -107,7 +107,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     @FXML
     private Button BottonConvocar;
     //Variables de uso
-    static String nombre;
+    public static String nombre;
     static int equiposvstotal;
     static int random;
     static int rival;
@@ -119,7 +119,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     ObservableList<Partidos> listapartidos;
     Equipo elegido;
     Equipo vs;
-    static ObservableList<Equipo> Eqlist;
+    public static ObservableList<Equipo> Eqlist;
     static int contadorpartidos = 0;
 
 
@@ -533,7 +533,11 @@ public void getPartidosTemporada(String nombre) throws SQLException {
         botonSiguiente.setGraphic(new ImageView(play));
 
     }
-
+    /**
+     * Este metodo lo que realiza es una con
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void Convocar(ActionEvent event) throws SQLException {
         String recoger;
