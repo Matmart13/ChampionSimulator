@@ -593,10 +593,12 @@ public void getPartidosTemporada(String nombre) throws SQLException {
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados++;
-                  System.out.println(convocados);
+                System.out.println(convocados);
             }
         }
 
     }
+    
+
 
 }
