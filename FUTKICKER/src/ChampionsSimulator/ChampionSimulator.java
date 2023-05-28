@@ -100,7 +100,7 @@ public class ChampionSimulator extends Application {
      * Este metodo sirve para limpiar la base de datos quiere decir dejar todos los campos que queramos en 0 para la ejecucion de una nueva temporada
      * @throws SQLException
      */
-    public void limpiarBBDD() throws SQLException {
+    public static void limpiarBBDD() throws SQLException {
         Conexiones co = new Conexiones();
 
         String ejecucion;

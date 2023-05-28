@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,5 +19,6 @@
          </effect></Button>
       <ImageView fx:id="logoGanador" fitHeight="309.0" fitWidth="388.0" layoutX="202.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="winnerGIF" fitHeight="205.0" fitWidth="556.0" layoutX="135.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="empateLabel" alignment="CENTER" layoutX="237.0" layoutY="488.0" prefHeight="83.0" prefWidth="318.0" textAlignment="RIGHT" />
    </children>
 </AnchorPane>

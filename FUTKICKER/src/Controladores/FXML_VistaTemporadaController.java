@@ -116,9 +116,11 @@ public class FXML_VistaTemporadaController implements Initializable {
     public static List<Partidos> partidosTotales;
     public static List<Partidos> partidosSeleccionados;
     public static List<Partidos> ListaTemporada;
+   static  List<Partidos> enfrentamientosLocales ;
     ObservableList<Partidos> listapartidos;
     Equipo elegido;
     Equipo vs;
+    static int  contador = 0;
     public static ObservableList<Equipo> Eqlist;
     static int contadorpartidos = 0;
 
@@ -148,9 +150,16 @@ public class FXML_VistaTemporadaController implements Initializable {
             TablaEquipos.setItems(Eqlist);
             getTodosJugadores(nombre);
 
-            partidosTotales = new ArrayList<>();
+           
+           
+            if (contador == 0){
+                 partidosTotales = new ArrayList<>();
             partidosSeleccionados = new ArrayList<>();
             ListaTemporada = new ArrayList<Partidos>();
+            enfrentamientosLocales = new ArrayList<Partidos>();
+                 getEnfrentamientos();
+                 contador++;
+            }
             getPartidosTemporada(nombre);
             //getPartidos(listapartidos);
             if (nombre.equals("madrid")) {
@@ -285,7 +294,7 @@ public class FXML_VistaTemporadaController implements Initializable {
      */
     public static void getTodosEquipos(ObservableList<Equipo> _Eqlist) throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
-        String sql = "Select * from equipos";
+        String sql = "Select * from equipos order by eq_victorias desc,eq_goles desc";
         ResultSet resultset = conexion.ejecutarConsulta(sql);
         while (resultset.next()) {
             int id = resultset.getInt("eq_id");
@@ -369,16 +378,9 @@ public class FXML_VistaTemporadaController implements Initializable {
         }
 
     }
-/**
- * Este metodo devuelve los partidos que tienen que jugarse esa jornada para ello tiene que coger 
- * todos los enfrentamientos posibles que puedan pasar almacenarlos en una lista, a continuacion 
- * coger un enfrentamiento aleatorio el cual el local es el valor del parametro nombre y luego aleatoriemante
- * cogera 4 enfrentamientos mas para esa jornada almacenandolos en otra lista.
- * @param nombre
- * @throws SQLException 
- */
-public void getPartidosTemporada(String nombre) throws SQLException {
-    if (partidosTotales.isEmpty()) {
+    
+    public void getEnfrentamientos() throws SQLException{
+          if (partidosTotales.isEmpty()) {
         // Recoger los partidos totales solo si la lista está vacía
         Auxiliares.Conexiones conexion = new Conexiones();
         String sql = "SELECT * FROM enfrentamientos";
@@ -393,9 +395,20 @@ public void getPartidosTemporada(String nombre) throws SQLException {
 
         conexion.cerrarConexion();
     }
-    
+    }
+            
+/**
+ * Este metodo devuelve los partidos que tienen que jugarse esa jornada para ello tiene que coger 
+ * todos los enfrentamientos posibles que puedan pasar almacenarlos en una lista, a continuacion 
+ * coger un enfrentamiento aleatorio el cual el local es el valor del parametro nombre y luego aleatoriemante
+ * cogera 4 enfrentamientos mas para esa jornada almacenandolos en otra lista.
+ * @param nombre
+ * @throws SQLException 
+ */
+public void getPartidosTemporada(String nombre) throws SQLException {
+  
     // Obtener todos los enfrentamientos con el nombre local proporcionado
-    List<Partidos> enfrentamientosLocales = new ArrayList<>();
+  
     for (Partidos partido : partidosTotales) {
         if (partido.getLocal().equals(nombre)) {
             enfrentamientosLocales.add(partido);
@@ -449,18 +462,19 @@ public void getPartidosTemporada(String nombre) throws SQLException {
     ListaTemporada.addAll(partidosSeleccionados);
 }
 
+
     /**
      * Este metodo sirve para volver a la ventana inicio y e iniciar el juego otra vez o salir de la aplicacion
      * @param event 
      */
     @FXML
-    private void FuncionMenu(ActionEvent event) {
+    private void FuncionMenu(ActionEvent event) throws SQLException {
 
         Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
         myStage.close();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
-
+            ChampionsSimulator.ChampionSimulator.limpiarBBDD();
             Parent root = loader.load();
             FXML_VentanaInicioController v = new FXML_VentanaInicioController();
             contadorpartidos = 0;

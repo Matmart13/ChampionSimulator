@@ -60,13 +60,14 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     String nombreEquipo1;
     int estrellasEquipo1;
     int estrellasEquipo2;
+    int numvisitante = 0;
     ArrayList<Equipo> equiposjugar;
 
     ArrayList<Partidos> EquiposSecun;
     @FXML
     private Label Temporizador1;
 
-    String visitante;
+    public static String visitante;
     Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 60, 80, false, true);
     Image RMLogo = new Image("/Imagenes/Madrid.gif", 80, 80, false, true);
     Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 80, 80, false, true);
@@ -148,7 +149,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             getVisitante();
             getEstrellasEquipos();
             ht = new HiloTiempo(Temporizador);
-            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
+            hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto); 
             ht.start();
             hp.start();
         } else if (FXML_VistaTemporadaController.nombre.equals("lazio")) {
@@ -239,8 +240,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     public void getVisitante() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
-                visitante = ListaTemporada.get(i).getVisitante();
-
+                visitante = ListaTemporada.get(numvisitante).getVisitante();
                 if (visitante.equals("madrid")) {
                     equipo2.setImage(RMLogo);
                     cambioVisitante();
@@ -252,7 +252,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 } else if (visitante.equals("barcelona")) {
                     equipo2.setImage(BarsaLogo);
                     cambioVisitante();
-
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -329,7 +328,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 }
             }
         }
-
+        numvisitante ++;
     }
     /**
      * Este metodo sirve para recoger las estrellas de los equipos tanto local como visitante.
@@ -337,7 +336,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     public void getEstrellasEquipos() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
-                visitante = ListaTemporada.get(i).getVisitante();
+                visitante = ListaTemporada.get(numvisitante).getVisitante();
 
                 for (int j = 0; j < ListaTemporada.size(); j++) {
                     if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
@@ -451,7 +450,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     public void setGOLESPARTIDO(){
          for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
-                visitante = ListaTemporada.get(i).getVisitante();
+         
 
                 for (int j = 0; j < ListaTemporada.size(); j++) {
                     if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
@@ -482,16 +481,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     }
     
         
-    public void actualizarTabla() throws SQLException {
-         Auxiliares.Conexiones conexion = new Conexiones();
-        for (int i = 0; FXML_VistaTemporadaController.Eqlist.size() < 10; i++) {
-            
-        }
-        
-        
-        
 
-    }
     
     
     
