@@ -506,7 +506,7 @@ public class HiloTiempo extends Thread {
             case "Barcelona":
                 nombre = "barcelona";
                 break;
-            case "ManchesterCity":
+            case "Manchester City":
                 nombre = "manchestercity";
                 break;
             case "Arsenal":
@@ -580,7 +580,7 @@ public class HiloTiempo extends Thread {
             case "Barcelona":
                 FXML_VentanaPartidoController.visitante = "barcelona";
                 break;
-            case "ManchesterCity":
+            case "Manchester City":
                 FXML_VentanaPartidoController.visitante = "manchestercity";
                 break;
             case "Arsenal":

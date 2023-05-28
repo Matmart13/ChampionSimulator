@@ -376,7 +376,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             case "barcelona":
                 nombre = "Barcelona";
                 break;
-            case "manchestercity":
+            case "manchester city":
                 nombre = "Manchester City";
                 break;
             case "arsenal":
