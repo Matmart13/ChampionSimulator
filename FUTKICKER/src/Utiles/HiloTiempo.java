@@ -196,7 +196,11 @@ public class HiloTiempo extends Thread {
     public int getTiempoTranscurrido() {
         return count;
     }
-
+    /**
+     * Este metodo sirve para actualiza los valores de la base de datos en los campos necesarios 
+     * de los equipos implicados
+     * @throws SQLException 
+     */
     public void actualizarTabla() throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
         String ejecucion;

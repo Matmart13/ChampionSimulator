@@ -586,7 +586,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                             ejecucion = "UPDATE equipos SET eq_goles_dif = " + nvalor + " where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
                             co.ejecutarInstruccion(ejecucion);
                             anterior = 0;
-
                             nvalor = 0;
                         }
 
