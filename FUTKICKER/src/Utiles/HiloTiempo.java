@@ -256,6 +256,7 @@ public class HiloTiempo extends Thread {
                         anterior = 0;
                         nvalor = 0;
                     }
+                    
                     ejecucion = "Select eq_derrotas from equipos where eq_nombre like '" + FXML_VentanaPartidoController.visitante + "'";
                     resultset = conexion.ejecutarConsulta(ejecucion);
                     if (resultset.next()) {
