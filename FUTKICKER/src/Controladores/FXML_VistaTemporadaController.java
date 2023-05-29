@@ -60,7 +60,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     @FXML
     private TableView<Equipo> TablaEquipos;
     @FXML
-    private Button Iniciar;
+    public Button Iniciar;
     @FXML
     private Button Salir;
     @FXML
@@ -107,21 +107,23 @@ public class FXML_VistaTemporadaController implements Initializable {
     @FXML
     private Button BottonConvocar;
     //Variables de uso
-    static String nombre;
+    public static String nombre;
     static int equiposvstotal;
     static int random;
     static int rival;
-     static int contManchester ;
-    static int convocados=0;
+    static int contManchester;
+    static int convocados = 0;
     public static List<Partidos> partidosTotales;
     public static List<Partidos> partidosSeleccionados;
     public static List<Partidos> ListaTemporada;
+    static List<Partidos> enfrentamientosLocales;
     ObservableList<Partidos> listapartidos;
     Equipo elegido;
     Equipo vs;
-    static ObservableList<Equipo> Eqlist;
+    static int contador = 0;
+    public static ObservableList<Equipo> Eqlist;
+  
     static int contadorpartidos = 0;
-
 
     /**
      * Initializes the controller class.
@@ -129,7 +131,11 @@ public class FXML_VistaTemporadaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        if (FXML_VentanaGanadorController.contador == 4){
+            Iniciar.setDisable(true);
+            FXML_VentanaGanadorController.contador = 0;
+       
+        }
         fondoTemporada.setImage(fondo);
         colocarImagenBotones();
         this.NombreE.setCellValueFactory(new PropertyValueFactory("Nombre"));
@@ -148,9 +154,14 @@ public class FXML_VistaTemporadaController implements Initializable {
             TablaEquipos.setItems(Eqlist);
             getTodosJugadores(nombre);
 
-            partidosTotales = new ArrayList<>();
-            partidosSeleccionados = new ArrayList<>();
-            ListaTemporada = new ArrayList<Partidos>();
+            if (contador == 0) {
+                partidosTotales = new ArrayList<>();
+                partidosSeleccionados = new ArrayList<>();
+                ListaTemporada = new ArrayList<Partidos>();
+                enfrentamientosLocales = new ArrayList<Partidos>();
+                getEnfrentamientos();
+                contador++;
+            }
             getPartidosTemporada(nombre);
             //getPartidos(listapartidos);
             if (nombre.equals("madrid")) {
@@ -190,65 +201,65 @@ public class FXML_VistaTemporadaController implements Initializable {
      * Constructor
      */
     public FXML_VistaTemporadaController() {
-
+       
     }
 
     //Metodos FXML
     /**
      * Este metodo sirve para que cuando pulses el boton iniciar inicie el
-     * partido con su vista correspondiente.Tambien tiene encuenta si estan los 11 jugadores del 11 inicial
+     * partido con su vista correspondiente.Tambien tiene encuenta si estan los
+     * 11 jugadores del 11 inicial
      *
      * @param event
      */
     @FXML
     private void FuncionIniciar(ActionEvent event) {
-        int faltan ;
-        if( convocados>11){
-              Alert a = new Alert(Alert.AlertType.WARNING);
+        int faltan;
+        if (convocados > 11) {
+            Alert a = new Alert(Alert.AlertType.WARNING);
 
-                        a.setTitle("Error");
-                        faltan = convocados-11;
-                        faltan = faltan + (faltan*2);
-                        a.setHeaderText("Error, solo puede jugar con 11 jugadores convocados tienes que mandar al banquillo a " + faltan);
-                        ButtonType botonSeguir = new ButtonType("SEGUIR");
-                        a.getButtonTypes().setAll(botonSeguir);
-                        Optional<ButtonType> result = a.showAndWait();
-                      
-        }else if (convocados<11){
-            
-                         Alert a = new Alert(Alert.AlertType.WARNING);
-                    
-                        a.setTitle("Error");
-                         faltan = 11-convocados;
-                        a.setHeaderText("Error, no has metido a los 11 jugadores del 11 inicial te faltan "+ faltan);
-                        ButtonType botonSeguir = new ButtonType("SEGUIR");
-                        a.getButtonTypes().setAll(botonSeguir);
-                        Optional<ButtonType> result = a.showAndWait();
-        }
-        else{
-        Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
-        myStage.close();
+            a.setTitle("Error");
+            faltan = convocados - 11;
+            faltan = faltan + (faltan * 2);
+            a.setHeaderText("Error, solo puede jugar con 11 jugadores convocados tienes que mandar al banquillo a " + faltan);
+            ButtonType botonSeguir = new ButtonType("SEGUIR");
+            a.getButtonTypes().setAll(botonSeguir);
+            Optional<ButtonType> result = a.showAndWait();
 
-        sonido.PararSonido();
-        sonido.reset();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
+        } else if (convocados < 11) {
 
-            Parent root = loader.load();
-            FXML_VentanaPartidoController v = new FXML_VentanaPartidoController();
+            Alert a = new Alert(Alert.AlertType.WARNING);
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
-            stage.setTitle("ChampionSimulator");
-            stage.setResizable(false);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
+            a.setTitle("Error");
+            faltan = 11 - convocados;
+            a.setHeaderText("Error, no has metido a los 11 jugadores del 11 inicial te faltan " + faltan);
+            ButtonType botonSeguir = new ButtonType("SEGUIR");
+            a.getButtonTypes().setAll(botonSeguir);
+            Optional<ButtonType> result = a.showAndWait();
+        } else {
+            Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
+            myStage.close();
 
-        } catch (IOException ex) {
-            Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            sonido.PararSonido();
+            sonido.reset();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaPartido.fxml"));
+
+                Parent root = loader.load();
+                FXML_VentanaPartidoController v = new FXML_VentanaPartidoController();
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
+                stage.setTitle("ChampionSimulator");
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(scene);
+                stage.showAndWait();
+
+            } catch (IOException ex) {
+                Logger.getLogger(FXML_VentanaInicioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -285,7 +296,7 @@ public class FXML_VistaTemporadaController implements Initializable {
      */
     public static void getTodosEquipos(ObservableList<Equipo> _Eqlist) throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
-        String sql = "Select * from equipos";
+        String sql = "Select * from equipos order by eq_victorias desc,eq_goles desc";
         ResultSet resultset = conexion.ejecutarConsulta(sql);
         while (resultset.next()) {
             int id = resultset.getInt("eq_id");
@@ -313,13 +324,13 @@ public class FXML_VistaTemporadaController implements Initializable {
     public void getTodosJugadores(String _nombre) throws SQLException {
         ObservableList<Jugador> Jlist = FXCollections.observableArrayList();
         Auxiliares.Conexiones conexion = new Conexiones();
-        String sql ;
+        String sql;
         //subString para sacar las tres primeras letras de cada equipo para sacar el nombre completo que hay que pasar 
         String recoger;
         //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
         ResultSet resultset;
-       
-        if (_nombre.equals("sporting") || _nombre.equals("manchestercity") ) {
+
+        if (_nombre.equals("sporting") || _nombre.equals("manchestercity")) {
             recoger = _nombre.substring(0, 4);
             sql = "Select * from " + _nombre;
             resultset = conexion.ejecutarConsulta(sql);
@@ -334,11 +345,11 @@ public class FXML_VistaTemporadaController implements Initializable {
             }
             this.Jugadores.setItems(Jlist);
             conexion.cerrarConexion();
-        }else if(_nombre.equals("Manchester City")){
-             sql = "Select * from " + _nombre;
+        } else if (_nombre.equals("Manchester City")) {
+            sql = "Select * from " + _nombre;
             recoger = _nombre.substring(0, 4);
             _nombre = "manchestercity";
-             resultset = conexion.ejecutarConsulta(sql);
+            resultset = conexion.ejecutarConsulta(sql);
             while (resultset.next()) {
                 int id = resultset.getInt(recoger + "_id");
                 String nombre = resultset.getString(recoger + "_jugador");
@@ -350,10 +361,10 @@ public class FXML_VistaTemporadaController implements Initializable {
             }
             this.Jugadores.setItems(Jlist);
             conexion.cerrarConexion();
-        
-    }else {
-             sql = "Select * from " + _nombre;
-             resultset = conexion.ejecutarConsulta(sql);
+
+        } else {
+            sql = "Select * from " + _nombre;
+            resultset = conexion.ejecutarConsulta(sql);
             recoger = _nombre.substring(0, 3);
             while (resultset.next()) {
                 int id = resultset.getInt(recoger + "_id");
@@ -369,98 +380,112 @@ public class FXML_VistaTemporadaController implements Initializable {
         }
 
     }
-/**
- * Este metodo devuelve los partidos que tienen que jugarse esa jornada para ello tiene que coger 
- * todos los enfrentamientos posibles que puedan pasar almacenarlos en una lista, a continuacion 
- * coger un enfrentamiento aleatorio el cual el local es el valor del parametro nombre y luego aleatoriemante
- * cogera 4 enfrentamientos mas para esa jornada almacenandolos en otra lista.
- * @param nombre
- * @throws SQLException 
- */
-public void getPartidosTemporada(String nombre) throws SQLException {
-    if (partidosTotales.isEmpty()) {
-        // Recoger los partidos totales solo si la lista está vacía
-        Auxiliares.Conexiones conexion = new Conexiones();
-        String sql = "SELECT * FROM enfrentamientos";
-        ResultSet resultSet = conexion.ejecutarConsulta(sql);
 
-        while (resultSet.next()) {
-            String nombreLocal = resultSet.getString("Local");
-            String nombreVisitante = resultSet.getString("Visitante");
-            Partidos partido = new Partidos(nombreLocal, nombreVisitante);
-            partidosTotales.add(partido);
-        }
+    public void getEnfrentamientos() throws SQLException {
+        if (partidosTotales.isEmpty()) {
+            // Recoger los partidos totales solo si la lista está vacía
+            Auxiliares.Conexiones conexion = new Conexiones();
+            String sql = "SELECT * FROM enfrentamientos";
+            ResultSet resultSet = conexion.ejecutarConsulta(sql);
 
-        conexion.cerrarConexion();
-    }
-    
-    // Obtener todos los enfrentamientos con el nombre local proporcionado
-    List<Partidos> enfrentamientosLocales = new ArrayList<>();
-    for (Partidos partido : partidosTotales) {
-        if (partido.getLocal().equals(nombre)) {
-            enfrentamientosLocales.add(partido);
+            while (resultSet.next()) {
+                String nombreLocal = resultSet.getString("Local");
+                String nombreVisitante = resultSet.getString("Visitante");
+                Partidos partido = new Partidos(nombreLocal, nombreVisitante);
+                partidosTotales.add(partido);
+            }
+
+            conexion.cerrarConexion();
         }
     }
-
-    Partidos enfrentamientoLocal = null;
-
-    if (!enfrentamientosLocales.isEmpty()) {
-        // Seleccionar aleatoriamente un enfrentamiento local
-        Random random = new Random();
-        enfrentamientoLocal = enfrentamientosLocales.get(random.nextInt(enfrentamientosLocales.size()));
-        partidosSeleccionados.add(enfrentamientoLocal);
-        partidosTotales.remove(enfrentamientoLocal);
-    }
-
-    Set<String> equiposSeleccionados = new HashSet<>();
-    equiposSeleccionados.add(nombre); // Agregar el nombre proporcionado como equipo seleccionado
-
-    Random random = new Random();
-
-    while (partidosSeleccionados.size() < 4 && !partidosTotales.isEmpty()) {
-        // Obtener un partido aleatorio de la lista de partidos totales
-        int index = random.nextInt(partidosTotales.size());
-        Partidos partidoSeleccionado = partidosTotales.get(index);
-
-        // Verificar si tanto el equipo local como el visitante no están repetidos
-        boolean localRepetido = equiposSeleccionados.contains(partidoSeleccionado.getLocal());
-        boolean visitanteRepetido = equiposSeleccionados.contains(partidoSeleccionado.getVisitante()) ||
-                                    partidoSeleccionado.getVisitante().equals(nombre);
-
-        if (!localRepetido && !visitanteRepetido) {
-            // Ambos equipos no están repetidos, agregar el partido a partidosSeleccionados
-            partidosSeleccionados.add(partidoSeleccionado);
-
-            // Agregar el equipo local y el equipo visitante a la lista de equipos seleccionados
-            equiposSeleccionados.add(partidoSeleccionado.getLocal());
-            equiposSeleccionados.add(partidoSeleccionado.getVisitante());
-        }
-
-        // Eliminar el partido seleccionado de partidosTotales sin importar si se agrega o no
-        partidosTotales.remove(index);
-
-        // Eliminar el enfrentamiento local seleccionado de enfrentamientosLocales si no es nulo
-        if (enfrentamientoLocal != null) {
-            enfrentamientosLocales.remove(enfrentamientoLocal);
-        }
-    }
-
-    // Agregar los partidos seleccionados a ListaTemporada
-    ListaTemporada.addAll(partidosSeleccionados);
-}
 
     /**
-     * Este metodo sirve para volver a la ventana inicio y e iniciar el juego otra vez o salir de la aplicacion
-     * @param event 
+     * Este metodo devuelve los partidos que tienen que jugarse esa jornada para
+     * ello tiene que coger todos los enfrentamientos posibles que puedan pasar
+     * almacenarlos en una lista, a continuacion coger un enfrentamiento
+     * aleatorio el cual el local es el valor del parametro nombre y luego
+     * aleatoriemante cogera 4 enfrentamientos mas para esa jornada
+     * almacenandolos en otra lista.
+     *
+     * @param nombre
+     * @throws SQLException
+     */
+    public void getPartidosTemporada(String nombre) throws SQLException {
+        List<Partidos> partidosRestantes = new ArrayList<>(partidosTotales); // Copia de la lista original
+
+        // Obtener todos los enfrentamientos con el nombre local proporcionado
+        for (Partidos partido : partidosTotales) {
+            if (partido.getLocal().equals(nombre)) {
+                enfrentamientosLocales.add(partido);
+            }
+        }
+
+        Partidos enfrentamientoLocal = null;
+        if (!enfrentamientosLocales.isEmpty()) {
+            // Seleccionar aleatoriamente un enfrentamiento local
+            Random random = new Random();
+            enfrentamientoLocal = enfrentamientosLocales.get(random.nextInt(enfrentamientosLocales.size()));
+            partidosSeleccionados.add(enfrentamientoLocal);
+            partidosRestantes.remove(enfrentamientoLocal); // Utilizamos la lista de partidosRestantes
+        }
+
+        Set<String> equiposSeleccionados = new HashSet<>();
+        equiposSeleccionados.add(nombre); // Agregar el nombre proporcionado como equipo seleccionado
+
+        Random random = new Random();
+
+        while (partidosSeleccionados.size() < 4 && !partidosRestantes.isEmpty()) {
+            int index = random.nextInt(partidosRestantes.size());
+            Partidos partidoSeleccionado = partidosRestantes.get(index);
+
+            boolean localRepetido = equiposSeleccionados.contains(partidoSeleccionado.getLocal());
+            boolean visitanteRepetido = equiposSeleccionados.contains(partidoSeleccionado.getVisitante());
+
+            if (!localRepetido && !visitanteRepetido) {
+                // Verificar si alguno de los equipos ya ha sido seleccionado en instancias previas
+                boolean equiposRepetidos = false;
+                for (Partidos partido : partidosSeleccionados) {
+                    if (partido.getLocal().equals(partidoSeleccionado.getLocal())
+                            || partido.getLocal().equals(partidoSeleccionado.getVisitante())
+                            || partido.getVisitante().equals(partidoSeleccionado.getLocal())
+                            || partido.getVisitante().equals(partidoSeleccionado.getVisitante())) {
+                        equiposRepetidos = true;
+                        break;
+                    }
+                }
+
+                if (!equiposRepetidos) {
+                    partidosSeleccionados.add(partidoSeleccionado);
+                    equiposSeleccionados.add(partidoSeleccionado.getLocal());
+                    equiposSeleccionados.add(partidoSeleccionado.getVisitante());
+                }
+            }
+
+            partidosRestantes.remove(index);
+
+            if (enfrentamientoLocal != null) {
+                enfrentamientosLocales.remove(enfrentamientoLocal);
+            }
+        }
+
+        // Agregar los partidos seleccionados a ListaTemporada
+        ListaTemporada.addAll(partidosSeleccionados);
+    }
+
+    /**
+     * Este metodo sirve para volver a la ventana inicio y e iniciar el juego
+     * otra vez o salir de la aplicacion
+     *
+     * @param event
      */
     @FXML
-    private void FuncionMenu(ActionEvent event) {
+    private void FuncionMenu(ActionEvent event) throws SQLException {
 
         Stage myStage = (Stage) this.Iniciar.getScene().getWindow();
         myStage.close();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaInicio.fxml"));
-
+            ChampionsSimulator.ChampionSimulator.limpiarBBDD();
             Parent root = loader.load();
             FXML_VentanaInicioController v = new FXML_VentanaInicioController();
             contadorpartidos = 0;
@@ -478,9 +503,11 @@ public void getPartidosTemporada(String nombre) throws SQLException {
         }
 
     }
+
     /**
      * Este metodo sirve para pasar cancion al pulsar el boton play
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void pasarcanción(ActionEvent event) {
@@ -509,9 +536,11 @@ public void getPartidosTemporada(String nombre) throws SQLException {
         sonido.ReproducirSonido();
 
     }
+
     /**
-     *  Este metodo sirve para mutear la musica al tocar el boton correspondiente
-     * @param event 
+     * Este metodo sirve para mutear la musica al tocar el boton correspondiente
+     *
+     * @param event
      */
     @FXML
     private void mute(ActionEvent event) {
@@ -519,7 +548,8 @@ public void getPartidosTemporada(String nombre) throws SQLException {
         sonido.reset();
 
     }
-     /**
+
+    /**
      * Este metodo sirve para colocar las imagenes de los botones de play y mute
      */
     private void colocarImagenBotones() {
@@ -534,6 +564,12 @@ public void getPartidosTemporada(String nombre) throws SQLException {
 
     }
 
+    /**
+     * Este metodo lo que realiza es una con
+     *
+     * @param event
+     * @throws SQLException
+     */
     @FXML
     private void Convocar(ActionEvent event) throws SQLException {
         String recoger;
@@ -542,7 +578,7 @@ public void getPartidosTemporada(String nombre) throws SQLException {
         TableView.TableViewSelectionModel<Jugador> selectionModel = Jugadores.getSelectionModel();
         Jugador objetoSeleccionado = selectionModel.getSelectedItem();
 
-        if (objetoSeleccionado.getTitular()==1) {
+        if (objetoSeleccionado.getTitular() == 1) {
             //Debido a que algunos tienen mas de tres por que pablo es imbecil he tenido que poner este if
             if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
                 recoger = nombre.substring(0, 4);
@@ -550,7 +586,7 @@ public void getPartidosTemporada(String nombre) throws SQLException {
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados--;
-                  System.out.println(convocados);
+                System.out.println(convocados);
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 0 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
@@ -564,18 +600,18 @@ public void getPartidosTemporada(String nombre) throws SQLException {
         } else {
             if (nombre.equals("sporting") || nombre.equals("manchestercity")) {
                 recoger = nombre.substring(0, 4);
-               ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
-                     co.ejecutarInstruccion(ejecucion);
+                ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
+                co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados++;
-                  System.out.println(convocados);
+                System.out.println(convocados);
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados++;
-                  System.out.println(convocados);
+                System.out.println(convocados);
             }
         }
 

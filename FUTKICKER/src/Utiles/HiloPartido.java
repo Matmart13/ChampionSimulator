@@ -29,8 +29,8 @@ public class HiloPartido extends Thread {
 
     private int estrellasEquipoLocal;
     private int estrellasEquipoVisitante;
-    private Label lblGolesLocal;
-    private Label lblGolesVisitante;
+    public static Label lblGolesLocal;
+    public static Label lblGolesVisitante;
     private HiloTiempo hiloTiempo;
     private int golesLocal;
     private int golesVisitante;

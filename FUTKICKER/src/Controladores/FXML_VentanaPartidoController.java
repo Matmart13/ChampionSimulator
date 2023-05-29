@@ -60,13 +60,14 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     String nombreEquipo1;
     int estrellasEquipo1;
     int estrellasEquipo2;
+    int numvisitante = 0;
     ArrayList<Equipo> equiposjugar;
 
     ArrayList<Partidos> EquiposSecun;
     @FXML
     private Label Temporizador1;
 
-    String visitante;
+    public static String visitante;
     Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 60, 80, false, true);
     Image RMLogo = new Image("/Imagenes/Madrid.gif", 80, 80, false, true);
     Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 80, 80, false, true);
@@ -86,6 +87,8 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
     private Label marcadorEquipo2;
     @FXML
     private Label marcadorEquipo1;
+    String local1;
+    String visitante1;
 
     /**
      * Sirve para sincronizar los hilos de esta ventana
@@ -95,6 +98,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         super.start(); //To change body of generated methods, choose Tools | Templates.
 
     }
+
     /**
      * Initializes the controller class.
      */
@@ -124,6 +128,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("barcelona")) {
             equipo1.setImage(BarsaLogo);
             getVisitante();
@@ -133,7 +142,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
-
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("bayern")) {
             equipo1.setImage(bayernMunichLogo);
             getVisitante();
@@ -143,6 +156,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("psg")) {
             equipo1.setImage(PSGLogo);
             getVisitante();
@@ -151,6 +169,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("lazio")) {
             equipo1.setImage(LazioLogo);
             getVisitante();
@@ -159,6 +182,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("betis")) {
             equipo1.setImage(BetisLogo);
             getVisitante();
@@ -167,6 +195,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("sporting")) {
             equipo1.setImage(SportingLogo);
             getVisitante();
@@ -176,6 +209,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("arsenal")) {
             equipo1.setImage(ArsenalLogo);
             getVisitante();
@@ -185,6 +223,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("manchestercity")) {
             equipo1.setImage(McityLogo);
             getVisitante();
@@ -194,7 +237,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
-            
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (FXML_VistaTemporadaController.nombre.equals("inter")) {
             equipo1.setImage(InterMilanLogo);
             getVisitante();
@@ -204,14 +251,21 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             hp = new HiloPartido(estrellasEquipo1, estrellasEquipo2, marcadorEquipo1, marcadorEquipo2, ht, Texto);
             ht.start();
             hp.start();
-            
+            try {
+                restoPartidos();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXML_VentanaPartidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
+
     /**
-     * Este metodo realiza una consulta a la tabla equipos para recoger toda la informacion de todos los campos que contiene
-     * esta tabla y agregarlos a un Arraylist que se le pasa por parametro
+     * Este metodo realiza una consulta a la tabla equipos para recoger toda la
+     * informacion de todos los campos que contiene esta tabla y agregarlos a un
+     * Arraylist que se le pasa por parametro
+     *
      * @param lista
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void getEquipos(ArrayList<Equipo> lista) throws SQLException {
         Auxiliares.Conexiones conexion = new Conexiones();
@@ -232,15 +286,16 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
 
         conexion.cerrarConexion();
     }
+
     /**
-     * Este metodo sirve para recibir el visitante aleatorio que tiene que jugar contra nuestro equipo recoger sus estrellas y mostrar 
-     * su escudo en la pantalla.
+     * Este metodo sirve para recibir el visitante aleatorio que tiene que jugar
+     * contra nuestro equipo recoger sus estrellas y mostrar su escudo en la
+     * pantalla.
      */
     public void getVisitante() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
                 visitante = ListaTemporada.get(i).getVisitante();
-
                 if (visitante.equals("madrid")) {
                     equipo2.setImage(RMLogo);
                     cambioVisitante();
@@ -252,7 +307,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 } else if (visitante.equals("barcelona")) {
                     equipo2.setImage(BarsaLogo);
                     cambioVisitante();
-
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
                             estrellasEquipo2 = Eqlist.get(v).getEstrellas();
@@ -319,7 +373,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     }
                 } else if (visitante.equals("inter")) {
                     equipo2.setImage(InterMilanLogo);
-
                     cambioVisitante();
                     for (int v = 0; v < equiposjugar.size(); v++) {
                         if (equiposjugar.get(v).getNombre().equals(visitante) == true) {
@@ -329,15 +382,15 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 }
             }
         }
-
     }
+
     /**
-     * Este metodo sirve para recoger las estrellas de los equipos tanto local como visitante.
+     * Este metodo sirve para recoger las estrellas de los equipos tanto local
+     * como visitante.
      */
     public void getEstrellasEquipos() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
-                visitante = ListaTemporada.get(i).getVisitante();
 
                 for (int j = 0; j < ListaTemporada.size(); j++) {
                     if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
@@ -351,21 +404,11 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
 
                     }
                 }
-                for (int v = 0; v < ListaTemporada.size(); v++) {
-                    if (ListaTemporada.get(v).getVisitante().equals(visitante) == true) {
-                        for (int k = 0; k < equiposjugar.size(); k++) {
-                            cambioVisitante();
-                            if (equiposjugar.get(k).getNombre().equals(visitante) == true) {
-                                estrellasEquipo2 = equiposjugar.get(k).getEstrellas();
-                                break;
-                            }
-                        }
-                    }
 
-                }
             }
         }
     }
+
     /**
      * Sirve para cambiar el valor de la variable nombre
      */
@@ -377,7 +420,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             case "barcelona":
                 nombre = "Barcelona";
                 break;
-            case "manchestercity":
+            case "manchester city":
                 nombre = "Manchester City";
                 break;
             case "arsenal":
@@ -405,6 +448,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 break;
         }
     }
+
     /**
      * Sirve para cambiar el valor de la variable visitante
      */
@@ -441,24 +485,25 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 visitante = "Inter de Milan";
                 break;
             default:
-                System.out.println("No existe el equipo");
+
                 break;
         }
     }
+
     /**
-     * Sirve para ir cambiando los goles segun van marcando goles.
+     * Sirve para ir cambiando los label de valor segun van marcando goles los
+     * equipos.
      */
-    public void setGOLESPARTIDO(){
-         for (int i = 0; i < ListaTemporada.size(); i++) {
+    public void setGOLESPARTIDO() {
+        for (int i = 0; i < ListaTemporada.size(); i++) {
             if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
-                visitante = ListaTemporada.get(i).getVisitante();
 
                 for (int j = 0; j < ListaTemporada.size(); j++) {
                     if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
                         for (int k = 0; k < equiposjugar.size(); k++) {
                             cambioNombre();
                             if (equiposjugar.get(k).getNombre().equals(nombre) == true) {
-                              equiposjugar.get(k).setGoles(Integer.valueOf(marcadorEquipo1.getText()));
+                                equiposjugar.get(k).setGoles(Integer.valueOf(marcadorEquipo1.getText()));
                                 break;
                             }
                         }
@@ -470,7 +515,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                         for (int k = 0; k < equiposjugar.size(); k++) {
                             cambioVisitante();
                             if (equiposjugar.get(k).getNombre().equals(visitante) == true) {
-                                  equiposjugar.get(k).setGoles(Integer.valueOf(marcadorEquipo1.getText()));
+                                equiposjugar.get(k).setGoles(Integer.valueOf(marcadorEquipo1.getText()));
                                 break;
                             }
                         }
@@ -480,4 +525,245 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
             }
         }
     }
+
+    /**
+     * Este metodo realiza los partidos no principales y los actualiza
+     * automaticamente en la base de datos.
+     *
+     * @throws SQLException
+     */
+    public void restoPartidos() throws SQLException {
+        Conexiones co = new Conexiones();
+        int randomLocal;
+        int randomVisitante;
+
+        String consulta;
+        String ejecucion;
+        ResultSet resultset;
+        int anterior;
+        int nvalor;
+        for (int i = 1; i < ListaTemporada.size(); i++) {
+            randomLocal = (int) (Math.random() * 7);
+            randomVisitante = (int) (Math.random() * 7);
+            if (ListaTemporada.get(i).getLocal() != nombre && ListaTemporada.get(i).getVisitante() != visitante) {
+                local1 = ListaTemporada.get(i).getLocal();
+                visitante1 = ListaTemporada.get(i).getVisitante();
+                cambioVisitante2();
+                cambioLocal();
+
+                for (int j = 0; j < equiposjugar.size(); j++) {
+                    if (equiposjugar.get(j).getNombre().equals(local1)) {
+                        consulta = "Select eq_goles from equipos where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                        resultset = co.ejecutarConsulta(consulta);
+
+                        if (resultset.next()) {
+                            anterior = resultset.getInt("eq_goles");
+                            nvalor = anterior + randomLocal;
+                            ejecucion = "UPDATE equipos SET eq_goles = " + nvalor + " where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                            co.ejecutarInstruccion(ejecucion);
+                            anterior = 0;
+                            nvalor = 0;
+
+                        }
+                        consulta = "Select eq_goles_contra from equipos where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                        resultset = co.ejecutarConsulta(consulta);
+
+                        if (resultset.next()) {
+                            anterior = resultset.getInt("eq_goles_contra");
+                            nvalor = anterior + randomVisitante;
+                            ejecucion = "UPDATE equipos SET eq_goles_contra = " + nvalor + " where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                            co.ejecutarInstruccion(ejecucion);
+                            anterior = 0;
+                            nvalor = 0;
+                        }
+
+                        consulta = "Select eq_goles_dif from equipos where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                        resultset = co.ejecutarConsulta(consulta);
+
+                        if (resultset.next()) {
+                            anterior = resultset.getInt("eq_goles_dif");
+                            nvalor = anterior + (randomLocal - randomVisitante);
+                            ejecucion = "UPDATE equipos SET eq_goles_dif = " + nvalor + " where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                            co.ejecutarInstruccion(ejecucion);
+                            anterior = 0;
+                            nvalor = 0;
+                        }
+
+                    }
+
+                    if (equiposjugar.get(j).getNombre().equals(visitante1)) {
+                        consulta = "Select eq_goles from equipos where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                        resultset = co.ejecutarConsulta(consulta);
+
+                        if (resultset.next()) {
+                            anterior = resultset.getInt("eq_goles");
+                            nvalor = anterior + randomVisitante;
+                            ejecucion = "UPDATE equipos SET eq_goles = " + nvalor + " where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                            co.ejecutarInstruccion(ejecucion);
+                            anterior = 0;
+                            nvalor = 0;
+
+                        }
+                        consulta = "Select eq_goles_contra from equipos where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                        resultset = co.ejecutarConsulta(consulta);
+
+                        if (resultset.next()) {
+                            anterior = resultset.getInt("eq_goles_contra");
+                            nvalor = anterior + randomLocal;
+                            ejecucion = "UPDATE equipos SET eq_goles_contra = " + nvalor + " where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                            co.ejecutarInstruccion(ejecucion);
+                            anterior = 0;
+                            nvalor = 0;
+
+                        }
+                        consulta = "Select eq_goles_dif from equipos where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                        resultset = co.ejecutarConsulta(consulta);
+
+                        if (resultset.next()) {
+                            anterior = resultset.getInt("eq_goles_dif");
+                            nvalor = anterior + (randomVisitante - randomLocal);
+                            ejecucion = "UPDATE equipos SET eq_goles_dif = " + nvalor + " where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
+                            co.ejecutarInstruccion(ejecucion);
+                            anterior = 0;
+                            nvalor = 0;
+                        }
+
+                    }
+                }
+                if (randomLocal > randomVisitante) {
+                    consulta = "Select eq_victorias from equipos where eq_nombre like '" + local1 + "'";
+                    resultset = co.ejecutarConsulta(consulta);
+                    if (resultset.next()) {
+                        anterior = resultset.getInt("eq_victorias");
+                        nvalor = anterior + 1;
+                        ejecucion = "UPDATE equipos SET eq_victorias = " + nvalor + " where eq_nombre like '" + local1 + "'";
+                        co.ejecutarInstruccion(ejecucion);
+                        anterior = 0;
+                        nvalor = 0;
+                    }
+                    consulta = "Select eq_derrotas from equipos where eq_nombre like '" + visitante1 + "'";
+                    resultset = co.ejecutarConsulta(consulta);
+                    if (resultset.next()) {
+                        anterior = resultset.getInt("eq_derrotas");
+                        nvalor = anterior + 1;
+                        ejecucion = "UPDATE equipos SET eq_derrotas = " + nvalor + " where eq_nombre like '" + visitante1 + "'";
+                        co.ejecutarInstruccion(ejecucion);
+                        anterior = 0;
+                        nvalor = 0;
+
+                    }
+                    
+                }
+                if (randomLocal < randomVisitante) {
+                    consulta = "Select eq_victorias from equipos where eq_nombre like '" + visitante1 + "'";
+                    resultset = co.ejecutarConsulta(consulta);
+
+                    if (resultset.next()) {
+                        anterior = resultset.getInt("eq_victorias");
+                        nvalor = anterior + 1;
+                        ejecucion = "UPDATE equipos SET eq_victorias = " + nvalor + " where eq_nombre like '" + visitante1 + "'";
+                        co.ejecutarInstruccion(ejecucion);
+                        anterior = 0;
+                        nvalor = 0;
+                    }
+
+                    consulta = "Select eq_derrotas from equipos where eq_nombre like '" + local1 + "'";
+                    resultset = co.ejecutarConsulta(consulta);
+                    if (resultset.next()) {
+                        anterior = resultset.getInt("eq_derrotas");
+                        nvalor = anterior + 1;
+                        ejecucion = "UPDATE equipos SET eq_derrotas = " + nvalor + " where eq_nombre like '" + local1 + "'";
+                        co.ejecutarInstruccion(ejecucion);
+                        anterior = 0;
+                        nvalor = 0;
+                    }
+                }
+            }
+
+        }
+        co.cerrarConexion();
+    }
+
+    /**
+     * Este metodo cambia el valor del local para el metodo restoPartidos()
+     */
+    public void cambioLocal() {
+        switch (local1) {
+            case "madrid":
+                local1 = "Real Madrid";
+                break;
+            case "barcelona":
+                local1 = "Barcelona";
+                break;
+            case "manchestercity":
+                local1 = "Manchester City";
+                break;
+            case "arsenal":
+                local1 = "Arsenal";
+                break;
+            case "bayern":
+                local1 = "Bayern Munich";
+                break;
+            case "betis":
+                local1 = "Real Betis";
+                break;
+            case "lazio":
+                local1 = "Lazio";
+                break;
+            case "sporting":
+                local1 = "Sporting de Gijon";
+                break;
+            case "psg":
+                local1 = "PSG";
+                break;
+            case "inter":
+                local1 = "Inter de Milan";
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    /**
+     * Este metodo cambia el valor del visitante1 que pertenece al metodo
+     * restoPartidos()
+     */
+    public void cambioVisitante2() {
+        switch (visitante1) {
+            case "madrid":
+                visitante1 = "Real Madrid";
+                break;
+            case "barcelona":
+                visitante1 = "Barcelona";
+                break;
+            case "manchestercity":
+                visitante1 = "Manchester City";
+                break;
+            case "arsenal":
+                visitante1 = "Arsenal";
+                break;
+            case "bayern":
+                visitante1 = "Bayern Munich";
+                break;
+            case "betis":
+                visitante1 = "Real Betis";
+                break;
+            case "lazio":
+                visitante1 = "Lazio";
+                break;
+            case "sporting":
+                visitante1 = "Sporting de Gijon";
+                break;
+            case "psg":
+                visitante1 = "PSG";
+                break;
+            case "inter":
+                visitante1 = "Inter de Milan";
+                break;
+            default:
+                break;
+        }
+    }
+
 }
