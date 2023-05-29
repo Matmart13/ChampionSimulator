@@ -647,13 +647,13 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     if (resultset.next()) {
                         anterior = resultset.getInt("eq_derrotas");
                         nvalor = anterior + 1;
-                        ejecucion = "UPDATE equipos SET eq_victorias = " + nvalor + " where eq_nombre like '" + visitante1 + "'";
+                        ejecucion = "UPDATE equipos SET eq_derrotas = " + nvalor + " where eq_nombre like '" + visitante1 + "'";
                         co.ejecutarInstruccion(ejecucion);
                         anterior = 0;
                         nvalor = 0;
 
                     }
-
+                    
                 }
                 if (randomLocal < randomVisitante) {
                     consulta = "Select eq_victorias from equipos where eq_nombre like '" + visitante1 + "'";
@@ -673,7 +673,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                     if (resultset.next()) {
                         anterior = resultset.getInt("eq_derrotas");
                         nvalor = anterior + 1;
-                        ejecucion = "UPDATE equipos SET eq_victorias = " + nvalor + " where eq_nombre like '" + local1 + "'";
+                        ejecucion = "UPDATE equipos SET eq_derrotas = " + nvalor + " where eq_nombre like '" + local1 + "'";
                         co.ejecutarInstruccion(ejecucion);
                         anterior = 0;
                         nvalor = 0;

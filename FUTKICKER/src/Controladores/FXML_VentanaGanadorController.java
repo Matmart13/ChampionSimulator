@@ -137,6 +137,8 @@ public class FXML_VentanaGanadorController implements Initializable {
     @FXML
     private void regresoTemporada(ActionEvent event) {
         if (contador == 4) {
+            cambioNombre();
+            cambioVisitante();
             Stage myStage = (Stage) this.botonRegreso.getScene().getWindow();
             myStage.close();
             Musica = "Background";
@@ -195,7 +197,7 @@ public class FXML_VentanaGanadorController implements Initializable {
     /**
      * Este metodo sirve para cambiar la variable nombre
      */
-    public void cambioNombre() {
+    public static void cambioNombre() {
         switch (nombre) {
             case "Real Madrid":
                 nombre = "madrid";

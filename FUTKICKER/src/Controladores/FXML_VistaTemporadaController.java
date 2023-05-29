@@ -133,6 +133,8 @@ public class FXML_VistaTemporadaController implements Initializable {
         // TODO
         if (FXML_VentanaGanadorController.contador == 4){
             Iniciar.setDisable(true);
+            FXML_VentanaGanadorController.contador = 0;
+       
         }
         fondoTemporada.setImage(fondo);
         colocarImagenBotones();
