@@ -60,7 +60,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     @FXML
     private TableView<Equipo> TablaEquipos;
     @FXML
-    private Button Iniciar;
+    public Button Iniciar;
     @FXML
     private Button Salir;
     @FXML
@@ -122,6 +122,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     Equipo vs;
     static int contador = 0;
     public static ObservableList<Equipo> Eqlist;
+  
     static int contadorpartidos = 0;
 
     /**
@@ -130,7 +131,9 @@ public class FXML_VistaTemporadaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        if (FXML_VentanaGanadorController.contador == 4){
+            Iniciar.setDisable(true);
+        }
         fondoTemporada.setImage(fondo);
         colocarImagenBotones();
         this.NombreE.setCellValueFactory(new PropertyValueFactory("Nombre"));
@@ -196,7 +199,7 @@ public class FXML_VistaTemporadaController implements Initializable {
      * Constructor
      */
     public FXML_VistaTemporadaController() {
-
+       
     }
 
     //Metodos FXML

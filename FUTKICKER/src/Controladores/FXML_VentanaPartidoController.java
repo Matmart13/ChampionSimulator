@@ -390,7 +390,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
      */
     public void getEstrellasEquipos() {
         for (int i = 0; i < ListaTemporada.size(); i++) {
-            if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {            
+            if (ListaTemporada.get(i).getLocal().equals(FXML_VistaTemporadaController.nombre) == true) {
 
                 for (int j = 0; j < ListaTemporada.size(); j++) {
                     if (ListaTemporada.get(j).getLocal().equals(nombre) == true) {
@@ -404,7 +404,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
 
                     }
                 }
-               
+
             }
         }
     }
@@ -485,7 +485,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 visitante = "Inter de Milan";
                 break;
             default:
-             
+
                 break;
         }
     }
@@ -526,6 +526,12 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         }
     }
 
+    /**
+     * Este metodo realiza los partidos no principales y los actualiza
+     * automaticamente en la base de datos.
+     *
+     * @throws SQLException
+     */
     public void restoPartidos() throws SQLException {
         Conexiones co = new Conexiones();
         int randomLocal;
@@ -544,6 +550,7 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                 visitante1 = ListaTemporada.get(i).getVisitante();
                 cambioVisitante2();
                 cambioLocal();
+
                 for (int j = 0; j < equiposjugar.size(); j++) {
                     if (equiposjugar.get(j).getNombre().equals(local1)) {
                         consulta = "Select eq_goles from equipos where eq_nombre like '" + equiposjugar.get(j).getNombre() + "'";
@@ -623,7 +630,6 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                         }
 
                     }
-
                 }
                 if (randomLocal > randomVisitante) {
                     consulta = "Select eq_victorias from equipos where eq_nombre like '" + local1 + "'";
@@ -635,11 +641,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                         co.ejecutarInstruccion(ejecucion);
                         anterior = 0;
                         nvalor = 0;
-
                     }
                     consulta = "Select eq_derrotas from equipos where eq_nombre like '" + visitante1 + "'";
                     resultset = co.ejecutarConsulta(consulta);
-
                     if (resultset.next()) {
                         anterior = resultset.getInt("eq_derrotas");
                         nvalor = anterior + 1;
@@ -662,12 +666,10 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
                         co.ejecutarInstruccion(ejecucion);
                         anterior = 0;
                         nvalor = 0;
-
                     }
-                    
+
                     consulta = "Select eq_derrotas from equipos where eq_nombre like '" + local1 + "'";
                     resultset = co.ejecutarConsulta(consulta);
-
                     if (resultset.next()) {
                         anterior = resultset.getInt("eq_derrotas");
                         nvalor = anterior + 1;
@@ -683,6 +685,9 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
         co.cerrarConexion();
     }
 
+    /**
+     * Este metodo cambia el valor del local para el metodo restoPartidos()
+     */
     public void cambioLocal() {
         switch (local1) {
             case "madrid":
@@ -721,6 +726,10 @@ public class FXML_VentanaPartidoController extends Thread implements Initializab
 
     }
 
+    /**
+     * Este metodo cambia el valor del visitante1 que pertenece al metodo
+     * restoPartidos()
+     */
     public void cambioVisitante2() {
         switch (visitante1) {
             case "madrid":
