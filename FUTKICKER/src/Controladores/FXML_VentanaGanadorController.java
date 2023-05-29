@@ -46,16 +46,16 @@ public class FXML_VentanaGanadorController implements Initializable {
     @FXML
     private ImageView fondo;
     
-    Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 1000, 400, false, true);
-    Image RMLogo = new Image("/Imagenes/Madrid.gif", 1000, 400, false, true);
-    Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 1000, 400, false, true);
-    Image BetisLogo = new Image("/Imagenes/betis.png", 1000, 400, false, true);
-    Image SportingLogo = new Image("/Imagenes/Sporting.png", 1000, 400, false, true);
-    Image InterMilanLogo = new Image("/Imagenes/inter-milan-logo.png", 1000, 400, false, true);
-    Image McityLogo = new Image("/Imagenes/manchester.gif", 1000, 400, false, true);
-    Image bayernMunichLogo = new Image("/Imagenes/bayern.gif", 1000, 400, false, true);
-    Image LazioLogo = new Image("/Imagenes/lazio-logo.png", 1000, 400, false, true);
-    Image PSGLogo = new Image("/Imagenes/PSG.png", 1000, 400, false, true);
+    Image ArsenalLogo = new Image("/Imagenes/Arsenal_FC.png", 600, 800, false, true);
+    Image RMLogo = new Image("/Imagenes/Madrid.gif", 800, 800, false, true);
+    Image BarsaLogo = new Image("/Imagenes/Barsa.gif", 800, 800, false, true);
+    Image BetisLogo = new Image("/Imagenes/betis.png", 800, 800, false, true);
+    Image SportingLogo = new Image("/Imagenes/Sporting.png", 600, 800, false, true);
+    Image InterMilanLogo = new Image("/Imagenes/inter-milan-logo.png", 800, 800, false, true);
+    Image McityLogo = new Image("/Imagenes/manchester.gif", 800, 800, false, true);
+    Image bayernMunichLogo = new Image("/Imagenes/bayern.gif", 800, 800, false, true);
+    Image LazioLogo = new Image("/Imagenes/lazio-logo.png", 800, 600, false, true);
+    Image PSGLogo = new Image("/Imagenes/PSG.png", 800, 800, false, true);
     Image logo = new Image("/Imagenes/Logo.png");
     
     String ganador;
@@ -111,7 +111,7 @@ public class FXML_VentanaGanadorController implements Initializable {
                 empateLabel.setText("EMPATE");
                 //winnerGIF.setImage(winner);
             }
-         if(contador == 0){
+         if(contador == 3){
              fondo.setImage(fondofin);
               botonRegreso.setText("FINAL DEL JUEGO");
             
@@ -123,7 +123,7 @@ public class FXML_VentanaGanadorController implements Initializable {
      */
     @FXML
     private void regresoTemporada(ActionEvent event) {
-        if(contador == 0){
+        if(contador == 3){
              Stage myStage = (Stage) this.botonRegreso.getScene().getWindow();
              myStage.close();
         }else{

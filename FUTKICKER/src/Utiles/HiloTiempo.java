@@ -132,12 +132,9 @@ public class HiloTiempo extends Thread {
                         //Este poner la llamada a ventana fin
                         Stage myStage = (Stage) label.getScene().getWindow();
                         myStage.close();
+                        
                         try {
-                            sonido.PararSonido();
-                            sonido.reset();
-                            Musica = "Victoria";
-                            sonido = ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
-                            sonido.ReproducirSonido();
+
 
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/FXML_VentanaGanador.fxml"));
 
@@ -154,6 +151,11 @@ public class HiloTiempo extends Thread {
                             actualizarTabla();
 
                             stage.show();
+                            sonido.PararSonido();
+                            sonido.reset();
+                            Musica = "Victoria";
+                            sonido = ChampionsSimulator.ChampionSimulator.SM.getSonido(Musica);
+                            sonido.ReproducirSonido();
                             timeline.stop();
                             timelinepartido.stop();
                             countParte = 0;
@@ -165,6 +167,7 @@ public class HiloTiempo extends Thread {
                         } catch (SQLException ex) {
                             Logger.getLogger(HiloTiempo.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                     
                     });
                 }
             }
