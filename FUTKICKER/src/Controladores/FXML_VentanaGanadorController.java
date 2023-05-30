@@ -205,7 +205,7 @@ public class FXML_VentanaGanadorController implements Initializable {
             case "Barcelona":
                 nombre = "barcelona";
                 break;
-            case "ManchesterCity":
+            case "Manchester City":
                 nombre = "manchestercity";
                 break;
             case "Arsenal":

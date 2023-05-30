@@ -122,7 +122,7 @@ public class FXML_VistaTemporadaController implements Initializable {
     Equipo vs;
     static int contador = 0;
     public static ObservableList<Equipo> Eqlist;
-  
+
     static int contadorpartidos = 0;
 
     /**
@@ -131,10 +131,10 @@ public class FXML_VistaTemporadaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        if (FXML_VentanaGanadorController.contador == 4){
+        if (FXML_VentanaGanadorController.contador == 4) {
             Iniciar.setDisable(true);
             FXML_VentanaGanadorController.contador = 0;
-       
+
         }
         fondoTemporada.setImage(fondo);
         colocarImagenBotones();
@@ -164,6 +164,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             }
             getPartidosTemporada(nombre);
             //getPartidos(listapartidos);
+            
             if (nombre.equals("madrid")) {
                 EscudoEquipo.setImage(RMLogo);
             } else if (nombre.equals("barcelona")) {
@@ -201,7 +202,7 @@ public class FXML_VistaTemporadaController implements Initializable {
      * Constructor
      */
     public FXML_VistaTemporadaController() {
-       
+
     }
 
     //Metodos FXML
@@ -343,23 +344,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             }
             this.Jugadores.setItems(Jlist);
             conexion.cerrarConexion();
-        } else if (_nombre.equals("Manchester City")) {
-            sql = "Select * from " + _nombre;
-            recoger = _nombre.substring(0, 4);
-            _nombre = "manchestercity";
-            resultset = conexion.ejecutarConsulta(sql);
-            while (resultset.next()) {
-                int id = resultset.getInt(recoger + "_id");
-                String nombre = resultset.getString(recoger + "_jugador");
-                String posicion = resultset.getString(recoger + "_posicion");
-                int titularidad = resultset.getInt("Titular");
-                Jugador j = new Jugador(id, nombre, posicion, titularidad);
-                Jlist.add(j);
-
-            }
-            this.Jugadores.setItems(Jlist);
-            conexion.cerrarConexion();
-
+        
         } else {
             sql = "Select * from " + _nombre;
             resultset = conexion.ejecutarConsulta(sql);
@@ -585,7 +570,7 @@ public class FXML_VistaTemporadaController implements Initializable {
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados--;
-              
+
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 0 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
@@ -593,7 +578,7 @@ public class FXML_VistaTemporadaController implements Initializable {
                 System.out.println(ejecucion);
                 getTodosJugadores(nombre);
                 convocados--;
-              
+
             }
 
         } else {
@@ -603,14 +588,14 @@ public class FXML_VistaTemporadaController implements Initializable {
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados++;
-          
+
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados++;
-           
+
             }
         }
 

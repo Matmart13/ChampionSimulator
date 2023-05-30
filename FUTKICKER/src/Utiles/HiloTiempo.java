@@ -461,10 +461,10 @@ public class HiloTiempo extends Thread {
                 nvalor = 0;
             }
         }
-
+        /*
         consulta = "Select * from equipos";
         conexion.ejecutarConsulta(consulta);
-
+        */
         conexion.cerrarConexion();
 
     }
