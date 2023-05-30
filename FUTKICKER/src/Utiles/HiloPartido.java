@@ -74,7 +74,6 @@ public class HiloPartido extends Thread {
         timelinepartido = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
             texto.appendText("...........................................\n");
              float numeroAleatorio = (float) (Math.random() * 100);
-             System.out.println(numeroAleatorio);
             if (numeroAleatorio < posiblidadEq1) {
                cont1 ++;
                 lblGolesLocal.setText(String.valueOf(cont1));

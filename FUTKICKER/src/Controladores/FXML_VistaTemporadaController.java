@@ -220,7 +220,6 @@ public class FXML_VistaTemporadaController implements Initializable {
 
             a.setTitle("Error");
             faltan = convocados - 11;
-            faltan = faltan + (faltan * 2);
             a.setHeaderText("Error, solo puede jugar con 11 jugadores convocados tienes que mandar al banquillo a " + faltan);
             ButtonType botonSeguir = new ButtonType("SEGUIR");
             a.getButtonTypes().setAll(botonSeguir);
@@ -229,7 +228,6 @@ public class FXML_VistaTemporadaController implements Initializable {
         } else if (convocados < 11) {
 
             Alert a = new Alert(Alert.AlertType.WARNING);
-
             a.setTitle("Error");
             faltan = 11 - convocados;
             a.setHeaderText("Error, no has metido a los 11 jugadores del 11 inicial te faltan " + faltan);
@@ -489,6 +487,7 @@ public class FXML_VistaTemporadaController implements Initializable {
             Parent root = loader.load();
             FXML_VentanaInicioController v = new FXML_VentanaInicioController();
             contadorpartidos = 0;
+            convocados = 0;
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.getIcons().add(new Image("/Imagenes/LogoAPP.png"));
@@ -586,7 +585,7 @@ public class FXML_VistaTemporadaController implements Initializable {
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados--;
-                System.out.println(convocados);
+              
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 0 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
@@ -594,7 +593,7 @@ public class FXML_VistaTemporadaController implements Initializable {
                 System.out.println(ejecucion);
                 getTodosJugadores(nombre);
                 convocados--;
-                System.out.println(convocados);
+              
             }
 
         } else {
@@ -604,14 +603,14 @@ public class FXML_VistaTemporadaController implements Initializable {
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados++;
-                System.out.println(convocados);
+          
             } else {
                 recoger = nombre.substring(0, 3);
                 ejecucion = "UPDATE " + nombre + " SET Titular = " + 1 + " where " + recoger + "_id = " + objetoSeleccionado.getId();
                 co.ejecutarInstruccion(ejecucion);
                 getTodosJugadores(nombre);
                 convocados++;
-                System.out.println(convocados);
+           
             }
         }
 
